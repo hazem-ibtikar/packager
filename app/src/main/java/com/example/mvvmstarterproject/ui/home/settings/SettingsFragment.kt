@@ -6,9 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.mvvmstarterproject.R
 import com.example.mvvmstarterproject.base.BaseFragment
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : BaseFragment<SettingsViewModel>() {
 
@@ -28,6 +31,20 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setUpFragmentTitle()
+        handleClickListener()
+        handleToolBar()
+    }
+
+    private fun handleToolBar() {
+        activity?.toolbar?.navigationIcon = context?.getDrawable(R.drawable.ic_sidemenu)
+        activity?.toolbar?.setNavigationOnClickListener {
+            activity?.drawer_layout?.open()
+        }
+    }
+    private fun handleClickListener() {
+        contactUsHeader.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_contactUsFragment)
+        }
     }
 
     private fun setUpFragmentTitle() {

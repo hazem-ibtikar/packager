@@ -4,6 +4,7 @@ import com.example.mvvmstarterproject.ui.home.my_orders.MyOrdersContainerFragmen
 import com.example.mvvmstarterproject.ui.home.my_orders.orders_list.OrdersFragment
 import com.example.mvvmstarterproject.ui.home.notifications.NotificationsFragment
 import com.example.mvvmstarterproject.ui.home.settings.SettingsFragment
+import com.example.mvvmstarterproject.ui.home.settings.contactUs.ContactUsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -20,4 +21,7 @@ abstract class HomeActivityFragmentsProviders {
 
     @ContributesAndroidInjector
     abstract fun contributeSettingsFragment(): SettingsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeContactUsFragment(): ContactUsFragment
 }

@@ -26,6 +26,7 @@ import com.example.mvvmstarterproject.ui.home.my_orders.MyOrdersContainerViewMod
 import com.example.mvvmstarterproject.ui.home.my_orders.orders_list.OrdersViewModel
 import com.example.mvvmstarterproject.ui.home.notifications.NotificationsViewModel
 import com.example.mvvmstarterproject.ui.home.settings.SettingsViewModel
+import com.example.mvvmstarterproject.ui.home.settings.contactUs.ContactUsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -67,6 +68,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SettingsViewModel::class)
     abstract fun bindSettingsViewModel(settingsViewModel: SettingsViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(ContactUsViewModel::class)
+    abstract fun bindContactUsViewModel(contactUsViewModel: ContactUsViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
