@@ -23,5 +23,5 @@
         android:id="@+id/nav_settings"
         android:name="com.example.mvvmstarterproject.ui.home.settings.SettingsFragment"
         android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_settings" />
 </navigation>
