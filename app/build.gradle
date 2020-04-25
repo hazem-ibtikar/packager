@@ -21,7 +21,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField 'String', 'SERVER_URL', '"https://jsonplaceholder.typicode.com/"'
+            buildConfigField 'String', 'SERVER_URL', '"https://a72dd6b5-1530-4772-be45-f6602a7b560f.mock.pstmn.io"'
         }
         release {
             minifyEnabled false
@@ -38,19 +38,21 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+// To inline the bytecode built with JVM target 1.8 into
+// bytecode that is being built with JVM target 1.6. (e.g. navArgs)
 }
 
 dependencies {
     ext.lifecycle_version = "2.2.0"
-    ext.daggerVersion     = "2.25.2"
-    ext.materialVersion   = "1.1.0"
-    ext.glideVersion      = "4.10.0"
-    ext.retrofit          = "2.6.2"
-    ext.rxJava2           = "2.2.15"
-    ext.rxAndroid         = "2.1.1"
-    ext.alerter           = "5.0.0"
-    ext.timper            = "4.7.1"
-    ext.customLogger      = "2.2.0"
+    ext.daggerVersion = "2.25.2"
+    ext.materialVersion = "1.1.0"
+    ext.glideVersion = "4.10.0"
+    ext.retrofit = "2.6.2"
+    ext.rxJava2 = "2.2.15"
+    ext.rxAndroid = "2.1.1"
+    ext.alerter = "5.0.0"
+    ext.timper = "4.7.1"
+    ext.customLogger = "2.2.0"
     def nav_version = "2.3.0-alpha03"
     def room_version = "2.2.5"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -61,6 +63,13 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.navigation:navigation-fragment:2.2.2'
+    implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

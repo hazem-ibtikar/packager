@@ -21,6 +21,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmstarterproject.test.MainViewModel
 import com.example.mvvmstarterproject.test.TestViewModelA
+import com.example.mvvmstarterproject.ui.home.HomeViewModel
+import com.example.mvvmstarterproject.ui.home.my_orders.MyOrdersContainerViewModel
+import com.example.mvvmstarterproject.ui.home.my_orders.orders_list.OrdersViewModel
+import com.example.mvvmstarterproject.ui.home.notifications.NotificationsViewModel
+import com.example.mvvmstarterproject.ui.home.settings.SettingsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -38,6 +43,30 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TestViewModelA::class)
     abstract fun bindTestFragmentAViewModel(mainViewModel: TestViewModelA): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrdersViewModel::class)
+    abstract fun bindOrdersViewModel(ordersViewModel: OrdersViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MyOrdersContainerViewModel::class)
+    abstract fun bindHomeViewModel(myOrdersContainerViewModel: MyOrdersContainerViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(HomeViewModel::class)
+    abstract fun bindHomeFrViewModel(homeViewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(NotificationsViewModel::class)
+    abstract fun bindNotificationsViewModel(notificationsViewModel: NotificationsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SettingsViewModel::class)
+    abstract fun bindSettingsViewModel(settingsViewModel: SettingsViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

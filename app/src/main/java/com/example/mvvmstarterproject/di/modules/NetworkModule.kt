@@ -1,6 +1,7 @@
 package com.example.mvvmstarterproject.di.modules
 
 import com.example.mvvmstarterproject.BuildConfig
+import com.example.mvvmstarterproject.data.remote.orders.OrdersService
 import com.example.mvvmstarterproject.test.UserService
 import dagger.Module
 import dagger.Provides
@@ -43,4 +44,7 @@ class NetworkModule {
 
     @Provides
     fun provideJobsApi(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+
+    @Provides
+    fun provideOrdersApi(retrofit: Retrofit): OrdersService = retrofit.create(OrdersService::class.java)
 }

@@ -1,9 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="white">#FFF</color>
-    <color name="redOrange">#ff3b30</color>
-    <color name="limeade">#4A9D00</color>
+  <color name="colorPrimary">#008577</color>
+  <color name="colorPrimaryDark">#00574B</color>
+  <color name="colorAccent">#D81B60</color>
+  <color name="white">#FFF</color>
+  <color name="redOrange">#ff3b30</color>
+  <color name="limeade">#4A9D00</color>
+  <color name="darkmidnightblue">#083863</color>
+  <color name="munsell">#f1f1f2</color>
+  <color name="outerspace">#464646</color>
+  <color name="taupegray">#979797</color>
+  <color name="taupe">#353535</color>
+  <color name="black">#000000</color>
+  <color name="outerspace_1">#4a4a4a</color>
+  <color name="taupe_1">#373535</color>
+  <color name="white_1">#ffffff</color>
+  <color name="taupegray_1">#949494</color>
+  <color name="munsell_1">#f4f4f4</color>
+  <color name="mikadoyellow">#f9ca11</color>
+  <color name="davygrey">#545454</color>
+  <color name="darkjunglegreen">#232222</color>
+  <color name="orangeyellow">#ffe16a</color>
+  <color name="sunglow">#ffd42b</color>
+  <color name="strange_yellow">#FFF5D0</color>
+  <color name="smoke_white">#f5f5f5</color>
 </resources>
+
