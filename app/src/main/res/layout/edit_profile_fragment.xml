@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.settings.edit_profile.EditProfileFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:elevation="2dp"
+        android:src="@drawable/ic_call"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="2dp"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:elevation="2dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintEnd_toEndOf="@+id/profile_image"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profile_image"
+        app:layout_constraintTop_toTopOf="@+id/profile_image"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/phone_number"
+        android:textColor="@color/manatee"
+        android:textSize="@dimen/font_size_small"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+    <EditText
+        android:id="@+id/countryCode"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="+966"
+        android:textColor="@color/darkjunglegreen"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <EditText
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="548372923"
+        android:textColor="@color/darkjunglegreen"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@+id/countryCode"
+        app:layout_constraintStart_toEndOf="@+id/countryCode" />
+
+    <TextView
+        android:id="@+id/arabicFullNameHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/arabic_full_number"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/countryCode" />
+
+    <EditText
+        android:id="@+id/arabic_name_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="محمد عبداللة"
+        android:maxLines="1"
+        android:textColor="@color/darkjunglegreen"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/arabicFullNameHeader" />
+
+    <TextView
+        android:id="@+id/englishFullNameHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/english_full_name"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/arabic_name_edit_text" />
+
+    <EditText
+        android:id="@+id/english_name_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Mohamed Abdallah"
+        android:maxLines="1"
+        android:textColor="@color/darkjunglegreen"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/englishFullNameHeader" />
+
+    <TextView
+        android:id="@+id/emailHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/email"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/english_name_edit_text" />
+
+    <EditText
+        android:id="@+id/email_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Mohamed Abdallah@haseelapp.com"
+        android:maxLines="1"
+        android:textColor="@color/darkjunglegreen"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/emailHeader" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/sunglow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/taupe"
+        android:text="@string/save"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:cornerRadius="10dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="@dimen/font_size_normal"
+        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+        app:layout_constraintStart_toStartOf="@+id/startGuideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,6 +45,14 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
         contactUsHeader.setOnClickListener {
             findNavController().navigate(R.id.action_nav_settings_to_contactUsFragment)
         }
+
+        editProfileHeader.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_editProfileFragment)
+        }
+
+        changePasswordHeader.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_changePasswordFragment)
+        }
     }
 
     private fun setUpFragmentTitle() {

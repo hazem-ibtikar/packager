@@ -28,10 +28,26 @@
         <action
             android:id="@+id/action_nav_settings_to_contactUsFragment"
             app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_nav_settings_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_nav_settings_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
         android:name="com.example.mvvmstarterproject.ui.home.settings.contactUs.ContactUsFragment"
         android:label="contact_us_fragment"
         tools:layout="@layout/contact_us_fragment" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.mvvmstarterproject.ui.home.settings.edit_profile.EditProfileFragment"
+        android:label="edit_profile_fragment"
+        tools:layout="@layout/edit_profile_fragment" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.mvvmstarterproject.ui.home.settings.change_password.ChangePasswordFragment"
+        android:label="change_password_fragment"
+        tools:layout="@layout/change_password_fragment" />
 </navigation>

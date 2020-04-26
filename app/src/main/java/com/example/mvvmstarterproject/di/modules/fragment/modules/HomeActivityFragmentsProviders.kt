@@ -4,7 +4,9 @@ import com.example.mvvmstarterproject.ui.home.my_orders.MyOrdersContainerFragmen
 import com.example.mvvmstarterproject.ui.home.my_orders.orders_list.OrdersFragment
 import com.example.mvvmstarterproject.ui.home.notifications.NotificationsFragment
 import com.example.mvvmstarterproject.ui.home.settings.SettingsFragment
+import com.example.mvvmstarterproject.ui.home.settings.change_password.ChangePasswordFragment
 import com.example.mvvmstarterproject.ui.home.settings.contactUs.ContactUsFragment
+import com.example.mvvmstarterproject.ui.home.settings.edit_profile.EditProfileFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -24,4 +26,10 @@ abstract class HomeActivityFragmentsProviders {
 
     @ContributesAndroidInjector
     abstract fun contributeContactUsFragment(): ContactUsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeEditProfileFragment(): EditProfileFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeChangePasswordFragment(): ChangePasswordFragment
 }

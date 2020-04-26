@@ -26,7 +26,9 @@ import com.example.mvvmstarterproject.ui.home.my_orders.MyOrdersContainerViewMod
 import com.example.mvvmstarterproject.ui.home.my_orders.orders_list.OrdersViewModel
 import com.example.mvvmstarterproject.ui.home.notifications.NotificationsViewModel
 import com.example.mvvmstarterproject.ui.home.settings.SettingsViewModel
+import com.example.mvvmstarterproject.ui.home.settings.change_password.ChangePasswordViewModel
 import com.example.mvvmstarterproject.ui.home.settings.contactUs.ContactUsViewModel
+import com.example.mvvmstarterproject.ui.home.settings.edit_profile.EditProfileViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -68,10 +70,21 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(SettingsViewModel::class)
     abstract fun bindSettingsViewModel(settingsViewModel: SettingsViewModel): ViewModel
+
     @Binds
     @IntoMap
     @ViewModelKey(ContactUsViewModel::class)
     abstract fun bindContactUsViewModel(contactUsViewModel: ContactUsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EditProfileViewModel::class)
+    abstract fun bindEditProfileViewModel(editProfileViewModel: EditProfileViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChangePasswordViewModel::class)
+    abstract fun bindChangePasswordViewModel(changePasswordViewModel: ChangePasswordViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
