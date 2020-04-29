@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "170771012620",
+    "firebase_url": "https://monh-packager.firebaseio.com",
+    "project_id": "monh-packager",
+    "storage_bucket": "monh-packager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170771012620:android:9a8f132b1c1f8922206229",
+        "android_client_info": {
+          "package_name": "com.monh.packager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170771012620-67vvomnnv0fqu270nhorgqo089717msn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.monh.packager",
+            "certificate_hash": "4258f0b6668ae61bc2c5a97a0b3facf8b1136c15"
+          }
+        },
+        {
+          "client_id": "170771012620-f4c970dldpg6j06i847aahk0pr3spvfd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXoWK_AJwd49G823185nkYlBMo78hm-h0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170771012620-f4c970dldpg6j06i847aahk0pr3spvfd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
