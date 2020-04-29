@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/nav_my_orders"
-        android:name="com.example.mvvmstarterproject.ui.home.my_orders.MyOrdersContainerFragment"
+        android:name="com.monh.packager.ui.home.my_orders.MyOrdersContainerFragment"
         android:label="@string/menu_my_orders"
         tools:layout="@layout/fragment_home">
 
@@ -16,13 +16,13 @@
 
     <fragment
         android:id="@+id/nav_notifications"
-        android:name="com.example.mvvmstarterproject.ui.home.notifications.NotificationsFragment"
+        android:name="com.monh.packager.ui.home.notifications.NotificationsFragment"
         android:label="@string/menu_notifications"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.example.mvvmstarterproject.ui.home.settings.SettingsFragment"
+        android:name="com.monh.packager.ui.home.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" >
         <action
@@ -37,17 +37,17 @@
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
-        android:name="com.example.mvvmstarterproject.ui.home.settings.contactUs.ContactUsFragment"
+        android:name="com.monh.packager.ui.home.settings.contactUs.ContactUsFragment"
         android:label="contact_us_fragment"
         tools:layout="@layout/contact_us_fragment" />
     <fragment
         android:id="@+id/editProfileFragment"
-        android:name="com.example.mvvmstarterproject.ui.home.settings.edit_profile.EditProfileFragment"
+        android:name="com.monh.packager.ui.home.settings.edit_profile.EditProfileFragment"
         android:label="edit_profile_fragment"
         tools:layout="@layout/edit_profile_fragment" />
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:name="com.example.mvvmstarterproject.ui.home.settings.change_password.ChangePasswordFragment"
+        android:name="com.monh.packager.ui.home.settings.change_password.ChangePasswordFragment"
         android:label="change_password_fragment"
         tools:layout="@layout/change_password_fragment" />
 </navigation>

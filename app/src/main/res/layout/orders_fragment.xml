@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.example.mvvmstarterproject.ui.home.my_orders.orders_list.OrdersViewModel" />
+            type="com.monh.packager.ui.home.my_orders.orders_list.OrdersViewModel" />
     </data>
 
     <FrameLayout
