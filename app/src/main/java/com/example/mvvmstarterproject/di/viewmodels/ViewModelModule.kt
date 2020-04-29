@@ -21,6 +21,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmstarterproject.test.MainViewModel
 import com.example.mvvmstarterproject.test.TestViewModelA
+import com.example.mvvmstarterproject.ui.auth.login.LoginActivityViewModel
+import com.example.mvvmstarterproject.ui.auth.login.LoginViewModel
 import com.example.mvvmstarterproject.ui.home.HomeViewModel
 import com.example.mvvmstarterproject.ui.home.my_orders.MyOrdersContainerViewModel
 import com.example.mvvmstarterproject.ui.home.my_orders.orders_list.OrdersViewModel
@@ -85,6 +87,16 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ChangePasswordViewModel::class)
     abstract fun bindChangePasswordViewModel(changePasswordViewModel: ChangePasswordViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginActivityViewModel::class)
+    abstract fun bindLoginActivityViewModel(loginActivityViewModel: LoginActivityViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

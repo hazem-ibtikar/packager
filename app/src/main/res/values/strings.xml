@@ -47,4 +47,8 @@
     <string name="english_full_name">English Full Name</string>
     <string name="email">Email</string>
     <string name="save">Save</string>
+    <string name="password">password</string>
+    <string name="done">Done</string>
+    <string name="logIn">Login</string>
+    <string name="get_started_with">Get started with</string>
 </resources>
