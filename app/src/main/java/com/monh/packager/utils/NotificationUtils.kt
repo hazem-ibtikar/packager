@@ -10,8 +10,9 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.monh.packager.R
 import java.util.*
+import javax.inject.Inject
 
-class NotificationUtils(private val mContext: Context) {
+class NotificationUtils @Inject constructor(private val mContext: Context) {
     fun showNotificationMessage(
         title: String?,
         message: String?,
