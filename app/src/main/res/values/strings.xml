@@ -52,4 +52,6 @@
     <string name="logIn">Login</string>
     <string name="get_started_with">Get started with</string>
     <string name="signIn">Sign In</string>
+    <string name="email_empty_validation">email can\'t be empty</string>
+    <string name="password_empty_validation">password can\'t be empty</string>
 </resources>

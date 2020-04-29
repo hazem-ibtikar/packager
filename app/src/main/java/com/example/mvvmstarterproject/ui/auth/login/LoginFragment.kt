@@ -47,6 +47,14 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     private fun handleLoginRequest() {
         signInBtn.setOnClickListener {
+            if (emailET.text.toString().isBlank()){
+                emailET.error = context?.getString(R.string.email_empty_validation)
+                return@setOnClickListener
+            }
+            if (passwordET.text.toString().isBlank()){
+                passwordET.error = context?.getString(R.string.password_empty_validation)
+                return@setOnClickListener
+            }
             viewModel.signIn(email = emailET.text.toString(), password = passwordET.text.toString())
         }
     }
