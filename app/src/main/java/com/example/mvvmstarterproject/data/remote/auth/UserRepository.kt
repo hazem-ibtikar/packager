@@ -8,9 +8,8 @@ import com.example.mvvmstarterproject.utils.network.Result
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(
-    connectivityUtils: ConnectivityUtils,
     private val userService: UserService
-) : BaseRepository(connectivityUtils){
+) : BaseRepository(){
 
     suspend fun signInUser(signInRequest: SignInRequest):Result<User>{
         return safeApiCall { userService.logIn(signInRequest) }
@@ -25,7 +24,10 @@ class UserRepository @Inject constructor(
             }
     }
 
+    fun isUserLoggedIn():Boolean{
+        return sharedPreferencesUtils.userLoginResponse != null
+    }
     fun saveUser(user:User){
-
+        sharedPreferencesUtils.userLoginResponse = user
     }
 }

@@ -19,4 +19,8 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
             }
         }
     }
+
+    fun checkIfUserLoggedIn() : Boolean{
+        return userRepository.isUserLoggedIn()
+    }
 }

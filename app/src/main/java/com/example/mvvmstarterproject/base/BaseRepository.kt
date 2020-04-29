@@ -2,6 +2,7 @@ package com.example.mvvmstarterproject.base
 
 import com.ahmoneam.basecleanarchitecture.base.data.model.BaseResponse
 import com.example.mvvmstarterproject.R
+import com.example.mvvmstarterproject.data.locale.SharedPreferencesUtils
 import com.example.mvvmstarterproject.utils.ConnectivityUtils
 import com.example.mvvmstarterproject.utils.network.ApplicationException
 import com.example.mvvmstarterproject.utils.network.ErrorType
@@ -12,8 +13,15 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 import timber.log.Timber
+import javax.inject.Inject
 
-open class BaseRepository(private val connectivityUtils: ConnectivityUtils) {
+open class BaseRepository() {
+
+    @Inject
+    lateinit var connectivityUtils: ConnectivityUtils
+
+    @Inject
+    lateinit var sharedPreferencesUtils: SharedPreferencesUtils
 
     private val gSon = Gson()
     private val noInternetError = Result.Error(

@@ -27,8 +27,22 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        checkIfLoggedInUser()
         handleLoginResponse()
         handleLoginRequest()
+    }
+
+    private fun checkIfLoggedInUser() {
+        viewModel.checkIfUserLoggedIn().let {
+            if (it){
+                navigateToHome()
+            }
+        }
+    }
+
+    private fun navigateToHome() {
+        activity?.startActivity(Intent(activity, HomeActivity::class.java))
+        activity?.finish()
     }
 
     private fun handleLoginRequest() {
@@ -39,8 +53,7 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     private fun handleLoginResponse() {
         viewModel.loginSuccessfulLiveData.observe(viewLifecycleOwner, Observer {
-            activity?.startActivity(Intent(activity, HomeActivity::class.java))
-            activity?.finish()
+            navigateToHome()
         })
     }
 

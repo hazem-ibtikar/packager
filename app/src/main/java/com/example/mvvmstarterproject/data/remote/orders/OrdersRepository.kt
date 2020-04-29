@@ -8,9 +8,8 @@ import com.example.mvvmstarterproject.utils.network.Result
 import javax.inject.Inject
 
 class OrdersRepository @Inject constructor(
-    connectivityUtils: ConnectivityUtils,
     private val ordersService: OrdersService
-): BaseRepository(connectivityUtils) {
+): BaseRepository() {
     suspend fun getUrgentOrders(): Result<List<Order>> {
         return safeApiCall { ordersService.getUrgentOrders() }
             .let { result ->
