@@ -5,7 +5,7 @@
             <gradient
                 android:startColor="@color/sunglow"
                 android:endColor="@color/stillDeGrain"
-                android:angle="270"/>
+                />
         </shape>
     </item>
 </selector>

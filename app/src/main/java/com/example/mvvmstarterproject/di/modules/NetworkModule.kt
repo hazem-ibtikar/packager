@@ -1,8 +1,8 @@
 package com.example.mvvmstarterproject.di.modules
 
 import com.example.mvvmstarterproject.BuildConfig
+import com.example.mvvmstarterproject.data.remote.auth.UserService
 import com.example.mvvmstarterproject.data.remote.orders.OrdersService
-import com.example.mvvmstarterproject.test.UserService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -43,8 +43,9 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideJobsApi(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+    fun provideOrdersApi(retrofit: Retrofit): OrdersService = retrofit.create(OrdersService::class.java)
 
     @Provides
-    fun provideOrdersApi(retrofit: Retrofit): OrdersService = retrofit.create(OrdersService::class.java)
+    fun provideUserApi(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+
 }
