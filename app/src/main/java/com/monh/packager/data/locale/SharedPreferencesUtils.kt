@@ -83,8 +83,17 @@ class SharedPreferencesUtils(private val context: Context) {
         set(value) {
             putString(USER_LOGIN_RESPONSE, Gson().toJson(value))
         }
+
+    var statusOnline:Boolean
+    get(){
+        return getBoolean(STATUS_ONLINE, true)
+    }
+    set(value) {
+        putBoolean(STATUS_ONLINE, value)
+    }
 }
 
 const val LANGUAGE_KEY = "language_key"
 const val USER_LOGIN_RESPONSE = "USER_LOGIN_RESPONSE"
+const val STATUS_ONLINE = "statusOnline"
 

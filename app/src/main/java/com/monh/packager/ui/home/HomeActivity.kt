@@ -2,10 +2,12 @@ package com.monh.packager.ui.home
 
 import android.os.Bundle
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
+import com.bumptech.glide.Glide
 import com.monh.packager.R
 import com.monh.packager.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_home.*
@@ -23,6 +25,40 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         setContentView(R.layout.activity_home)
         handleToolBar()
         setUpDrawerIconsWithNavigation()
+        viewModel.getUserInfo()
+        handleUserInfo()
+        viewModel.getOrdersStatistics()
+        handleOrdersStatistics()
+        viewModel.getStatusOnline()
+        handleChangeStatus()
+    }
+
+    private fun handleChangeStatus() {
+        viewModel.statusOnline.observe(this, Observer {
+            packagerStatus.isChecked = it
+        })
+        packagerStatus.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.changeStatus(isChecked)
+        }
+    }
+
+    private fun handleOrdersStatistics() {
+        viewModel.ordersStatisticsLiveData.observe(this, Observer {
+            it?.let {
+                monthly_order_count.text = it.monthlyOrders
+                daily_orders_count.text = it.dailyOrders
+            }
+        })
+    }
+
+    private fun handleUserInfo() {
+        viewModel.userLiveData.observe(this, Observer {
+            if (it != null){
+                Glide.with(this).load(it.image).into(userImage)
+                userName.text = it.englishFullName
+                userId.text = String.format(getString(R.string.userId), it.id)
+            }
+        })
     }
 
     private fun setUpDrawerIconsWithNavigation() {

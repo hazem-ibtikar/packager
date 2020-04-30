@@ -2,6 +2,8 @@ package com.monh.packager.services
 
 import android.content.Intent
 import android.util.Log
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.monh.packager.R
@@ -10,6 +12,10 @@ import com.monh.packager.data.remote.auth.UserRepository
 import com.monh.packager.ui.home.HomeActivity
 import com.monh.packager.utils.NotificationUtils
 import dagger.android.AndroidInjection
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -43,7 +49,23 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
     }
 
-    override fun onNewToken(token: String) {}
+    override fun onNewToken(token: String) {
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.d("TAG", "getInstanceId failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                val token = task.result?.token
+
+                GlobalScope.launch(Dispatchers.IO){
+                    userRepository.updateUserToken(token?:"")
+                }
+
+            })
+    }
 
     companion object {
         private val TAG = MyFirebaseMessagingService::class.java.simpleName
