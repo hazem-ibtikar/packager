@@ -12,6 +12,9 @@
         android:label="@string/menu_my_orders"
         tools:layout="@layout/fragment_home">
 
+        <action
+            android:id="@+id/action_nav_my_orders_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
     </fragment>
 
     <fragment
@@ -50,4 +53,13 @@
         android:name="com.monh.packager.ui.home.settings.change_password.ChangePasswordFragment"
         android:label="change_password_fragment"
         tools:layout="@layout/change_password_fragment" />
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragment"
+        android:label="order_details_fragment"
+        tools:layout="@layout/order_details_fragment" >
+        <argument
+            android:name="order"
+            app:argType="com.monh.packager.data.remote.orders.Order" />
+    </fragment>
 </navigation>

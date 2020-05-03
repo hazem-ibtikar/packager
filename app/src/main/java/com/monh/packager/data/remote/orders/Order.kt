@@ -1,9 +1,12 @@
 package com.monh.packager.data.remote.orders
 
 
+import android.os.Parcelable
 import com.monh.packager.R
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Order(
     @SerializedName("amount")
     val amount: Int?,
@@ -21,7 +24,7 @@ data class Order(
     val statusName: String?,
     @SerializedName("status_id")
     val statusId: String?
-){
+) : Parcelable {
     fun getBackGroundTint(): Int{
         return when(statusId){
             PACKAGING -> R.color.strange_yellow

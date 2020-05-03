@@ -23,6 +23,7 @@ import com.monh.packager.ui.auth.login.LoginActivityViewModel
 import com.monh.packager.ui.auth.login.LoginViewModel
 import com.monh.packager.ui.home.HomeViewModel
 import com.monh.packager.ui.home.my_orders.MyOrdersContainerViewModel
+import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsViewModel
 import com.monh.packager.ui.home.my_orders.orders_list.OrdersViewModel
 import com.monh.packager.ui.home.notifications.NotificationsViewModel
 import com.monh.packager.ui.home.settings.SettingsViewModel
@@ -85,6 +86,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(LoginViewModel::class)
     abstract fun bindLoginViewModel(loginViewModel: LoginViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrderDetailsViewModel::class)
+    abstract fun bindOrderDetailsViewModel(orderDetailsViewModel: OrderDetailsViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

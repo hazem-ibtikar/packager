@@ -5,10 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
 import com.monh.packager.data.remote.orders.Order
 import com.monh.packager.databinding.OrdersFragmentBinding
+import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragment
+import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragmentArgs
 
 class OrdersFragment : BaseFragment<OrdersViewModel>() {
 
@@ -47,7 +50,8 @@ class OrdersFragment : BaseFragment<OrdersViewModel>() {
         }
     }
     private fun navigateToOrderDetails(order: Order){
-
+        val args = OrderDetailsFragmentArgs(order)
+        findNavController().navigate(R.id.action_nav_my_orders_to_orderDetailsFragment, args.toBundle())
     }
 
 }

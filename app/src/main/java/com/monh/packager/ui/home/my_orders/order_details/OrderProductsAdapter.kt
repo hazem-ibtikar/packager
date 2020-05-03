@@ -1,4 +1,4 @@
-package com.monh.packager.ui.home.my_orders.orders_list
+package com.monh.packager.ui.home.my_orders.order_details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,28 +9,28 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.monh.packager.R
-import com.monh.packager.data.remote.orders.Order
-import com.monh.packager.databinding.OrdersItemBinding
+import com.monh.packager.data.remote.products.Product
+import com.monh.packager.databinding.OrderProductItemBinding
 
-class OrdersAdapter(val selectOrder: (Order) -> Unit) : ListAdapter<Order, RecyclerView.ViewHolder>(diffCallBack) {
+class OrderProductsAdapter() : ListAdapter<Product, RecyclerView.ViewHolder>(diffCallBack) {
     companion object {
-        val diffCallBack = object : DiffUtil.ItemCallback<Order>() {
+        val diffCallBack = object : DiffUtil.ItemCallback<Product>() {
             override fun areItemsTheSame(
-                oldItem: Order,
-                newItem: Order
+                oldItem: Product,
+                newItem: Product
             ): Boolean = newItem == oldItem
 
             override fun areContentsTheSame(
-                oldItem: Order,
-                newItem: Order
+                oldItem: Product,
+                newItem: Product
             ): Boolean = oldItem.id == newItem.id
 
         }
 
         @JvmStatic
-        @BindingAdapter("orders")
-        fun RecyclerView.bindItems(items: MutableLiveData<List<Order>>?) {
-            val adapter = adapter as OrdersAdapter
+        @BindingAdapter("products")
+        fun RecyclerView.bindItems(items: MutableLiveData<List<Product>>?) {
+            val adapter = adapter as OrderProductsAdapter
             items?.observeForever {
                 adapter.submitList(it)
             }
@@ -41,7 +41,7 @@ class OrdersAdapter(val selectOrder: (Order) -> Unit) : ListAdapter<Order, Recyc
         return OrderViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.orders_item, parent, false
+                R.layout.order_product_item, parent, false
             )
         )
     }
@@ -50,16 +50,11 @@ class OrdersAdapter(val selectOrder: (Order) -> Unit) : ListAdapter<Order, Recyc
         (holder as OrderViewHolder).bind(currentList[position])
     }
 
-    inner class OrderViewHolder(private var binding: OrdersItemBinding):
+    inner class OrderViewHolder(private var binding: OrderProductItemBinding):
         RecyclerView.ViewHolder(binding.root){
-        fun bind(item:Order){
+        fun bind(item:Product){
             binding.apply {
-                root.apply {
-                    setOnClickListener {
-                        selectOrder(item)
-                    }
-                }
-                order = item
+                product = item
                 executePendingBindings()
             }
         }

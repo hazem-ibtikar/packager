@@ -9,8 +9,11 @@ object Services {
         const val USER_TOKEN = "userToken"
         const val USER_INFO = "info"
         const val CHANGE_STATUS = "changeStatus"
+        const val ORDER_PRODUCTS = "order_products"
     }
     object Path{
-
+    }
+    object QueryParams{
+        const val ORDER_ID = "order_id"
     }
 }

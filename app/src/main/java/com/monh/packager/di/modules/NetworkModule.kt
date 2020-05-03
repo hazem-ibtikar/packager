@@ -3,6 +3,7 @@ package com.monh.packager.di.modules
 import com.monh.packager.BuildConfig
 import com.monh.packager.data.remote.auth.UserService
 import com.monh.packager.data.remote.orders.OrdersService
+import com.monh.packager.data.remote.products.ProductsService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -47,5 +48,8 @@ class NetworkModule {
 
     @Provides
     fun provideUserApi(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+
+    @Provides
+    fun provideProductsService(retrofit: Retrofit): ProductsService = retrofit.create(ProductsService::class.java)
 
 }
