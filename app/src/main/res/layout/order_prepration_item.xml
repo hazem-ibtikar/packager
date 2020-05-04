@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="product"
+            type="com.monh.packager.data.remote.products.Product" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="2dp">
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                app:imageUrl="@{product.icon}" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageCard"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{product.name}"
+                android:textColor="@color/davygrey"
+                android:textSize="15sp"
+                tools:text="Dettol Multi-Action Cleaner" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:textColor="@color/manatee"
+                    android:text="@string/price"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{product.price}"
+                    android:textSize="14sp"
+                    android:textColor="@color/manatee"
+                    tools:text="20 SAR"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:textColor="@color/manatee"
+                    android:text="@string/quantity"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{product.quantity}"
+                    android:textSize="14sp"
+                    android:textColor="@color/manatee"
+                    tools:text="20 SAR"/>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/locationTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/imageCard"
+            android:text="@{product.location}"
+            app:goneUnless = "@{product.isLocationDisplayed()}"
+            android:textColor="@color/taupegray_1"
+            android:layout_marginTop="15dp"
+            tools:text="Second floor , Department 1 , Roof 2"/>
+        <LinearLayout
+            android:id="@+id/actionsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/locationTV">
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:text="@{(product.isNotFound() || product.isFound()) ? @string/edit:@string/notFound }"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                app:strokeColor="@color/davygrey"
+                android:textColor="@color/davygrey"
+                android:layout_marginEnd="10dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:insetTop="0dp"
+                android:text="@{ product.isFound() ? @string/added: product.isNotFound() ? @string/notFound : @string/found}"
+                android:insetBottom="0dp"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/actionsLayout"
+            android:background="@color/munsell"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

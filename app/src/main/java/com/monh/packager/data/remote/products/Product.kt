@@ -1,8 +1,11 @@
 package com.monh.packager.data.remote.products
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Product(
     @SerializedName("category_id")
     val categoryId: String?,
@@ -24,4 +27,8 @@ data class Product(
     val price: String?,
     @SerializedName("quantity")
     val quantity: String?
-)
+) : Parcelable{
+    fun isLocationDisplayed():Boolean{
+        return location.isNullOrBlank()
+    }
+}

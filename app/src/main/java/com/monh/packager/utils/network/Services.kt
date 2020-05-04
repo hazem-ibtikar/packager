@@ -10,6 +10,7 @@ object Services {
         const val USER_INFO = "info"
         const val CHANGE_STATUS = "changeStatus"
         const val ORDER_PRODUCTS = "order_products"
+        const val START_ORDER = "start_order"
     }
     object Path{
     }

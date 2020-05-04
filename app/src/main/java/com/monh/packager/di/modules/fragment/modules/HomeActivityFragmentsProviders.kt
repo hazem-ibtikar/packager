@@ -2,6 +2,7 @@ package com.monh.packager.di.modules.fragment.modules
 
 import com.monh.packager.ui.home.my_orders.MyOrdersContainerFragment
 import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragment
+import com.monh.packager.ui.home.my_orders.order_preparation.OrderPreparationFragment
 import com.monh.packager.ui.home.my_orders.orders_list.OrdersFragment
 import com.monh.packager.ui.home.notifications.NotificationsFragment
 import com.monh.packager.ui.home.settings.SettingsFragment
@@ -36,4 +37,7 @@ abstract class HomeActivityFragmentsProviders {
 
     @ContributesAndroidInjector
     abstract fun contributeOrderDetailsFragment(): OrderDetailsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeOrderPreparationFragment(): OrderPreparationFragment
 }

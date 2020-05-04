@@ -52,10 +52,18 @@
     <string name="save">Save</string>
     <string name="password">password</string>
     <string name="done">Done</string>
+    <string name="edit">Edit</string>
+    <string name="found">Found</string>
+    <string name="added">Added</string>
     <string name="logIn">Login</string>
     <string name="get_started_with">Get started with</string>
     <string name="signIn">Sign In</string>
     <string name="email_empty_validation">email can\'t be empty</string>
     <string name="password_empty_validation">password can\'t be empty</string>
     <string name="userId">ID: %s</string>
+    <string name="orderId">Order id# %s</string>
+    <string name="start_prepare">start prepare</string>
+    <string name="price">Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="notFound">Not Found</string>
 </resources>
