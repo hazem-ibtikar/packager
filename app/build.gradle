@@ -141,6 +141,9 @@ dependencies {
     implementation "androidx.preference:preference-ktx:1.1.1"
 
     //google services
-    implementation 'com.google.firebase:firebase-analytics:17.3.0'
-    implementation 'com.google.firebase:firebase-messaging:20.1.5'
+    implementation 'com.google.firebase:firebase-analytics:17.4.0'
+    implementation 'com.google.firebase:firebase-messaging:20.1.6'
+    implementation 'com.google.android.gms:play-services-vision:20.0.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
 }

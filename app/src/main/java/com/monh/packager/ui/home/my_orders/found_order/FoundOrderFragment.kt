@@ -1,15 +1,23 @@
 package com.monh.packager.ui.home.my_orders.found_order
 
+import android.R.attr
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.navArgs
-
+import com.google.zxing.integration.android.IntentIntegrator
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
 import com.monh.packager.databinding.OrderPreprationItemBinding
+import com.monh.packager.utils.toPixels
+import kotlinx.android.synthetic.main.app_bar_home.*
+import kotlinx.android.synthetic.main.order_prepration_item.*
+
 
 class FoundOrderFragment : BaseFragment<FoundOrderViewModel>() {
 
@@ -31,6 +39,48 @@ class FoundOrderFragment : BaseFragment<FoundOrderViewModel>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setupUI()
     }
 
+    private fun setupUI() {
+
+        // add some margin
+        val params = FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT,
+            FrameLayout.LayoutParams.MATCH_PARENT
+        )
+        params.setMargins(15.0f.toPixels(requireContext()), 15.0f.toPixels(requireContext()), 15.0f.toPixels(requireContext()), 15.0f.toPixels(requireContext()))
+        container.layoutParams = params
+
+        // show the add remove quantity
+        update_quantity.visibility = View.VISIBLE
+
+        // hide the un found btn
+        unFoundEditBtn.visibility = View.INVISIBLE
+
+        activity?.toolbar?.inflateMenu(R.menu.main_tool_bar)
+        activity?.toolbar?.setOnMenuItemClickListener {
+            if (it.itemId == R.id.barCode){
+                val barCodeScanner = IntentIntegrator(requireActivity())
+                barCodeScanner.setOrientationLocked(false)
+                barCodeScanner.initiateScan()
+            }
+            return@setOnMenuItemClickListener false
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val result =
+            IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (result != null) {
+            if (result.contents == null) {
+                Toast.makeText(requireContext(), "Cancelled", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(requireContext(), "Scanned: " + result.contents, Toast.LENGTH_LONG).show()
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
+
+    }
 }
