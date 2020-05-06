@@ -12,7 +12,7 @@ import com.monh.packager.R
 import com.monh.packager.data.remote.products.Product
 import com.monh.packager.databinding.OrderPreprationItemBinding
 
-class OrderPreparationAdapter(var selectProduct: (productId:Int, action:Int) -> Unit) : ListAdapter<Product, RecyclerView.ViewHolder>(diffCallBack) {
+class OrderPreparationAdapter(var selectProduct: (product:Product, action:Int) -> Unit) : ListAdapter<Product, RecyclerView.ViewHolder>(diffCallBack) {
     companion object {
         val diffCallBack = object : DiffUtil.ItemCallback<Product>() {
             override fun areItemsTheSame(
@@ -64,7 +64,15 @@ class OrderPreparationAdapter(var selectProduct: (productId:Int, action:Int) -> 
                             notifyDataSetChanged()
                         }else {
                             // un found btn clicked
-                            selectProduct(item.id!!.toInt(), UN_FOUNd)
+                            selectProduct(item, UN_FOUNd)
+                        }
+                    }
+                    foundBtn.setOnClickListener {
+                        if (item.isFound == true || item.isNotFound == true){
+                            // added/not added btn click
+                        }else{
+                            // found btn clicked
+                            selectProduct(item, FOUND)
                         }
                     }
                 }

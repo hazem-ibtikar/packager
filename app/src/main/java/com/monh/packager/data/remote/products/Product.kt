@@ -29,6 +29,6 @@ data class Product(
     val quantity: String?
 ) : Parcelable{
     fun isLocationDisplayed():Boolean{
-        return location.isNullOrBlank()
+        return !location.isNullOrBlank()
     }
 }

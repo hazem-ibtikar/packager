@@ -76,5 +76,20 @@
         <argument
             android:name="products"
             app:argType="com.monh.packager.data.remote.products.Product[]" />
+        <action
+            android:id="@+id/action_orderPreparationFragment_to_foundOrderFragment"
+            app:destination="@id/foundOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/foundOrderFragment"
+        android:name="com.monh.packager.ui.home.my_orders.found_order.FoundOrderFragment"
+        android:label="found_order_fragment"
+        tools:layout="@layout/found_order_fragment" >
+        <argument
+            android:name="order"
+            app:argType="com.monh.packager.data.remote.orders.Order" />
+        <argument
+            android:name="product"
+            app:argType="com.monh.packager.data.remote.products.Product" />
     </fragment>
 </navigation>
