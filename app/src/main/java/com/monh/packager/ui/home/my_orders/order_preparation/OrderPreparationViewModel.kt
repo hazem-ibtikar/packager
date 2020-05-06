@@ -11,7 +11,9 @@ class OrderPreparationViewModel @Inject constructor(private val productsReposito
     val orderProductsLiveData : MutableLiveData<List<Product>> = MutableLiveData()
 
     fun addList(products: Array<Product>) {
-        orderProductsLiveData.postValue(products.toList())
+        products.toList().apply {
+            orderProductsLiveData.postValue(this.sortedBy { it.categoryId })
+        }
     }
 
     fun markProductAsUnFound(productId:Int, orderId:String) {

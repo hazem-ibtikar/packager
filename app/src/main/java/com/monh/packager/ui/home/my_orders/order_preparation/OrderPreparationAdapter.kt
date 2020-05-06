@@ -1,6 +1,7 @@
 package com.monh.packager.ui.home.my_orders.order_preparation
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
@@ -56,6 +57,13 @@ class OrderPreparationAdapter(var selectProduct: (product:Product, action:Int) -
         fun bind(item:Product){
             binding.apply {
                 this.root.apply {
+                    cellHeader.text = item.categoryName + " (" + currentList.toMutableList().filter { it.categoryId == item.categoryId }.size + ")"
+                    val currentIndex = currentList.indexOf(item)
+                    if (currentIndex > 0){
+                        cellHeader.visibility = if (currentList[currentIndex].categoryId != currentList[currentIndex - 1].categoryId){
+                            View.VISIBLE
+                        }else {View.GONE}
+                    }
                     unFoundEditBtn.setOnClickListener {
                         if (item.isFound == true || item.isNotFound == true){
                             // edit btn clicked
