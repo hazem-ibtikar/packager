@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.order_details_fragment.*
 class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
 
     private val args: OrderPreparationFragmentArgs by navArgs()
-    private val orderPreparationAdapter = OrderPreparationAdapter()
+    private val orderPreparationAdapter = OrderPreparationAdapter(::handleProductClick)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,4 +38,12 @@ class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
         activity?.toolbar?.title = String.format(getString(R.string.orderId), args.order.id)
     }
 
+    private fun handleProductClick(productId:Int, action:Int){
+        if (action == FOUND){
+//            viewModel.markProductAsFound()
+            // navigate to found product screen
+        } else if (action == UN_FOUNd){
+            viewModel.markProductAsUnFound(productId, args.order.id?:"")
+        }
+    }
 }

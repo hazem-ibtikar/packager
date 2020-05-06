@@ -12,7 +12,7 @@ import com.monh.packager.R
 import com.monh.packager.data.remote.products.Product
 import com.monh.packager.databinding.OrderPreprationItemBinding
 
-class OrderPreparationAdapter : ListAdapter<Product, RecyclerView.ViewHolder>(diffCallBack) {
+class OrderPreparationAdapter(var selectProduct: (productId:Int, action:Int) -> Unit) : ListAdapter<Product, RecyclerView.ViewHolder>(diffCallBack) {
     companion object {
         val diffCallBack = object : DiffUtil.ItemCallback<Product>() {
             override fun areItemsTheSame(
@@ -23,7 +23,7 @@ class OrderPreparationAdapter : ListAdapter<Product, RecyclerView.ViewHolder>(di
             override fun areContentsTheSame(
                 oldItem: Product,
                 newItem: Product
-            ): Boolean = oldItem.id == newItem.id
+            ): Boolean = (oldItem.id == newItem.id) && (oldItem.isFound == newItem.isFound) && (oldItem.isNotFound == newItem.isNotFound)
 
         }
 
@@ -33,6 +33,7 @@ class OrderPreparationAdapter : ListAdapter<Product, RecyclerView.ViewHolder>(di
             val adapter = adapter as OrderPreparationAdapter
             items?.observeForever {
                 adapter.submitList(it)
+                adapter.notifyDataSetChanged()
             }
         }
     }
@@ -54,9 +55,25 @@ class OrderPreparationAdapter : ListAdapter<Product, RecyclerView.ViewHolder>(di
         RecyclerView.ViewHolder(binding.root){
         fun bind(item:Product){
             binding.apply {
+                this.root.apply {
+                    unFoundEditBtn.setOnClickListener {
+                        if (item.isFound == true || item.isNotFound == true){
+                            // edit btn clicked
+                            item.isFound = false
+                            item.isNotFound = false
+                            notifyDataSetChanged()
+                        }else {
+                            // un found btn clicked
+                            selectProduct(item.id!!.toInt(), UN_FOUNd)
+                        }
+                    }
+                }
                 product = item
                 executePendingBindings()
             }
         }
     }
 }
+const val FOUND = 1
+const val UN_FOUNd = 2
+const val EDIT = 3

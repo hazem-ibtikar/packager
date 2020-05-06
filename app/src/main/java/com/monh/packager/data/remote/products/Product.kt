@@ -16,9 +16,9 @@ data class Product(
     @SerializedName("id")
     val id: String?,
     @SerializedName("is_found")
-    val isFound: Boolean?,
+    var isFound: Boolean?,
     @SerializedName("is_not_found")
-    val isNotFound: Boolean?,
+    var isNotFound: Boolean?,
     @SerializedName("location")
     val location: String?,
     @SerializedName("name")
