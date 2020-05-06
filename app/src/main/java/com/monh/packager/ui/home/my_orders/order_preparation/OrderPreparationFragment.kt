@@ -5,22 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
-import com.monh.packager.data.remote.orders.Order
 import com.monh.packager.data.remote.products.Product
 import com.monh.packager.databinding.OrderPreparationFragmentBinding
-import com.monh.packager.ui.home.my_orders.found_order.FoundOrderFragment
+import com.monh.packager.ui.home.HomeViewModel
 import com.monh.packager.ui.home.my_orders.found_order.FoundOrderFragmentArgs
+import com.monh.packager.utils.EventObserver
 import kotlinx.android.synthetic.main.app_bar_home.*
-import kotlinx.android.synthetic.main.order_details_fragment.*
 
 class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
 
     private val args: OrderPreparationFragmentArgs by navArgs()
     private val orderPreparationAdapter = OrderPreparationAdapter(::handleProductClick)
+    private lateinit var homeViewModel: HomeViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +39,18 @@ class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
         super.onActivityCreated(savedInstanceState)
         viewModel.addList(args.products)
         setUpFragmentTitle()
+        initHomeViewModel()
+        handleFoundedProduct()
+    }
+
+    private fun handleFoundedProduct() {
+        homeViewModel.foundedProduct.observe(viewLifecycleOwner, EventObserver{
+            viewModel.markProductAsFound(it.id!!.toInt())
+        })
+    }
+
+    private fun initHomeViewModel() {
+        homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
     }
 
     private fun setUpFragmentTitle() {

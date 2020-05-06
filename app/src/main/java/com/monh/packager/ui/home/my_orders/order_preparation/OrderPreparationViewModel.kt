@@ -22,6 +22,14 @@ class OrderPreparationViewModel @Inject constructor(private val productsReposito
         }
     }
 
+    fun markProductAsFound(productId: Int){
+        val oldProducts = orderProductsLiveData.value
+        oldProducts?.find { it.id == productId.toString() }?.let {
+            it.isFound = true
+        }
+        orderProductsLiveData.postValue(oldProducts)
+    }
+
     private fun handleUnFoundProduct(productId: Int) {
         val oldProducts = orderProductsLiveData.value
         oldProducts?.find { it.id == productId.toString() }?.let {

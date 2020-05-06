@@ -15,6 +15,8 @@ data class Product(
     val icon: String?,
     @SerializedName("id")
     val id: String?,
+    @SerializedName("bar_code")
+    val barCode: String?,
     @SerializedName("is_found")
     var isFound: Boolean?,
     @SerializedName("is_not_found")

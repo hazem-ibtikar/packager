@@ -60,6 +60,9 @@ open class BaseFragment<ViewModel : BaseViewModel> : Fragment() {
         if (errorMessage.isNotEmpty())
             MessageUtils.showErrorMessage(requireActivity(), errorMessage)
     }
+    fun showErrorMsg(msgResource:Int){
+        MessageUtils.showErrorMessage(requireActivity(), context?.getString(msgResource)?:"")
+    }
 
     private fun initLoading() {
         viewModel.loading.observe(viewLifecycleOwner, EventObserver {
