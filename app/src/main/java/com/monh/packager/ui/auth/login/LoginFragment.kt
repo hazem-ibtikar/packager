@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
@@ -27,6 +28,13 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
         checkIfLoggedInUser()
         handleLoginResponse()
         handleLoginRequest()
+        handleForgotPassword()
+    }
+
+    private fun handleForgotPassword() {
+        forgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
     }
 
     private fun checkIfLoggedInUser() {

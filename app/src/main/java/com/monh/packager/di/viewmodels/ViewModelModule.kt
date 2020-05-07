@@ -19,6 +19,7 @@ package com.monh.packager.di.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.monh.packager.ui.auth.forgot.ForgotPasswordViewModel
 import com.monh.packager.ui.auth.login.LoginActivityViewModel
 import com.monh.packager.ui.auth.login.LoginViewModel
 import com.monh.packager.ui.home.HomeViewModel
@@ -103,6 +104,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(FoundOrderViewModel::class)
     abstract fun bindFoundOrderViewModel(foundOrderViewModel: FoundOrderViewModel): ViewModel
+    
+    @Binds
+    @IntoMap
+    @ViewModelKey(ForgotPasswordViewModel::class)
+    abstract fun bindForgotPasswordViewModel(forgotPasswordViewModel: ForgotPasswordViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

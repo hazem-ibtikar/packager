@@ -46,4 +46,18 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="CircularTextAppearance.Regular" parent="android:TextAppearance">
+        <item name="fontFamily">fonts/CircularStd-Medium.otf</item>
+    </style>
+
+    <style name="SFBTextAppearance.SemiBold" parent="android:TextAppearance">
+        <item name="fontFamily">fonts/SFProText-Semibold.ttf</item>
+    </style>
+    <style name="CircularTextAppearance.Book" parent="android:TextAppearance">
+        <item name="fontFamily">fonts/CircularStd-Book.otf</item>
+    </style>
+
+    <style name="CircularTextAppearance.Bold" parent="android:TextAppearance">
+        <item name="fontFamily">fonts/CircularStd-Bold.otf</item>
+    </style>
 </resources>

@@ -1,7 +1,8 @@
 package com.monh.packager.ui.auth.forgot
 
-import androidx.lifecycle.ViewModel
+import com.monh.packager.base.BaseViewModel
+import javax.inject.Inject
 
-class ForgotPasswordViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class ForgotPasswordViewModel @Inject constructor(): BaseViewModel() {
+
 }

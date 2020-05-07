@@ -73,4 +73,8 @@
     <string name="add_product_first">please add product first</string>
     <string name="enter_number_of_cartons">Please enter number of carton</string>
     <string name="submit">Submit</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="forgot_password_header">Forgot Password</string>
+    <string name="forgot_password_msg">Enter the email address associated with your account</string>
+    <string name="send">Send</string>
 </resources>

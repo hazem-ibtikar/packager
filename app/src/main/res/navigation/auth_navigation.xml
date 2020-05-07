@@ -9,5 +9,14 @@
         android:id="@+id/loginFragment"
         android:name="com.monh.packager.ui.auth.login.LoginFragment"
         android:label="login_fragment"
-        tools:layout="@layout/login_fragment" />
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.monh.packager.ui.auth.forgot.ForgotPasswordFragment"
+        android:label="forgot_password_fragment"
+        tools:layout="@layout/forgot_password_fragment" />
 </navigation>
