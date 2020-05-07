@@ -16,6 +16,7 @@ import com.monh.packager.ui.home.HomeViewModel
 import com.monh.packager.ui.home.my_orders.found_order.FoundOrderFragmentArgs
 import com.monh.packager.utils.EventObserver
 import kotlinx.android.synthetic.main.app_bar_home.*
+import kotlinx.android.synthetic.main.order_preparation_fragment.*
 
 class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
 
@@ -41,6 +42,13 @@ class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
         setUpFragmentTitle()
         initHomeViewModel()
         handleFoundedProduct()
+        handleDoneBtn()
+    }
+
+    private fun handleDoneBtn() {
+        doneBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_orderPreparationFragment_to_cartonsFragment)
+        }
     }
 
     private fun handleFoundedProduct() {

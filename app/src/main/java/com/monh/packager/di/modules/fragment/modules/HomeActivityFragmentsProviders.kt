@@ -1,6 +1,7 @@
 package com.monh.packager.di.modules.fragment.modules
 
 import com.monh.packager.ui.home.my_orders.MyOrdersContainerFragment
+import com.monh.packager.ui.home.my_orders.cartons.CartonsFragment
 import com.monh.packager.ui.home.my_orders.found_order.FoundOrderFragment
 import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragment
 import com.monh.packager.ui.home.my_orders.order_preparation.OrderPreparationFragment
@@ -44,4 +45,6 @@ abstract class HomeActivityFragmentsProviders {
 
     @ContributesAndroidInjector
     abstract fun contributeFoundOrderFragment(): FoundOrderFragment
+    @ContributesAndroidInjector
+    abstract fun contributeCartonsFragment(): CartonsFragment
 }

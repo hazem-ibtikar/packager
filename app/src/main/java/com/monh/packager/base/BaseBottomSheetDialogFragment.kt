@@ -15,7 +15,7 @@ import dagger.android.support.AndroidSupportInjection
 import java.lang.reflect.ParameterizedType
 import javax.inject.Inject
 
-class BaseBottomSheetDialogFragment<ViewModel : BaseViewModel> :
+open class BaseBottomSheetDialogFragment<ViewModel : BaseViewModel> :
     BottomSheetDialogFragment()  {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory

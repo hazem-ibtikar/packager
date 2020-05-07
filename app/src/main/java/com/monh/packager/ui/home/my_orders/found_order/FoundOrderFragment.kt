@@ -18,6 +18,7 @@ import com.monh.packager.base.BaseFragment
 import com.monh.packager.databinding.OrderPreprationItemBinding
 import com.monh.packager.ui.home.HomeViewModel
 import com.monh.packager.utils.toPixels
+import kotlinx.android.synthetic.main.add_remove.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.order_prepration_item.*
 

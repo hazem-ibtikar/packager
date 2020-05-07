@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_orderPreparationFragment_to_foundOrderFragment"
             app:destination="@id/foundOrderFragment" />
+        <action
+            android:id="@+id/action_orderPreparationFragment_to_cartonsFragment"
+            app:destination="@id/cartonsFragment" />
     </fragment>
     <fragment
         android:id="@+id/foundOrderFragment"
@@ -91,5 +94,11 @@
         <argument
             android:name="product"
             app:argType="com.monh.packager.data.remote.products.Product" />
+
     </fragment>
+    <dialog
+        android:id="@+id/cartonsFragment"
+        android:name="com.monh.packager.ui.home.my_orders.cartons.CartonsFragment"
+        android:label="cartons_fragment"
+        tools:layout="@layout/cartons_fragment" />
 </navigation>

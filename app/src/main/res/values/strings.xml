@@ -71,4 +71,6 @@
     <string name="no_more_items">You have removed all items</string>
     <string name="all_items_added">You have added all items</string>
     <string name="add_product_first">please add product first</string>
+    <string name="enter_number_of_cartons">Please enter number of carton</string>
+    <string name="submit">Submit</string>
 </resources>

@@ -37,6 +37,10 @@
             android:backgroundTint="@color/sunglow"
             android:text="@string/done"
             android:textColor="@color/taupe_1"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:layout_margin="10dp"
+            app:cornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
