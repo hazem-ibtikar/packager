@@ -11,7 +11,7 @@ class UserRepository @Inject constructor(
     private val userService: UserService
 ) : BaseRepository(){
 
-    suspend fun signInUser(signInRequest: SignInRequest):Result<User>{
+    suspend fun signInUser(signInRequest: SignInRequest):Result<LoginResponse>{
         return safeApiCall { userService.logIn(signInRequest) }
             .let { result ->
                 when (result) {
@@ -24,8 +24,8 @@ class UserRepository @Inject constructor(
             }
     }
 
-    suspend fun updateUserToken(firebaseToken: String):Result<InformativeResponse>{
-        return safeApiCall { userService.sendFireBaseToken(UserTokenRequest(firebaseToken)) }
+    suspend fun updateUserToken(firebaseToken: String, uuid:String):Result<InformativeResponse>{
+        return safeApiCall { userService.sendFireBaseToken(UserTokenRequest(deviceUuid = uuid, fb_token = firebaseToken, lang = sharedPreferencesUtils.currentLanguage)) }
             .let { result ->
                 when (result) {
                     is Result.Success -> {
@@ -67,11 +67,11 @@ class UserRepository @Inject constructor(
         return sharedPreferencesUtils.userLoginResponse != null
     }
 
-    fun getUser():User?{
+    fun getUser():LoginResponse?{
         return sharedPreferencesUtils.userLoginResponse
     }
 
-    fun saveUser(user:User){
+    fun saveUser(user:LoginResponse){
         sharedPreferencesUtils.userLoginResponse = user
     }
 

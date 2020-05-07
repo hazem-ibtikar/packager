@@ -2,6 +2,7 @@ package com.monh.packager.ui.auth.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,6 @@ import com.monh.packager.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.login_fragment.*
 
 class LoginFragment : BaseFragment<LoginViewModel>() {
-
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +58,9 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     private fun handleLoginResponse() {
         viewModel.loginSuccessfulLiveData.observe(viewLifecycleOwner, Observer {
+            Settings.Secure.getString(activity?.contentResolver, Settings.Secure.ANDROID_ID).let {
+                viewModel.sendTokenToServer(it)
+            }
             navigateToHome()
         })
     }

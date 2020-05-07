@@ -13,7 +13,7 @@ import retrofit2.http.POST
 
 interface UserService {
     @POST(LOG_IN)
-    suspend fun logIn(@Body signInRequest: SignInRequest):Response<BaseResponse<User>>
+    suspend fun logIn(@Body signInRequest: SignInRequest):Response<BaseResponse<LoginResponse>>
 
     @POST(USER_TOKEN)
     suspend fun sendFireBaseToken(@Body userTokenRequest: UserTokenRequest):Response<BaseResponse<InformativeResponse>>

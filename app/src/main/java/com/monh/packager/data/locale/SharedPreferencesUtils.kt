@@ -3,11 +3,11 @@ package com.monh.packager.data.locale
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
-import com.monh.packager.data.remote.auth.User
 import com.monh.packager.utils.localization.ARABIC
 import com.monh.packager.utils.localization.ENGLISH
 import com.monh.packager.utils.localization.LocalLanguage
 import com.google.gson.Gson
+import com.monh.packager.data.remote.auth.LoginResponse
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -76,9 +76,9 @@ class SharedPreferencesUtils(private val context: Context) {
         }
 
 
-    var userLoginResponse: User?
+    var userLoginResponse: LoginResponse?
         get() {
-            return Gson().fromJson(getString(USER_LOGIN_RESPONSE,null), User::class.java)
+            return Gson().fromJson(getString(USER_LOGIN_RESPONSE,null), LoginResponse::class.java)
         }
         set(value) {
             putString(USER_LOGIN_RESPONSE, Gson().toJson(value))

@@ -1,6 +1,7 @@
 package com.monh.packager.services
 
 import android.content.Intent
+import android.provider.Settings
 import android.util.Log
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
@@ -60,8 +61,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 // Get new Instance ID token
                 val token = task.result?.token
 
-                GlobalScope.launch(Dispatchers.IO){
-                    userRepository.updateUserToken(token?:"")
+                Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID).let {
+                    GlobalScope.launch(Dispatchers.IO){
+                        userRepository.updateUserToken(token?:"", it)
+                    }
                 }
 
             })

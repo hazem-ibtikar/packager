@@ -54,9 +54,9 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     private fun handleUserInfo() {
         viewModel.userLiveData.observe(this, Observer {
             if (it != null){
-                Glide.with(this).load(it.image).into(userImage)
-                userName.text = it.englishFullName
-                userId.text = String.format(getString(R.string.userId), it.id)
+                Glide.with(this).load(it.packager?.imageUrl).into(userImage)
+                userName.text = it.packager?.name
+                userId.text = String.format(getString(R.string.userId), it.packager?.id.toString())
             }
         })
     }

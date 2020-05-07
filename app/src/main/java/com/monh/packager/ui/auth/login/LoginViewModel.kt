@@ -18,14 +18,12 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
             handleResult(userRepository.signInUser(SignInRequest(email = email, password = password))){
                 // save user in shared prefs
                 userRepository.saveUser(it.data)
-                // send firebase token to server
-                sendFireBaseToken()
                 loginSuccessfulLiveData.postValue(true)
             }
         }
     }
 
-    private fun sendFireBaseToken() {
+    fun sendTokenToServer(uuid:String) {
         FirebaseInstanceId.getInstance().instanceId
             .addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
@@ -36,7 +34,7 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
                 // Get new Instance ID token
                 val token = task.result?.token
 
-                wrapBlockingOperation(showLoading = false) { userRepository.updateUserToken(token?:"") }
+                wrapBlockingOperation(showLoading = false) { userRepository.updateUserToken(token?:"", uuid) }
             })
     }
 
