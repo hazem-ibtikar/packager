@@ -5,6 +5,7 @@ import com.monh.packager.data.locale.SharedPreferencesUtils
 import com.monh.packager.data.remote.auth.UserService
 import com.monh.packager.data.remote.orders.OrdersService
 import com.monh.packager.data.remote.products.ProductsService
+import com.monh.packager.data.remote.seller.SellerService
 import com.monh.packager.utils.ApiKeys
 import com.monh.packager.utils.toBearerToken
 import dagger.Module
@@ -68,6 +69,9 @@ class NetworkModule {
 
     @Provides
     fun provideUserApi(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+
+    @Provides
+    fun provideSellerService(retrofit: Retrofit): SellerService = retrofit.create(SellerService::class.java)
 
     @Provides
     fun provideProductsService(retrofit: Retrofit): ProductsService = retrofit.create(ProductsService::class.java)

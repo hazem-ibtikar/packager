@@ -5,6 +5,7 @@ object Services {
         const val LOG_IN = "packager/authenticate"
         const val RESET_PASSWORD = "packager/resetPassword"
         const val LOG_OUT = "packager/logout"
+        const val CONTACT_US = "packager/contactUs"
         const val URGENT_ORDERS = "urgent-orders"
         const val OPEN_ORDERS   = "urgent-orders"
         const val CLOSED_ORDERS = "urgent-orders"

@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -38,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/barrier" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -60,6 +60,7 @@
         app:layout_constraintStart_toEndOf="@+id/startGuideline"/>
 
     <TextView
+        android:id="@+id/mail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -90,14 +91,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="addressIcon,textView3" />
+        app:constraint_referenced_ids="addressIcon,address" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="textView2,phoneIcon"
+        app:constraint_referenced_ids="phone,phoneIcon"
         tools:layout_editor_absoluteY="731dp" />
 
 
