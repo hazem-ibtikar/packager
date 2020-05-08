@@ -101,7 +101,7 @@ class UserRepository @Inject constructor(
     fun subscribeToSellerTopic() {
         val currentSellerId = sharedPreferencesUtils.userLoginResponse?.packager?.sellerId
         val currentLang = sharedPreferencesUtils.currentLanguage
-        val subscriptionTopic = "/topics/${currentLang}/${currentSellerId}"
+        val subscriptionTopic = "topics_${currentLang}_${currentSellerId}"
         FirebaseMessaging.getInstance()
             .subscribeToTopic(subscriptionTopic)
             .addOnCompleteListener {
@@ -110,6 +110,12 @@ class UserRepository @Inject constructor(
                     Timber.e("subscribeToFirebaseTopic: $subscriptionTopic")
                 }
             }
+    }
+
+    fun removeUserData() {
+        sharedPreferencesUtils.userLoginResponse = null
+        val currentTopic = sharedPreferencesUtils.currentSubscriptionTopic
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(currentTopic?:"")
     }
 
 }

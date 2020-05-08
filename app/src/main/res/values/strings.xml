@@ -78,4 +78,7 @@
     <string name="forgot_password_msg">Enter the email address associated with your account</string>
     <string name="send">Send</string>
     <string name="reset_password">Reset password</string>
+    <string name="log_out_msg">Are you sure you want to log out?</string>
+    <string name="log_out_yes">Yes</string>
+    <string name="log_out_no">Not Now</string>
 </resources>

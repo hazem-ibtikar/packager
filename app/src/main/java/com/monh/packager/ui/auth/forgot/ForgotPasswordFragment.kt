@@ -1,7 +1,6 @@
 package com.monh.packager.ui.auth.forgot
 
-import android.app.AlertDialog
-import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog;
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,15 +36,13 @@ class ForgotPasswordFragment : BaseFragment<ForgotPasswordViewModel>() {
     }
 
     private fun showResetPasswordDialog(msg:String) {
-        AlertDialog.Builder(context)
+        AlertDialog.Builder(requireContext())
             .setTitle(getString(R.string.reset_password))
             .setMessage(msg) // Specifying a listener allows you to take an action before dismissing the dialog.
-            // The dialog is automatically dismissed when a dialog button is clicked.
-            .setPositiveButton(android.R.string.yes,
-                DialogInterface.OnClickListener { dialog, which ->
-                    // Continue with delete operation
-                    findNavController().popBackStack()
-                }) // A null listener allows the button to dismiss the dialog and take no further action.
+            .setPositiveButton(android.R.string.yes
+            ) { _, _ ->
+                findNavController().popBackStack()
+            }
             .setIcon(android.R.drawable.ic_dialog_alert)
             .show()
     }
