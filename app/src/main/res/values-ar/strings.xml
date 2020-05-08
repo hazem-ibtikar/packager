@@ -74,6 +74,7 @@
     <string name="forgot_password_msg">برجاء ادخال البريد الاليكتروني الخاص بحسابك</string>
     <string name="send">ارسال</string>
     <string name="reset_password">تعديل كلمة السر</string>
+    <string name="main_error_try_again">اعد المحاولة</string>
     <string name="log_out_msg">هل انت متأكد تريد الخروج</string>
     <string name="log_out_yes">نعم</string>
     <string name="log_out_no">ليس الأن</string>

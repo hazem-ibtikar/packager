@@ -158,4 +158,6 @@ dependencies {
     implementation 'com.google.android.gms:play-services-vision:20.0.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
+    // Paging
+    implementation 'androidx.paging:paging-runtime:2.1.2'
 }
