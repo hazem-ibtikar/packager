@@ -9,6 +9,7 @@ object Services {
         const val USER_INFO        = "packager/orders/stats"
         const val CHANGE_PASSWORD  = "packager/changePassword"
         const val TERMS_CONDITIONS = "packager/terms"
+
         const val URGENT_ORDERS = "urgent-orders"
         const val OPEN_ORDERS   = "urgent-orders"
         const val CLOSED_ORDERS = "urgent-orders"
@@ -23,6 +24,8 @@ object Services {
     }
     object QueryParams{
         const val ORDER_ID = "order_id"
+        const val STATUS = "status"
+        const val PAGE = "page"
     }
     object Headers{
         const val UUID = "x-device-uuid"

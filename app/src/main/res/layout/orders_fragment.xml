@@ -13,16 +13,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.home.my_orders.orders_list.OrdersFragment">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ordersRecyclerView"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeToRefreshOrders"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:orders="@{vm.ordersLiveData}"
-            tools:listitem="@layout/orders_item" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ordersRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/orders_item" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     </FrameLayout>
 </layout>

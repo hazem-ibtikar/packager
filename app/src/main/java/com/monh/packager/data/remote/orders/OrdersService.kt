@@ -8,14 +8,17 @@ import com.monh.packager.utils.network.Services
 import com.monh.packager.utils.network.Services.EndPoints.CLOSED_ORDERS
 import com.monh.packager.utils.network.Services.EndPoints.OPEN_ORDERS
 import com.monh.packager.utils.network.Services.EndPoints.URGENT_ORDERS
+import com.monh.packager.utils.network.Services.QueryParams.PAGE
+import com.monh.packager.utils.network.Services.QueryParams.STATUS
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface OrdersService {
     @GET(URGENT_ORDERS)
-    suspend fun getUrgentOrders(): Response<BaseListResponse<Order>>
+    suspend fun getUrgentOrders(@Query(STATUS) status:String, @Query(PAGE) page:Int): Response<BaseListResponse<Order>>
 
     @GET(OPEN_ORDERS)
     suspend fun getOpenOrders(): Response<BaseListResponse<Order>>
