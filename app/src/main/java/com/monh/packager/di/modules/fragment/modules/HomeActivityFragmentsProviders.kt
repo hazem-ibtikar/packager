@@ -12,6 +12,7 @@ import com.monh.packager.ui.home.settings.change_language.ChangeLanguageFragment
 import com.monh.packager.ui.home.settings.change_password.ChangePasswordFragment
 import com.monh.packager.ui.home.settings.contactUs.ContactUsFragment
 import com.monh.packager.ui.home.settings.edit_profile.EditProfileFragment
+import com.monh.packager.ui.home.settings.terms.TermsAndConditionsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -52,5 +53,8 @@ abstract class HomeActivityFragmentsProviders {
 
     @ContributesAndroidInjector
     abstract fun contributeChangeLanguageFragment(): ChangeLanguageFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeTermsAndConditionsFragment(): TermsAndConditionsFragment
 
 }

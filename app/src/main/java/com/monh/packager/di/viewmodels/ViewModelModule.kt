@@ -34,6 +34,7 @@ import com.monh.packager.ui.home.settings.change_language.ChangeLanguageViewMode
 import com.monh.packager.ui.home.settings.change_password.ChangePasswordViewModel
 import com.monh.packager.ui.home.settings.contactUs.ContactUsViewModel
 import com.monh.packager.ui.home.settings.edit_profile.EditProfileViewModel
+import com.monh.packager.ui.home.settings.terms.TermsAndConditionsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -115,6 +116,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ChangeLanguageViewModel::class)
     abstract fun bindChangeLanguageViewModel(changeLanguageViewModel: ChangeLanguageViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TermsAndConditionsViewModel::class)
+    abstract fun bindChangeTermsAndConditionsViewModel(termsAndConditionsViewModel: TermsAndConditionsViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

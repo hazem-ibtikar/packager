@@ -21,4 +21,17 @@ class SellerRepository @Inject constructor(
                 }
             }
     }
+
+    suspend fun getTermsAndConditions():Result<TermsAndConditionsResponse>{
+        return safeApiCall { sellerService.getTermsAndConditions() }
+            .let { result ->
+                when (result) {
+                    is Result.Success -> {
+                        Result.Success(result.data.data!!)
+                    }
+                    is Result.Error -> result
+                    else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))
+                }
+            }
+    }
 }

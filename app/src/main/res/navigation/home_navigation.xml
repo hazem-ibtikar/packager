@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_nav_settings_to_changeLanguageFragment"
             app:destination="@id/changeLanguageFragment" />
+        <action
+            android:id="@+id/action_nav_settings_to_termsAndConditionsFragment"
+            app:destination="@id/termsAndConditionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
@@ -110,4 +113,9 @@
         android:name="com.monh.packager.ui.home.settings.change_language.ChangeLanguageFragment"
         android:label="change_language_fragment"
         tools:layout="@layout/change_language_fragment" />
+    <fragment
+        android:id="@+id/termsAndConditionsFragment"
+        android:name="com.monh.packager.ui.home.settings.terms.TermsAndConditionsFragment"
+        android:label="terms_and_conditions_fragment"
+        tools:layout="@layout/terms_and_conditions_fragment" />
 </navigation>

@@ -100,6 +100,9 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
         changePasswordHeader.setOnClickListener {
             findNavController().navigate(R.id.action_nav_settings_to_changePasswordFragment)
         }
+        termsAndConditionsHeader.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_termsAndConditionsFragment)
+        }
     }
 
     private fun setUpFragmentTitle() {
