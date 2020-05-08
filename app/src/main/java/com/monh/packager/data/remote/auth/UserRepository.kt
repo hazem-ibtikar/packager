@@ -77,6 +77,19 @@ class UserRepository @Inject constructor(
                 }
             }
     }
+
+    suspend fun logOut(uuid: String):Result<InformativeResponse>{
+        return safeApiCall { userService.logOut(uuid = uuid) }
+            .let { result ->
+                when (result) {
+                    is Result.Success -> {
+                        Result.Success(result.data.data!!)
+                    }
+                    is Result.Error -> result
+                    else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))
+                }
+            }
+    }
     fun isUserLoggedIn():Boolean{
         return sharedPreferencesUtils.userLoginResponse != null
     }

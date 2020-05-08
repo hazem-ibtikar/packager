@@ -3,9 +3,11 @@ package com.monh.packager.ui.home.settings
 import androidx.appcompat.app.AlertDialog;
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
@@ -33,6 +35,14 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
         handleLogOutClick()
         handleChangeLanguage()
         handleEnglishArabicText()
+        handleLoggedOutSuccessfully()
+    }
+
+    private fun handleLoggedOutSuccessfully() {
+        viewModel.loggedOutSuccessfully.observe(viewLifecycleOwner, Observer {
+            activity?.startActivity(Intent(requireActivity(), LoginActivity::class.java))
+            activity?.finish()
+        })
     }
 
     private fun handleEnglishArabicText() {
@@ -60,8 +70,10 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
         alertDialog.setButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE, getString(R.string.log_out_yes)){ dialog, _ ->
             alertDialog.dismiss()
             viewModel.removeUserData()
-            activity?.startActivity(Intent(requireActivity(), LoginActivity::class.java))
-            activity?.finish()
+            Settings.Secure.getString(activity?.contentResolver, Settings.Secure.ANDROID_ID).let {
+                viewModel.logOut(it)
+            }
+
         } //
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.log_out_no)){ dialog, _ ->
             dialog.dismiss()

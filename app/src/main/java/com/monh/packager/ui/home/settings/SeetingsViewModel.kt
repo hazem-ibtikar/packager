@@ -6,6 +6,7 @@ import com.monh.packager.data.remote.auth.UserRepository
 import javax.inject.Inject
 
 class SettingsViewModel @Inject constructor(private val userRepository: UserRepository) : BaseViewModel() {
+    val loggedOutSuccessfully:MutableLiveData<Boolean> = MutableLiveData()
     fun removeUserData() {
         userRepository.removeUserData()
     }
@@ -14,6 +15,13 @@ class SettingsViewModel @Inject constructor(private val userRepository: UserRepo
         return userRepository.getCurrentLanguage()
     }
 
+    fun logOut(uuid:String){
+        wrapBlockingOperation {
+            handleResult(userRepository.logOut(uuid)){
+                loggedOutSuccessfully.postValue(true)
+            }
+        }
+    }
     private val _text = MutableLiveData<String>().apply {
         value = "This is settings Fragment"
     }
