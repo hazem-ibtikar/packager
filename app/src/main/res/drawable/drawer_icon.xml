@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="360dp" android:height="80dp" android:viewportWidth="360" android:viewportHeight="84">
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="80dp"
+    android:viewportWidth="360"
+    android:viewportHeight="84"
+    android:autoMirrored="true">
   <group>
-    <path android:pathData="M0,0h360v80H0z" android:fillColor="#000" android:fillType="evenOdd" />
+    <path android:pathData="M0,0h360v80H0z" android:fillColor="#000" android:fillType="evenOdd"  />
     <path android:pathData="M0,0h360v80H0z" android:fillColor="#FFF" android:fillType="evenOdd" />
   </group>
   <group android:translateX="18" android:translateY="43">

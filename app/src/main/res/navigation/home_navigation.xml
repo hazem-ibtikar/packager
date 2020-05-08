@@ -37,6 +37,9 @@
         <action
             android:id="@+id/action_nav_settings_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_nav_settings_to_changeLanguageFragment"
+            app:destination="@id/changeLanguageFragment" />
     </fragment>
     <fragment
         android:id="@+id/contactUsFragment"
@@ -101,4 +104,10 @@
         android:name="com.monh.packager.ui.home.my_orders.cartons.CartonsFragment"
         android:label="cartons_fragment"
         tools:layout="@layout/cartons_fragment" />
+
+    <dialog
+        android:id="@+id/changeLanguageFragment"
+        android:name="com.monh.packager.ui.home.settings.change_language.ChangeLanguageFragment"
+        android:label="change_language_fragment"
+        tools:layout="@layout/change_language_fragment" />
 </navigation>

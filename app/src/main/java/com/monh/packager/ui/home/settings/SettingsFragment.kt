@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
 import com.monh.packager.ui.auth.login.LoginActivity
+import com.monh.packager.utils.localization.ARABIC
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.fragment_settings.*
@@ -22,7 +23,6 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_settings, container, false)
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -31,6 +31,20 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
         handleClickListener()
         handleToolBar()
         handleLogOutClick()
+        handleChangeLanguage()
+        handleEnglishArabicText()
+    }
+
+    private fun handleEnglishArabicText() {
+        viewModel.getCurrentLang().let {
+            language.text = if (it == ARABIC) getString(R.string.arabic) else getString(R.string.english)
+        }
+    }
+
+    private fun handleChangeLanguage() {
+        language.setOnClickListener {
+            findNavController().navigate(R.id.action_nav_settings_to_changeLanguageFragment)
+        }
     }
 
     private fun handleLogOutClick() {

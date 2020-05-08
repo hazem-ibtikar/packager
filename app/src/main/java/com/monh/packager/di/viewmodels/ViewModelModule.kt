@@ -30,6 +30,7 @@ import com.monh.packager.ui.home.my_orders.order_preparation.OrderPreparationVie
 import com.monh.packager.ui.home.my_orders.orders_list.OrdersViewModel
 import com.monh.packager.ui.home.notifications.NotificationsViewModel
 import com.monh.packager.ui.home.settings.SettingsViewModel
+import com.monh.packager.ui.home.settings.change_language.ChangeLanguageViewModel
 import com.monh.packager.ui.home.settings.change_password.ChangePasswordViewModel
 import com.monh.packager.ui.home.settings.contactUs.ContactUsViewModel
 import com.monh.packager.ui.home.settings.edit_profile.EditProfileViewModel
@@ -109,6 +110,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ForgotPasswordViewModel::class)
     abstract fun bindForgotPasswordViewModel(forgotPasswordViewModel: ForgotPasswordViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ChangeLanguageViewModel::class)
+    abstract fun bindChangeLanguageViewModel(changeLanguageViewModel: ChangeLanguageViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

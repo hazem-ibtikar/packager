@@ -1,8 +1,11 @@
 package com.monh.packager.application
 
 import android.app.Application
+import android.content.Context
+import android.content.res.Configuration
 import com.monh.packager.BuildConfig
 import com.monh.packager.di.DaggerAppComponent
+import com.monh.packager.utils.LocaleHelper
 import com.monh.packager.utils.ReleaseTree
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
@@ -38,5 +41,12 @@ class BaseApplication : Application(), HasAndroidInjector {
         } else {
             Timber.plant(ReleaseTree())
         }
+    }
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(base))
+    }
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        LocaleHelper.onAttach(this)
     }
 }

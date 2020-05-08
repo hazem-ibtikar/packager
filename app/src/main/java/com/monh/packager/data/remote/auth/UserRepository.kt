@@ -118,4 +118,26 @@ class UserRepository @Inject constructor(
         FirebaseMessaging.getInstance().unsubscribeFromTopic(currentTopic?:"")
     }
 
+    fun getCurrentLanguage(): String {
+        return sharedPreferencesUtils.currentLanguage
+    }
+
+    /*
+    * 1- change shared prefs lang
+    * 2- un subscribe from old firebase topic
+    * 3- subscribe to the new topic
+    * */
+    fun handleLanguageChange(currentLang: String) {
+        sharedPreferencesUtils.currentLanguage = currentLang
+        val oldFirebaseTopic = sharedPreferencesUtils.currentSubscriptionTopic
+        FirebaseMessaging.getInstance()
+            .unsubscribeFromTopic(oldFirebaseTopic?:"")
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    subscribeToSellerTopic()
+                }
+            }
+
+    }
+
 }

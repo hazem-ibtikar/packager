@@ -8,6 +8,7 @@ import com.monh.packager.ui.home.my_orders.order_preparation.OrderPreparationFra
 import com.monh.packager.ui.home.my_orders.orders_list.OrdersFragment
 import com.monh.packager.ui.home.notifications.NotificationsFragment
 import com.monh.packager.ui.home.settings.SettingsFragment
+import com.monh.packager.ui.home.settings.change_language.ChangeLanguageFragment
 import com.monh.packager.ui.home.settings.change_password.ChangePasswordFragment
 import com.monh.packager.ui.home.settings.contactUs.ContactUsFragment
 import com.monh.packager.ui.home.settings.edit_profile.EditProfileFragment
@@ -45,6 +46,11 @@ abstract class HomeActivityFragmentsProviders {
 
     @ContributesAndroidInjector
     abstract fun contributeFoundOrderFragment(): FoundOrderFragment
+
     @ContributesAndroidInjector
     abstract fun contributeCartonsFragment(): CartonsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeChangeLanguageFragment(): ChangeLanguageFragment
+
 }

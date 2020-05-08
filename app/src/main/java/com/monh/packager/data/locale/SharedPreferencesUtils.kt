@@ -73,8 +73,19 @@ class SharedPreferencesUtils(private val context: Context) {
         }
         set(value) {
             putString(LANGUAGE_KEY, value)
+            changeLang()
         }
 
+    private fun changeLang(): Context {
+        val myLocale = Locale(currentLanguage)
+        Locale.setDefault(myLocale)
+        val config = android.content.res.Configuration()
+        config.locale = myLocale
+        config.setLocale(myLocale)
+        context.resources
+            .updateConfiguration(config, context.resources.displayMetrics)
+        return context
+    }
 
     var userLoginResponse: LoginResponse?
         get() {

@@ -10,6 +10,10 @@ class SettingsViewModel @Inject constructor(private val userRepository: UserRepo
         userRepository.removeUserData()
     }
 
+    fun getCurrentLang() :String{
+        return userRepository.getCurrentLanguage()
+    }
+
     private val _text = MutableLiveData<String>().apply {
         value = "This is settings Fragment"
     }

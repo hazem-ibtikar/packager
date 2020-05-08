@@ -1,10 +1,12 @@
 package com.monh.packager.base
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.monh.packager.di.viewmodels.ViewModelFactory
 import com.monh.packager.utils.EventObserver
+import com.monh.packager.utils.LocaleHelper
 import com.monh.packager.utils.MessageUtils
 import com.monh.packager.utils.network.LoadingHandler
 import com.monh.packager.utils.network.Result
@@ -26,6 +28,7 @@ open class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() , HasAn
 
     lateinit var viewModel:ViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
+        LocaleHelper.onAttach(context = this)
         super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
         viewModel = ViewModelProvider(this, viewModelFactory).get(viewModelClass())
@@ -57,6 +60,9 @@ open class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() , HasAn
             MessageUtils.showErrorMessage(this, errorMessage)
     }
 
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LocaleHelper.onAttach(newBase))
+    }
     private fun initLoading() {
         viewModel.loading.observe(this, EventObserver {
             if (it.loading) showLoading()

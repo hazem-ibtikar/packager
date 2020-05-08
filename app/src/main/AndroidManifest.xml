@@ -24,11 +24,12 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             tools:replace="screenOrientation" />
         <activity
             android:name="com.monh.packager.ui.auth.login.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,8 +39,8 @@
         <activity
             android:name="com.monh.packager.ui.home.HomeActivity"
             android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <service android:name=".services.MyFirebaseMessagingService">
             <intent-filter>
