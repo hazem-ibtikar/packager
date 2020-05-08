@@ -4,8 +4,8 @@ package com.monh.packager.data.remote.auth
 import com.google.gson.annotations.SerializedName
 
 data class OrdersStatistics(
-    @SerializedName("daily_orders")
+    @SerializedName("daily")
     val dailyOrders: String?,
-    @SerializedName("monthly_orders")
+    @SerializedName("monthly")
     val monthlyOrders: String?
 )

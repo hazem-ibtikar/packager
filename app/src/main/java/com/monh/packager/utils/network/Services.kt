@@ -10,7 +10,7 @@ object Services {
         const val OPEN_ORDERS   = "urgent-orders"
         const val CLOSED_ORDERS = "urgent-orders"
         const val USER_TOKEN = "packager/device"
-        const val USER_INFO = "info"
+        const val USER_INFO = "packager/orders/stats"
         const val CHANGE_STATUS = "changeStatus"
         const val ORDER_PRODUCTS = "order_products"
         const val START_ORDER = "start_order"
