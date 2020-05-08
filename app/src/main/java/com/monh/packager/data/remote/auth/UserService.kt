@@ -4,12 +4,14 @@ import com.ahmoneam.basecleanarchitecture.base.data.model.BaseResponse
 import com.monh.packager.utils.InformativeResponse
 import com.monh.packager.utils.network.Services.EndPoints.CHANGE_STATUS
 import com.monh.packager.utils.network.Services.EndPoints.LOG_IN
+import com.monh.packager.utils.network.Services.EndPoints.RESET_PASSWORD
 import com.monh.packager.utils.network.Services.EndPoints.USER_INFO
 import com.monh.packager.utils.network.Services.EndPoints.USER_TOKEN
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface UserService {
     @POST(LOG_IN)
@@ -23,4 +25,7 @@ interface UserService {
 
     @POST(CHANGE_STATUS)
     suspend fun updatePackagerStatus(@Body updateStatusRequest: UpdateStatusRequest):Response<BaseResponse<InformativeResponse>>
+
+    @PUT(RESET_PASSWORD)
+    suspend fun resetPassword(@Body resetPasswordRequest: ResetPasswordRequest):Response<BaseResponse<InformativeResponse>>
 }

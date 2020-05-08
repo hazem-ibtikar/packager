@@ -13,3 +13,7 @@ fun Float.toPixels(context: Context):Int{
         r.displayMetrics
     ).toInt()
 }
+
+fun String.toBearerToken():String{
+    return "Bearer $this"
+}

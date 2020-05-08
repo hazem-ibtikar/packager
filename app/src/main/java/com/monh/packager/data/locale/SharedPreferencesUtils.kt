@@ -84,6 +84,14 @@ class SharedPreferencesUtils(private val context: Context) {
             putString(USER_LOGIN_RESPONSE, Gson().toJson(value))
         }
 
+    var currentSubscriptionTopic: String?
+        get() {
+            return getString(SUBSCRIPTION_TOPIC, null)
+        }
+        set(value) {
+            putString(SUBSCRIPTION_TOPIC, value?:"")
+        }
+
     var statusOnline:Boolean
     get(){
         return getBoolean(STATUS_ONLINE, true)
@@ -96,4 +104,5 @@ class SharedPreferencesUtils(private val context: Context) {
 const val LANGUAGE_KEY = "language_key"
 const val USER_LOGIN_RESPONSE = "USER_LOGIN_RESPONSE"
 const val STATUS_ONLINE = "statusOnline"
+const val SUBSCRIPTION_TOPIC = "SUBSCRIPTION_TOPIC"
 

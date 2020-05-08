@@ -9,6 +9,7 @@ object Services {
         const val USER_TOKEN = "packager/device"
         const val USER_INFO = "info"
         const val CHANGE_STATUS = "changeStatus"
+        const val RESET_PASSWORD = "packager/resetPassword"
         const val ORDER_PRODUCTS = "order_products"
         const val START_ORDER = "start_order"
         const val MARK_ORDER_UN_FOUND = "mark_product_unfound"

@@ -77,4 +77,5 @@
     <string name="forgot_password_header">Forgot Password</string>
     <string name="forgot_password_msg">Enter the email address associated with your account</string>
     <string name="send">Send</string>
+    <string name="reset_password">Reset password</string>
 </resources>

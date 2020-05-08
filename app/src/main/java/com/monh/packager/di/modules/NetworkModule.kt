@@ -1,16 +1,21 @@
 package com.monh.packager.di.modules
 
 import com.monh.packager.BuildConfig
+import com.monh.packager.data.locale.SharedPreferencesUtils
 import com.monh.packager.data.remote.auth.UserService
 import com.monh.packager.data.remote.orders.OrdersService
 import com.monh.packager.data.remote.products.ProductsService
+import com.monh.packager.utils.ApiKeys
+import com.monh.packager.utils.toBearerToken
 import dagger.Module
 import dagger.Provides
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -27,7 +32,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttp(isDebug: Boolean): OkHttpClient {
+    fun provideOkHttp(isDebug: Boolean, @Named("HeadersInterceptor") headerInterceptor: Interceptor): OkHttpClient {
         val logging = HttpLoggingInterceptor()
 
         if (isDebug)
@@ -39,10 +44,25 @@ class NetworkModule {
             .writeTimeout(20, TimeUnit.SECONDS)
             .connectTimeout(20, TimeUnit.SECONDS)
             .addInterceptor(logging)
+            .addInterceptor(headerInterceptor)
 
         return okHttpClientBuilder.build()
     }
 
+
+    @Singleton
+    @Provides
+    @Named("HeadersInterceptor")
+    internal fun provideHeadersInterceptor(sharedPreferencesUtils: SharedPreferencesUtils): Interceptor = Interceptor { chain ->
+        val newRequest = chain.request().newBuilder().apply {
+            sharedPreferencesUtils.userLoginResponse?.token?.let {
+                addHeader(ApiKeys.AUTHORIZATION, it.toBearerToken())
+            }
+            addHeader(ApiKeys.X_APP_SECRET, "123456789")
+            addHeader(ApiKeys.LANGUAGE, sharedPreferencesUtils.currentLanguage)
+        }.build()
+        chain.proceed(newRequest)
+    }
     @Provides
     fun provideOrdersApi(retrofit: Retrofit): OrdersService = retrofit.create(OrdersService::class.java)
 

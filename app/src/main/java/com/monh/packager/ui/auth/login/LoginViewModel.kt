@@ -18,6 +18,8 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
             handleResult(userRepository.signInUser(SignInRequest(email = email, password = password))){
                 // save user in shared prefs
                 userRepository.saveUser(it.data)
+                // subscribe to seller topic
+                userRepository.subscribeToSellerTopic()
                 loginSuccessfulLiveData.postValue(true)
             }
         }
