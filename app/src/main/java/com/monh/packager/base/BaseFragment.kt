@@ -2,12 +2,14 @@ package com.monh.packager.base
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.monh.packager.di.viewmodels.ViewModelFactory
+import com.monh.packager.ui.auth.login.LoginActivity
 import com.monh.packager.utils.EventObserver
 import com.monh.packager.utils.MessageUtils
 import com.monh.packager.utils.network.LoadingHandler
@@ -33,7 +35,15 @@ open class BaseFragment<ViewModel : BaseViewModel> : Fragment() {
         loadingHandler = LoadingHandler.getInstance(requireActivity())
         initLoading()
         initError()
+        handleLogOut()
     }
+
+    private fun handleLogOut() {
+        viewModel.logOutLiveData.observe(viewLifecycleOwner, EventObserver{
+            activity?.startActivity(Intent(requireActivity(), LoginActivity::class.java))
+        })
+    }
+
     open fun getLifeCycleOwner(): ViewModelStoreOwner {
         return this
     }

@@ -1,10 +1,12 @@
 package com.monh.packager.base
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.monh.packager.di.viewmodels.ViewModelFactory
+import com.monh.packager.ui.auth.login.LoginActivity
 import com.monh.packager.utils.EventObserver
 import com.monh.packager.utils.LocaleHelper
 import com.monh.packager.utils.MessageUtils
@@ -35,6 +37,12 @@ open class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() , HasAn
         loadingHandler = LoadingHandler.getInstance(this)
         initLoading()
         initError()
+        handleLogOut()
+    }
+    private fun handleLogOut() {
+        viewModel.logOutLiveData.observe(this, EventObserver{
+            startActivity(Intent(this, LoginActivity::class.java))
+        })
     }
     @Suppress("UNCHECKED_CAST")
     private fun viewModelClass(): Class<ViewModel> {

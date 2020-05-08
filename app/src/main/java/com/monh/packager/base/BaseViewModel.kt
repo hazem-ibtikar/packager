@@ -17,6 +17,8 @@ open class BaseViewModel: ViewModel() {
     val loading =
         MutableLiveData<Event<Result.Loading>>().apply { value = Event(Result.Loading(false)) }
 
+    val logOutLiveData : MutableLiveData<Event<Boolean>> = MutableLiveData()
+
     inline fun wrapBlockingOperation(
         showLoading: Boolean = true,
         crossinline function: suspend CoroutineScope.() -> Unit
@@ -47,9 +49,11 @@ open class BaseViewModel: ViewModel() {
     fun handelError(throwable: Throwable) {
         if (throwable is ApplicationException) {
             error.postValue(Event(Result.Error(throwable)))
-            // todo handle different types of errors
+
             when (throwable.type) {
-                ErrorType.Network.Unauthorized -> {}
+                ErrorType.Network.Unauthorized -> {
+                    logOutLiveData.postValue(Event(true))
+                }
                 ErrorType.Network.ResourceNotFound -> {}
                 ErrorType.Network.Unexpected -> {}
                 ErrorType.Network.NoInternetConnection -> {}
