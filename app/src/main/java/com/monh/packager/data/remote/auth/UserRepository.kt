@@ -90,6 +90,20 @@ class UserRepository @Inject constructor(
                 }
             }
     }
+
+    suspend fun changePassword(changePasswordRequest: ChangePasswordRequest):Result<InformativeResponse>{
+        return safeApiCall { userService.changePassword(changePasswordRequest) }
+            .let { result ->
+                when (result) {
+                    is Result.Success -> {
+                        Result.Success(result.data.data!!)
+                    }
+                    is Result.Error -> result
+                    else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))
+                }
+            }
+    }
+
     fun isUserLoggedIn():Boolean{
         return sharedPreferencesUtils.userLoginResponse != null
     }

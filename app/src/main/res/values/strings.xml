@@ -84,4 +84,9 @@
     <string name="choose_language">Choose Language</string>
     <string name="english" translatable="false">English</string>
     <string name="arabic" translatable="false">عربي</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="repeat_password">Repeat New Password</string>
+    <string name="password_repasword_match_validation">password and repassword must match</string>
+    <string name="password_changed_successfully">password has changed successfully</string>
 </resources>

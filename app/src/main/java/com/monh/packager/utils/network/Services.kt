@@ -7,6 +7,7 @@ object Services {
         const val LOG_OUT          = "packager/logout"
         const val CONTACT_US       = "packager/contactUs"
         const val USER_INFO        = "packager/orders/stats"
+        const val CHANGE_PASSWORD  = "packager/changePassword"
         const val TERMS_CONDITIONS = "packager/terms"
         const val URGENT_ORDERS = "urgent-orders"
         const val OPEN_ORDERS   = "urgent-orders"

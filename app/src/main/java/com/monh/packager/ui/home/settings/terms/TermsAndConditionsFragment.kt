@@ -34,14 +34,14 @@ class TermsAndConditionsFragment : BaseFragment<TermsAndConditionsViewModel>() {
     }
 
     private fun handleToolBar() {
-        activity?.toolbar?.title = context?.getString(R.string.termsAndConditions)
-    }
-
-    private fun setUpFragmentTitle() {
         activity?.toolbar?.navigationIcon = context?.getDrawable(R.drawable.icon_back)
         activity?.toolbar?.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
+    }
+
+    private fun setUpFragmentTitle() {
+        activity?.toolbar?.title = context?.getString(R.string.termsAndConditions)
     }
 
     private fun handleTermsResponse() {

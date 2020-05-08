@@ -11,11 +11,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">الاعدادات</string>
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-
     <string name="home_second">Home Second</string>
     <string name="urgent">عاجل</string>
     <string name="open">مفتوح</string>
@@ -80,4 +78,9 @@
     <string name="log_out_yes">نعم</string>
     <string name="log_out_no">ليس الأن</string>
     <string name="choose_language">أختر لغة</string>
+    <string name="old_password">رقم السر القديم</string>
+    <string name="new_password">رقم السر الجديد</string>
+    <string name="repeat_password">تأكيد رقم السر الجديد</string>
+    <string name="password_repasword_match_validation">الرقم السري لا يشبه تأكيد الرقم السري</string>
+    <string name="password_changed_successfully">تم تغيير كلمة السر بنجاح</string>
 </resources>
