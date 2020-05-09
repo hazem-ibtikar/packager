@@ -25,7 +25,7 @@
     <string name="order_id">Order id# %s</string>
     <string name="order_date_time">%s , %s</string>
     <string name="order_quantity">%d items</string>
-    <string name="order_price">%d SAR</string>
+    <string name="order_price">%.2f SAR</string>
     <string name="monthly_orders">Monthly orders</string>
     <string name="daily_orders">Daily orders</string>
     <string name="my_order">My order</string>
@@ -90,4 +90,6 @@
     <string name="main_error_try_again">Try again</string>
     <string name="password_repasword_match_validation">password and repassword must match</string>
     <string name="password_changed_successfully">password has changed successfully</string>
+    <string name="login_failed">login failed</string>
+    <string name="no_orders">There is no orders now</string>
 </resources>

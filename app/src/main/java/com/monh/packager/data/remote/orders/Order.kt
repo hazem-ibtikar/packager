@@ -4,24 +4,27 @@ package com.monh.packager.data.remote.orders
 import android.os.Parcelable
 import com.monh.packager.R
 import com.google.gson.annotations.SerializedName
+import com.monh.packager.utils.DAY_MONTH_YEAR
+import com.monh.packager.utils.YEAR_MONTH_DAY_T_TIME
+import com.monh.packager.utils.toDateFormatted
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Order(
-    @SerializedName("amount")
-    val amount: Int?,
-    @SerializedName("id")
-    val id: String?,
-    @SerializedName("number_of_items")
-    val numberOfItems: Int?,
-    @SerializedName("order_date")
-    val orderDate: String?,
-    @SerializedName("order_location")
-    val orderLocation: String?,
-    @SerializedName("order_time")
+    @SerializedName("orderId")
+    val id: Int,
+    @SerializedName("shift")
     val orderTime: String?,
-    @SerializedName("status_name")
+    @SerializedName("pickup")
+    val orderLocation: String?,
+    @SerializedName("totalPrice")
+    val amount: Double?,
+    @SerializedName("totalItems")
+    val numberOfItems: Int?,
+    @SerializedName("status")
     val statusName: String?,
+    @SerializedName("deliveryTime")
+    val orderDate: String?,
     @SerializedName("status_id")
     val statusId: String?
 ) : Parcelable {
@@ -33,11 +36,15 @@ data class Order(
     }
 
     fun getTextColor():Int{
-        return when(statusId){
+        return when(statusName){
             PACKAGING -> R.color.mikadoyellow
             else -> R.color.mikadoyellow
         }
     }
+
+    fun getOrderDateFormatted():String{
+        return orderDate?.toDateFormatted(oldPattern = YEAR_MONTH_DAY_T_TIME, newPattern = DAY_MONTH_YEAR)?:""
+    }
 }
 
-const val PACKAGING = "1"
+const val PACKAGING = "Packaging"

@@ -6,14 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.monh.packager.R
 import kotlinx.android.synthetic.main.app_bar_home.*
 import com.monh.packager.base.BaseFragment
 import com.monh.packager.base.BasePagedAdapter
 import com.monh.packager.base.BasePagedFragment
+import com.monh.packager.data.remote.orders.Order
 import com.monh.packager.data.remote.seller.Notification
 import com.monh.packager.databinding.FragmentGalleryBinding
+import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragmentArgs
 import com.monh.packager.utils.PaginationScrollListener
 import kotlinx.android.synthetic.main.fragment_gallery.*
 import kotlinx.android.synthetic.main.fragment_gallery.swipeToRefreshOrders
@@ -88,6 +91,7 @@ class NotificationsFragment : BaseFragment<NotificationsViewModel>() {
     }
 
     fun selectNotification(notification: Notification){
-
+        val args = OrderDetailsFragmentArgs(Order(id = 1, amount = 12.0, numberOfItems = 12, orderDate = "11/04/2020", orderLocation = "", orderTime = "10:00PM - 11:00PM", statusId = "1", statusName = "kdd"))
+        findNavController().navigate(R.id.action_nav_notifications_to_orderDetailsFragment, args.toBundle())
     }
 }

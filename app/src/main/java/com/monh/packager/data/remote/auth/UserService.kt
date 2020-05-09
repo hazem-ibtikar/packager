@@ -17,13 +17,13 @@ interface UserService {
     @POST(LOG_IN)
     suspend fun logIn(@Body signInRequest: SignInRequest):Response<BaseResponse<LoginResponse>>
 
-    @POST(USER_TOKEN)
+    @PUT(USER_TOKEN)
     suspend fun sendFireBaseToken(@Body userTokenRequest: UserTokenRequest):Response<BaseResponse<InformativeResponse>>
 
     @GET(USER_INFO)
     suspend fun getPackagerStatistics():Response<BaseResponse<OrdersStatistics>>
 
-    @POST(CHANGE_STATUS)
+    @PUT(CHANGE_STATUS)
     suspend fun updatePackagerStatus(@Body updateStatusRequest: UpdateStatusRequest):Response<BaseResponse<InformativeResponse>>
 
     @PUT(RESET_PASSWORD)

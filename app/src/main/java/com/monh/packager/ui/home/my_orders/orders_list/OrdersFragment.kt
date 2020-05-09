@@ -72,6 +72,11 @@ class OrdersFragment : BaseFragment<OrdersViewModel>() {
         viewModel.ordersLiveData.observe(viewLifecycleOwner, Observer {
             swipeToRefreshOrders.isRefreshing = false
             adapter.items = it
+            if (it?.size == 0){
+                no_orders_layout.visibility = View.VISIBLE
+            }else {
+                no_orders_layout.visibility = View.GONE
+            }
         })
     }
 

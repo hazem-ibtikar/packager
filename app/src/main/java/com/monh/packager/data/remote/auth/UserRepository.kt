@@ -40,7 +40,7 @@ class UserRepository @Inject constructor(
     }
 
     suspend fun changeStatus(isChecked: Boolean):Result<InformativeResponse>{
-        return safeApiCall { userService.updatePackagerStatus(UpdateStatusRequest(isChecked.toString())) }
+        return safeApiCall { userService.updatePackagerStatus(UpdateStatusRequest(isChecked)) }
             .let { result ->
                 when (result) {
                     is Result.Success -> {

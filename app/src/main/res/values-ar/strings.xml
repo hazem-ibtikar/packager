@@ -21,7 +21,7 @@
     <string name="order_id">أوردر رقم# %s</string>
     <string name="order_date_time">%s , %s</string>
     <string name="order_quantity">%d منتج</string>
-    <string name="order_price">%d ريال سعودي</string>
+    <string name="order_price">%.2f ريال سعودي</string>
     <string name="monthly_orders">الأوردرات الشهرية</string>
     <string name="daily_orders">الأوردرات اليومية</string>
     <string name="my_order">أوردراتي</string>
@@ -84,4 +84,6 @@
     <string name="repeat_password">تأكيد رقم السر الجديد</string>
     <string name="password_repasword_match_validation">الرقم السري لا يشبه تأكيد الرقم السري</string>
     <string name="password_changed_successfully">تم تغيير كلمة السر بنجاح</string>
+    <string name="login_failed">فشل تسجيل الدخول</string>
+    <string name="no_orders">There is no orders now</string>
 </resources>

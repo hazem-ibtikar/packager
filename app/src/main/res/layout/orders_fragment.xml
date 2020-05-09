@@ -27,8 +27,20 @@
                 android:layout_marginBottom="5dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/orders_item" />
+
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+        <TextView
+            android:id="@+id/no_orders_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/no_orders"
+            android:gravity="center"
+            android:layout_margin="20dp"
+            android:textSize="20sp"
+            android:textColor="@color/taupegray_1"
+            android:visibility="gone"
+            tools:visibility="visible"/>
 
     </FrameLayout>
 </layout>

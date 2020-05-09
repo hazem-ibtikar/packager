@@ -24,7 +24,7 @@ class FoundOrderViewModel @Inject constructor(private val productsRepository: Pr
             wrapBlockingOperation {
                 handleResult(productsRepository.markOrderFound(
                     FoundRequest(productID = product.id,
-                        orderId = order.id, quantity = foundedQuantity
+                        orderId = order.id.toString(), quantity = foundedQuantity
                     )
                 )
                 ){

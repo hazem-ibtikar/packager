@@ -21,7 +21,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField 'String', 'SERVER_URL', '"https://a72dd6b5-1530-4772-be45-f6602a7b560f.mock.pstmn.io"'
+
         }
         release {
             minifyEnabled false

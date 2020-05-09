@@ -11,7 +11,7 @@ class OrdersViewModel@Inject constructor(private val ordersRepository: OrdersRep
     var ordersLiveData : MutableLiveData<MutableList<Order>> = MutableLiveData()
     var isLastPage:MutableLiveData<Boolean> = MutableLiveData<Boolean>().default(true)
     var isLoading = false
-    var page = -1
+    var page = 0
 
     fun getOrders(type:String, isReset:Boolean = false){
         wrapBlockingOperation(showLoading = page == -1) {
@@ -19,7 +19,7 @@ class OrdersViewModel@Inject constructor(private val ordersRepository: OrdersRep
                 page = -1
                 ordersLiveData.value = arrayListOf()
             }
-            handleResult(ordersRepository.getOrders(type, page++)){
+            handleResult(ordersRepository.getOrders(type, ++page)){
                 if (ordersLiveData.value == null){
                     ordersLiveData.postValue(it.data.toMutableList())
                 }else{

@@ -21,7 +21,11 @@
         android:id="@+id/nav_notifications"
         android:name="com.monh.packager.ui.home.notifications.NotificationsFragment"
         android:label="@string/menu_notifications"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_nav_notifications_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_settings"

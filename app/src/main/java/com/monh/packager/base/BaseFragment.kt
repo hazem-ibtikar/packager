@@ -38,10 +38,15 @@ open class BaseFragment<ViewModel : BaseViewModel> : Fragment() {
         handleLogOut()
     }
 
+    // called when un authorized
     private fun handleLogOut() {
         viewModel.logOutLiveData.observe(viewLifecycleOwner, EventObserver{
-            activity?.startActivity(Intent(requireActivity(), LoginActivity::class.java))
+            logout()
         })
+    }
+
+    open fun logout() {
+        activity?.startActivity(Intent(requireActivity(), LoginActivity::class.java))
     }
 
     open fun getLifeCycleOwner(): ViewModelStoreOwner {

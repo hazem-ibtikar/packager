@@ -64,6 +64,9 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
         }
     }
 
+    override fun logout(){
+        showErrorMsg(R.string.login_failed)
+    }
     private fun handleLoginResponse() {
         viewModel.loginSuccessfulLiveData.observe(viewLifecycleOwner, Observer {
             Settings.Secure.getString(activity?.contentResolver, Settings.Secure.ANDROID_ID).let {

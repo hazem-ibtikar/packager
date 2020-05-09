@@ -71,7 +71,7 @@ class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
             val args = FoundOrderFragmentArgs(order = args.order, product = product)
             findNavController().navigate(R.id.action_orderPreparationFragment_to_foundOrderFragment, args.toBundle())
         } else if (action == UN_FOUNd){
-            viewModel.markProductAsUnFound(product.id!!.toInt(), args.order.id?:"")
+            viewModel.markProductAsUnFound(product.id!!.toInt(), args.order.id.toString())
         }
     }
 }

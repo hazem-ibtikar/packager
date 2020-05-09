@@ -48,14 +48,17 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="CircularTextAppearance.Regular" parent="android:TextAppearance">
-        <item name="fontFamily">fonts/CircularStd-Medium.otf</item>
+        <item name="fontFamily">@font/circular_std_medium</item>
     </style>
 
     <style name="SFBTextAppearance.SemiBold" parent="android:TextAppearance">
-        <item name="fontFamily">fonts/SFProText-Semibold.ttf</item>
+        <item name="fontFamily">@font/sfpro_text_semibold</item>
     </style>
     <style name="CircularTextAppearance.Book" parent="android:TextAppearance">
-        <item name="fontFamily">fonts/CircularStd-Book.otf</item>
+        <item name="fontFamily">@font/circular_std_book</item>
+    </style>
+    <style name="CircularTextAppearance.Bold" parent="android:TextAppearance">
+        <item name="fontFamily">@font/circular_std_bold</item>
     </style>
 
     <style name="AuthTextButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
@@ -72,7 +75,4 @@
         <item name="backgroundTint">@android:color/transparent</item>
     </style>
 
-    <style name="CircularTextAppearance.Bold" parent="android:TextAppearance">
-        <item name="fontFamily">fonts/CircularStd-Bold.otf</item>
-    </style>
 </resources>
