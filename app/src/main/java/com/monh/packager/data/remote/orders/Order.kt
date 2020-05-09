@@ -1,15 +1,13 @@
 package com.monh.packager.data.remote.orders
 
 
-import android.os.Parcelable
 import com.monh.packager.R
 import com.google.gson.annotations.SerializedName
+import com.monh.packager.data.remote.products.Product
 import com.monh.packager.utils.DAY_MONTH_YEAR
 import com.monh.packager.utils.YEAR_MONTH_DAY_T_TIME
 import com.monh.packager.utils.toDateFormatted
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
+data class OrderWrapper(@SerializedName("order") val order:Order)
 data class Order(
     @SerializedName("orderId")
     val id: Int,
@@ -26,8 +24,10 @@ data class Order(
     @SerializedName("deliveryTime")
     val orderDate: String?,
     @SerializedName("status_id")
-    val statusId: String?
-) : Parcelable {
+    val statusId: String?,
+    @SerializedName("items")
+    var products:List<Product>? = null
+) {
     fun getBackGroundTint(): Int{
         return when(statusId){
             PACKAGING -> R.color.strange_yellow
@@ -47,4 +47,7 @@ data class Order(
     }
 }
 
-const val PACKAGING = "Packaging"
+const val PENDING    = "pending"
+const val PACKAGING  = "Packaging"
+const val PACKAGED   = "packaged"
+const val UNASSIGNED = "unassigned"

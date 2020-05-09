@@ -5,9 +5,6 @@
 
     <data>
         <variable
-            name="order"
-            type="com.monh.packager.data.remote.orders.Order" />
-        <variable
             name="vm"
             type="com.monh.packager.ui.home.my_orders.order_details.OrderDetailsViewModel" />
     </data>
@@ -17,18 +14,155 @@
         android:layout_height="match_parent"
         tools:context=".ui.home.my_orders.order_details.OrderDetailsFragment">
 
-        <include
+        <androidx.cardview.widget.CardView
             android:id="@+id/include"
-            layout="@layout/orders_item"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            app:cardCornerRadius="15dp"
+            android:elevation="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:order="@{order}" />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="6dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/orderID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/outerspace"
+                    android:textSize="@dimen/font_size_normal"
+                    app:layout_constraintEnd_toStartOf="@+id/chip2"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="@+id/startGuideline"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Order id# 105076" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/strange_yellow"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/orderID"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/orderID"
+                    app:layout_constraintTop_toTopOf="@+id/orderID"
+                    tools:text="Packaging" />
+
+                <ImageView
+                    android:id="@+id/clock_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_clock"
+                    app:layout_constraintStart_toStartOf="@+id/startGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/orderID" />
+
+                <TextView
+                    android:id="@+id/orderDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/taupegray_1"
+                    android:textSize="@dimen/font_size_small"
+                    app:layout_constraintBottom_toBottomOf="@+id/clock_icon"
+                    app:layout_constraintStart_toEndOf="@+id/clock_icon"
+                    app:layout_constraintTop_toTopOf="@+id/clock_icon"
+                    tools:text="11/04/2020 , 10:00PM - 11:00PM" />
+
+                <ImageView
+                    android:id="@+id/location_icon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_location"
+                    app:layout_constraintStart_toStartOf="@+id/startGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/clock_icon" />
+
+                <TextView
+                    android:id="@+id/location_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/taupegray_1"
+                    android:textSize="@dimen/font_size_small"
+                    app:layout_constraintBottom_toBottomOf="@+id/location_icon"
+                    app:layout_constraintEnd_toStartOf="@id/endGuideline"
+                    app:layout_constraintStart_toEndOf="@+id/location_icon"
+                    app:layout_constraintTop_toTopOf="@+id/location_icon"
+                    tools:text="303 Khalf Madraset Al Asafra, Sidi Beshr Qebli, Montaza 2, Alexandria Governorate, Egypt" />
+
+                <View
+                    android:id="@+id/seperator"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/munsell_1"
+                    app:layout_constraintEnd_toStartOf="@+id/endGuideline"
+                    app:layout_constraintStart_toEndOf="@+id/startGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/barrier3" />
+
+                <TextView
+                    android:id="@+id/numberOfItems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/davygrey"
+                    android:textSize="@dimen/font_size_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/startGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/seperator"
+                    tools:text="34 items" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/darkjunglegreen"
+                    android:textSize="@dimen/font_size_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/endGuideline"
+                    tools:text="380 SAR" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/endGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/startGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/barrier3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="location_icon, location_text"
+                    app:barrierDirection="bottom" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/orderProductsRecyclerView"

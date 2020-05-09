@@ -68,12 +68,13 @@
         android:name="com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragment"
         android:label="order_details_fragment"
         tools:layout="@layout/order_details_fragment" >
-        <argument
-            android:name="order"
-            app:argType="com.monh.packager.data.remote.orders.Order" />
+
         <action
             android:id="@+id/action_orderDetailsFragment_to_orderPreparationFragment"
             app:destination="@id/orderPreparationFragment" />
+        <argument
+            android:name="orderId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/orderPreparationFragment"
@@ -81,8 +82,8 @@
         tools:layout="@layout/order_preparation_fragment"
         android:label="OrderPreparationFragment" >
         <argument
-            android:name="order"
-            app:argType="com.monh.packager.data.remote.orders.Order" />
+            android:name="orderId"
+            app:argType="integer" />
         <argument
             android:name="products"
             app:argType="com.monh.packager.data.remote.products.Product[]" />
@@ -99,8 +100,9 @@
         android:label="found_order_fragment"
         tools:layout="@layout/found_order_fragment" >
         <argument
-            android:name="order"
-            app:argType="com.monh.packager.data.remote.orders.Order" />
+            android:name="orderId"
+            app:argType="integer" />
+
         <argument
             android:name="product"
             app:argType="com.monh.packager.data.remote.products.Product" />

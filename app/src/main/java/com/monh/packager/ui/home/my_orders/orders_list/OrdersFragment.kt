@@ -113,7 +113,7 @@ class OrdersFragment : BaseFragment<OrdersViewModel>() {
     }
 
     private fun navigateToOrderDetails(order: Order){
-        val args = OrderDetailsFragmentArgs(order)
+        val args = OrderDetailsFragmentArgs(order.id)
         findNavController().navigate(R.id.action_nav_my_orders_to_orderDetailsFragment, args.toBundle())
     }
 

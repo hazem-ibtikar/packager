@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.monh.packager.R
@@ -27,7 +28,6 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
             .apply {
                 lifecycleOwner = this@OrderDetailsFragment
                 vm = viewModel
-                order = args.order
                 orderProductsRecyclerView.adapter = orderProductsAdapter
             }.root
     }
@@ -36,17 +36,32 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
         super.onActivityCreated(savedInstanceState)
         setUpFragmentTitle()
         handleToolBar()
-        viewModel.getOrderProducts(args.order.id!!.toInt())
+        viewModel.getOrderProducts(args.orderId)
         handleStartNewOrder()
+        handleOrderDetails()
+    }
+
+    private fun handleOrderDetails() {
+        viewModel.orderLiveData.observe(viewLifecycleOwner, Observer {
+            it.let {
+                orderID.text = String.format(getString(R.string.order_id), it.id)
+                chip2.text = it.statusName
+                chip2.setTextColor(requireContext().getColor(it.getTextColor()))
+                orderDate.text = String.format(getString(R.string.order_date_time), it.getOrderDateFormatted(), it.orderTime)
+                location_text.text = it.orderLocation
+                numberOfItems.text = String.format(getString(R.string.order_quantity), it.numberOfItems)
+                price.text = String.format(getString(R.string.order_price), it.amount)
+            }
+        })
     }
 
     private fun handleStartNewOrder() {
         startPrepareBtn.setOnClickListener {
-            viewModel.startNewOrder(args.order.id!!.toInt())
+            viewModel.startNewOrder(args.orderId)
         }
         viewModel.startOrderSuccessfully.observe(viewLifecycleOwner, EventObserver {
             if (it){
-                val preparationArgs = OrderPreparationFragmentArgs(order = args.order, products = viewModel.orderProductsLiveData.value?.toTypedArray()?: arrayOf())
+                val preparationArgs = OrderPreparationFragmentArgs(orderId = args.orderId, products = viewModel.orderProductsLiveData.value?.toTypedArray()?: arrayOf())
                 // navigate to order preparation
                 findNavController().navigate(R.id.action_orderDetailsFragment_to_orderPreparationFragment, preparationArgs.toBundle())
             }

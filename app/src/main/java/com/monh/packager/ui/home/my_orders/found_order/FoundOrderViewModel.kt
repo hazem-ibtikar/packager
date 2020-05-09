@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class FoundOrderViewModel @Inject constructor(private val productsRepository: ProductsRepository): BaseViewModel() {
     lateinit var product:Product
-    lateinit var order:Order
+    var orderId:Int = 0
     var foundedQuantity = 0
     val foundedQuantityLiveData:MutableLiveData<Int> = MutableLiveData()
     val errorLiveData:MutableLiveData<Int> = MutableLiveData()
@@ -24,7 +24,7 @@ class FoundOrderViewModel @Inject constructor(private val productsRepository: Pr
             wrapBlockingOperation {
                 handleResult(productsRepository.markOrderFound(
                     FoundRequest(productID = product.id,
-                        orderId = order.id.toString(), quantity = foundedQuantity
+                        orderId = orderId.toString(), quantity = foundedQuantity
                     )
                 )
                 ){

@@ -14,7 +14,7 @@ object Services {
         const val NOTIFICATIONS    = "notifications"
         const val ORDERS = "packager/orders"
         const val CHANGE_STATUS = "packager/setStatus"
-        const val ORDER_PRODUCTS = "order_products"
+        const val ORDER_PRODUCTS = "packager/order/items"
         const val START_ORDER = "start_order"
         const val MARK_ORDER_UN_FOUND = "mark_product_unfound"
         const val MARK_ORDER_FOUND = "mark_order_found"
@@ -22,7 +22,7 @@ object Services {
     object Path{
     }
     object QueryParams{
-        const val ORDER_ID = "order_id"
+        const val ORDER_ID = "orderId"
         const val STATUS = "status"
         const val PAGE = "page"
     }

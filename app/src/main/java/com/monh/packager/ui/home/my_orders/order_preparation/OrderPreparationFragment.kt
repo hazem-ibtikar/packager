@@ -62,16 +62,16 @@ class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
     }
 
     private fun setUpFragmentTitle() {
-        activity?.toolbar?.title = String.format(getString(R.string.orderId), args.order.id)
+        activity?.toolbar?.title = String.format(getString(R.string.orderId), args.orderId.toString())
     }
 
     private fun handleProductClick(product:Product, action:Int){
         if (action == FOUND){
             // navigate to found product screen
-            val args = FoundOrderFragmentArgs(order = args.order, product = product)
+            val args = FoundOrderFragmentArgs(orderId = args.orderId, product = product)
             findNavController().navigate(R.id.action_orderPreparationFragment_to_foundOrderFragment, args.toBundle())
         } else if (action == UN_FOUNd){
-            viewModel.markProductAsUnFound(product.id!!.toInt(), args.order.id.toString())
+            viewModel.markProductAsUnFound(product.id!!.toInt(), args.orderId.toString())
         }
     }
 }

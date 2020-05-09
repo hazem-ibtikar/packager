@@ -89,7 +89,7 @@ class FoundOrderFragment : BaseFragment<FoundOrderViewModel>() {
 
     private fun initViewModel() {
         viewModel.product = args.product
-        viewModel.order = args.order
+        viewModel.orderId = args.orderId
     }
 
     private fun setupUI() {

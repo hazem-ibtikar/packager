@@ -1,6 +1,7 @@
 package com.monh.packager.data.remote.products
 
 import com.monh.packager.base.BaseRepository
+import com.monh.packager.data.remote.orders.Order
 import com.monh.packager.utils.InformativeResponse
 import com.monh.packager.utils.network.ApplicationException
 import com.monh.packager.utils.network.ErrorType
@@ -10,12 +11,12 @@ import javax.inject.Inject
 class ProductsRepository @Inject constructor(
     private val productsService: ProductsService
 ) :BaseRepository() {
-    suspend fun getOrderProducts(orderId:Int): Result<List<Product>>{
+    suspend fun getOrderProducts(orderId:Int): Result<Order>{
         return safeApiCall { productsService.getOrderProducts(orderId) }
             .let { result ->
                 when (result) {
                     is Result.Success -> {
-                        Result.Success(result.data.data?.list!!)
+                        Result.Success(result.data.data?.order!!)
                     }
                     is Result.Error -> result
                     else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))

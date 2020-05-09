@@ -2,6 +2,7 @@ package com.monh.packager.ui.home.my_orders.order_details
 
 import androidx.lifecycle.MutableLiveData
 import com.monh.packager.base.BaseViewModel
+import com.monh.packager.data.remote.orders.Order
 import com.monh.packager.data.remote.orders.OrdersRepository
 import com.monh.packager.data.remote.products.Product
 import com.monh.packager.data.remote.products.ProductsRepository
@@ -14,12 +15,14 @@ class OrderDetailsViewModel @Inject constructor(
 ): BaseViewModel() {
 
     val orderProductsLiveData : MutableLiveData<List<Product>> = MutableLiveData()
+    val orderLiveData:MutableLiveData<Order> = MutableLiveData()
     val startOrderSuccessfully:MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     fun getOrderProducts(orderId:Int){
         wrapBlockingOperation {
             handleResult(productsRepository.getOrderProducts(orderId)){
-                orderProductsLiveData.postValue(it.data)
+                orderProductsLiveData.postValue(it.data.products)
+                orderLiveData.postValue(it.data)
             }
         }
     }

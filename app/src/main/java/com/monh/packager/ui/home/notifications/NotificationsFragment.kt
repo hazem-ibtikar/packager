@@ -91,7 +91,7 @@ class NotificationsFragment : BaseFragment<NotificationsViewModel>() {
     }
 
     fun selectNotification(notification: Notification){
-        val args = OrderDetailsFragmentArgs(Order(id = 1, amount = 12.0, numberOfItems = 12, orderDate = "11/04/2020", orderLocation = "", orderTime = "10:00PM - 11:00PM", statusId = "1", statusName = "kdd"))
+        val args = OrderDetailsFragmentArgs(339127)
         findNavController().navigate(R.id.action_nav_notifications_to_orderDetailsFragment, args.toBundle())
     }
 }
