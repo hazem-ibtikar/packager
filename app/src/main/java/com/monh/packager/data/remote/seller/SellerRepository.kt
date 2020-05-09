@@ -34,4 +34,17 @@ class SellerRepository @Inject constructor(
                 }
             }
     }
+
+    suspend fun getNotifications():Result<List<Notification>>{
+        return safeApiCall { sellerService.getNotifications() }
+            .let { result ->
+                when (result) {
+                    is Result.Success -> {
+                        Result.Success(result.data.data?.list!!)
+                    }
+                    is Result.Error -> result
+                    else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))
+                }
+            }
+    }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="notification"
+            type="com.monh.packager.data.remote.seller.Notification" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/notificationMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{notification.message}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Lorem ipsum isis dummy text used in laying out graphic or web designs."/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{notification.time}"
+            app:layout_constraintTop_toBottomOf="@+id/notificationMsg"
+            tools:text="22.05.2020 - 08:00 AM"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

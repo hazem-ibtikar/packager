@@ -53,7 +53,6 @@ class OrdersAdapter(val selectOrder: (Order) -> Unit, var isLastPage:Boolean = t
 
     override fun getItemCount(): Int = if (isLastPage) items.count() else items.count() + 1
 
-
     inner class LoadMoreViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     inner class OrderViewHolder(private var binding: OrdersItemBinding):

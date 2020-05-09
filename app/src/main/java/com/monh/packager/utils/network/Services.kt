@@ -10,6 +10,7 @@ object Services {
         const val CHANGE_PASSWORD  = "packager/changePassword"
         const val TERMS_CONDITIONS = "packager/terms"
 
+        const val NOTIFICATIONS    = "notifications"
         const val URGENT_ORDERS = "urgent-orders"
         const val OPEN_ORDERS   = "urgent-orders"
         const val CLOSED_ORDERS = "urgent-orders"
