@@ -17,5 +17,5 @@ interface SellerService {
     suspend fun getTermsAndConditions():Response<BaseResponse<TermsAndConditionsResponse>>
 
     @GET(Services.EndPoints.NOTIFICATIONS)
-    suspend fun getNotifications(): Response<BaseListResponse<Notification>>
+    suspend fun getNotifications(): Response<BaseResponse<NotificationWrapper>>
 }

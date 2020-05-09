@@ -40,7 +40,7 @@ class SellerRepository @Inject constructor(
             .let { result ->
                 when (result) {
                     is Result.Success -> {
-                        Result.Success(result.data.data?.list!!)
+                        Result.Success(result.data.data?.notifications!!)
                     }
                     is Result.Error -> result
                     else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.monh.packager.base.BaseViewModel
 import com.monh.packager.data.remote.seller.Notification
 import com.monh.packager.data.remote.seller.SellerRepository
+import com.monh.packager.ui.home.my_orders.orders_list.FIRST_PAGE
 import com.monh.packager.utils.default
 import javax.inject.Inject
 
@@ -15,11 +16,11 @@ class NotificationsViewModel @Inject constructor(
     val notificationsLiveData:MutableLiveData<MutableList<Notification>> = MutableLiveData()
     var isLastPage: MutableLiveData<Boolean> = MutableLiveData<Boolean>().default(true)
     var isLoading = false
-    var page = -1
+    var page = FIRST_PAGE
     fun getNotifications(isReset:Boolean = false){
-        wrapBlockingOperation (showLoading = page == -1){
+        wrapBlockingOperation (showLoading = page == FIRST_PAGE){
             if (isReset){
-                page = -1
+                page = FIRST_PAGE
                 notificationsLiveData.value = arrayListOf()
             }
             handleResult(sellerRepository.getNotifications()){

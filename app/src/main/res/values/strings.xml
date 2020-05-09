@@ -92,4 +92,5 @@
     <string name="password_changed_successfully">password has changed successfully</string>
     <string name="login_failed">login failed</string>
     <string name="no_orders">There is no orders now</string>
+    <string name="no_notifications">There is no notifications now</string>
 </resources>

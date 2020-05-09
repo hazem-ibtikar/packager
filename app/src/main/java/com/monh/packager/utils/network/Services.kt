@@ -16,8 +16,7 @@ object Services {
         const val START_ORDER         = "packager/orders/assignToPackager"
         const val MARK_ORDER_UN_FOUND = "packager/order/item/setNotFound"
         const val MARK_ORDER_FOUND    = "packager/order/item/setFoundCount"
-
-        const val NOTIFICATIONS    = "notifications"
+        const val NOTIFICATIONS       = "packager/getNotifications"
     }
     object Path{
     }

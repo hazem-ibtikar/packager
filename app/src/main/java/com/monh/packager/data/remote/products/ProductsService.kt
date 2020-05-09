@@ -20,6 +20,6 @@ interface ProductsService {
     @PUT(MARK_ORDER_UN_FOUND)
     suspend fun markOrderUnFound(@Query(PRODUCT_IN_ORDER) productId: Int): Response<BaseResponse<InformativeResponse>>
 
-    @POST(MARK_ORDER_FOUND)
+    @PUT(MARK_ORDER_FOUND)
     suspend fun markOrderFound(@Body foundRequest: FoundRequest): Response<BaseResponse<InformativeResponse>>
 }

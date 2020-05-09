@@ -34,7 +34,7 @@ class OrderPreparationViewModel @Inject constructor(private val productsReposito
 
     private fun handleUnFoundProduct(productId: Int) {
         val oldProducts = orderProductsLiveData.value
-        oldProducts?.find { it.id == productId }?.let {
+        oldProducts?.find { it.order_item_id == productId }?.let {
             it.setAsNotFound()
         }
         orderProductsLiveData.postValue(oldProducts)

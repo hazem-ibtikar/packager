@@ -11,16 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.monh.packager.R
 import kotlinx.android.synthetic.main.app_bar_home.*
 import com.monh.packager.base.BaseFragment
-import com.monh.packager.base.BasePagedAdapter
-import com.monh.packager.base.BasePagedFragment
-import com.monh.packager.data.remote.orders.Order
 import com.monh.packager.data.remote.seller.Notification
 import com.monh.packager.databinding.FragmentGalleryBinding
 import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragmentArgs
 import com.monh.packager.utils.PaginationScrollListener
 import kotlinx.android.synthetic.main.fragment_gallery.*
 import kotlinx.android.synthetic.main.fragment_gallery.swipeToRefreshOrders
-import kotlinx.android.synthetic.main.orders_fragment.*
 
 class NotificationsFragment : BaseFragment<NotificationsViewModel>() {
 
@@ -78,10 +74,13 @@ class NotificationsFragment : BaseFragment<NotificationsViewModel>() {
     private fun handleNotifications() {
         viewModel.notificationsLiveData.observe(viewLifecycleOwner, Observer{
             swipeToRefreshOrders.isRefreshing = false
+            notificationsRecyclerView.adapter = adapter
+            adapter.items = it
 
             if (it.size > 0){
-                notificationsRecyclerView.adapter = adapter
-                adapter.items = it
+                no_notifications_layout.visibility = View.GONE
+            }else{
+                no_notifications_layout.visibility = View.VISIBLE
             }
         })
     }
