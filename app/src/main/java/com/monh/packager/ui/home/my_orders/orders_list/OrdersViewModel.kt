@@ -11,12 +11,12 @@ class OrdersViewModel@Inject constructor(private val ordersRepository: OrdersRep
     var ordersLiveData : MutableLiveData<MutableList<Order>> = MutableLiveData()
     var isLastPage:MutableLiveData<Boolean> = MutableLiveData<Boolean>().default(true)
     var isLoading = false
-    var page = 0
+    var page = FIRST_PAGE
 
     fun getOrders(type:String, isReset:Boolean = false){
-        wrapBlockingOperation(showLoading = page == -1) {
+        wrapBlockingOperation(showLoading = page == FIRST_PAGE) {
             if (isReset){
-                page = -1
+                page = FIRST_PAGE
                 ordersLiveData.value = arrayListOf()
             }
             handleResult(ordersRepository.getOrders(type, ++page)){
@@ -33,3 +33,4 @@ class OrdersViewModel@Inject constructor(private val ordersRepository: OrdersRep
         }
     }
 }
+const val FIRST_PAGE = 0

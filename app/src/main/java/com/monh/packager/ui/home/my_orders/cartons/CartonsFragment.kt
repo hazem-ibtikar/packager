@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.monh.packager.R
 import com.monh.packager.base.BaseBottomSheetDialogFragment
 import com.monh.packager.ui.home.my_orders.order_preparation.OrderPreparationViewModel
+import kotlinx.android.synthetic.main.add_remove.*
 import kotlinx.android.synthetic.main.cartons_fragment.*
 
 class CartonsFragment : BaseBottomSheetDialogFragment<OrderPreparationViewModel>() {
@@ -26,7 +27,12 @@ class CartonsFragment : BaseBottomSheetDialogFragment<OrderPreparationViewModel>
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setupUi()
+    }
+
+    private fun setupUi() {
         edit.visibility = View.VISIBLE
+        pcs.visibility = View.GONE
     }
 
 }

@@ -24,8 +24,8 @@ class ProductsRepository @Inject constructor(
             }
     }
 
-    suspend fun markOrderUnFound(unFoundRequest: UnFoundRequest): Result<InformativeResponse>{
-        return safeApiCall { productsService.markOrderUnFound(unFoundRequest) }
+    suspend fun markOrderUnFound(productId: Int): Result<InformativeResponse>{
+        return safeApiCall { productsService.markOrderUnFound(productId) }
             .let { result ->
                 when (result) {
                     is Result.Success -> {

@@ -18,7 +18,7 @@ class OrderPreparationViewModel @Inject constructor(private val productsReposito
 
     fun markProductAsUnFound(productId:Int, orderId:String) {
         wrapBlockingOperation {
-            handleResult(productsRepository.markOrderUnFound(UnFoundRequest(productID = productId.toString(), orderId = orderId))){
+            handleResult(productsRepository.markOrderUnFound(productId)){
                 handleUnFoundProduct(productId)
             }
         }
@@ -26,16 +26,16 @@ class OrderPreparationViewModel @Inject constructor(private val productsReposito
 
     fun markProductAsFound(productId: Int){
         val oldProducts = orderProductsLiveData.value
-        oldProducts?.find { it.id == productId.toString() }?.let {
-            it.isFound = true
+        oldProducts?.find { it.id == productId }?.let {
+            it.isFound = 1
         }
         orderProductsLiveData.postValue(oldProducts)
     }
 
     private fun handleUnFoundProduct(productId: Int) {
         val oldProducts = orderProductsLiveData.value
-        oldProducts?.find { it.id == productId.toString() }?.let {
-            it.isNotFound = true
+        oldProducts?.find { it.id == productId }?.let {
+            it.setAsNotFound()
         }
         orderProductsLiveData.postValue(oldProducts)
     }

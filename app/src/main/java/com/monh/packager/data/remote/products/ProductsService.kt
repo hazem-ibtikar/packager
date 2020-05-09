@@ -9,18 +9,16 @@ import com.monh.packager.utils.network.Services.EndPoints.MARK_ORDER_FOUND
 import com.monh.packager.utils.network.Services.EndPoints.MARK_ORDER_UN_FOUND
 import com.monh.packager.utils.network.Services.EndPoints.ORDER_PRODUCTS
 import com.monh.packager.utils.network.Services.QueryParams.ORDER_ID
+import com.monh.packager.utils.network.Services.QueryParams.PRODUCT_IN_ORDER
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ProductsService {
     @GET(ORDER_PRODUCTS)
     suspend fun getOrderProducts(@Query(ORDER_ID) orderId:Int):Response<BaseResponse<OrderWrapper>>
 
-    @POST(MARK_ORDER_UN_FOUND)
-    suspend fun markOrderUnFound(@Body unFoundRequest: UnFoundRequest): Response<BaseResponse<InformativeResponse>>
+    @PUT(MARK_ORDER_UN_FOUND)
+    suspend fun markOrderUnFound(@Query(PRODUCT_IN_ORDER) productId: Int): Response<BaseResponse<InformativeResponse>>
 
     @POST(MARK_ORDER_FOUND)
     suspend fun markOrderFound(@Body foundRequest: FoundRequest): Response<BaseResponse<InformativeResponse>>

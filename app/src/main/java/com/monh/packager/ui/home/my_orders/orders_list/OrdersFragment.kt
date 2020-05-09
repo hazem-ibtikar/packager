@@ -14,6 +14,8 @@ import com.monh.packager.data.remote.orders.Order
 import com.monh.packager.databinding.OrdersFragmentBinding
 import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragmentArgs
 import com.monh.packager.utils.PaginationScrollListener
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.orders_fragment.*
 
 class OrdersFragment : BaseFragment<OrdersViewModel>() {
@@ -54,6 +56,19 @@ class OrdersFragment : BaseFragment<OrdersViewModel>() {
         addLoadMoreListener()
         handleOrders()
         addSwipeToRefresh()
+        setUpFragmentTitle()
+        handleToolBar()
+    }
+
+    private fun setUpFragmentTitle() {
+        activity?.toolbar?.title = context?.getString(R.string.my_orders)
+    }
+
+    private fun handleToolBar() {
+        activity?.toolbar?.navigationIcon = context?.getDrawable(R.drawable.ic_sidemenu)
+        activity?.toolbar?.setNavigationOnClickListener {
+            activity?.drawer_layout?.open()
+        }
     }
 
     private fun addSwipeToRefresh() {

@@ -27,7 +27,7 @@ class OrdersRepository @Inject constructor(
 
 
     suspend fun startNewOrder(orderId:Int):Result<StartOrderResponse>{
-        return safeApiCall { ordersService.startNewOrder(StartOrderRequest(orderId.toString())) }
+        return safeApiCall { ordersService.startNewOrder(StartOrderRequest(orderId)) }
             .let { result ->
                 when (result) {
                     is Result.Success -> {

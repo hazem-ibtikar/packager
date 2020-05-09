@@ -24,7 +24,7 @@ class OrderPreparationAdapter(var selectProduct: (product:Product, action:Int) -
             override fun areContentsTheSame(
                 oldItem: Product,
                 newItem: Product
-            ): Boolean = (oldItem.id == newItem.id) && (oldItem.isFound == newItem.isFound) && (oldItem.isNotFound == newItem.isNotFound)
+            ): Boolean = (oldItem.id == newItem.id) && (oldItem.isAdded() == newItem.isAdded()) && (oldItem.isNotFound() == newItem.isNotFound())
 
         }
 
@@ -65,10 +65,8 @@ class OrderPreparationAdapter(var selectProduct: (product:Product, action:Int) -
                         }else {View.GONE}
                     }
                     unFoundEditBtn.setOnClickListener {
-                        if (item.isFound == true || item.isNotFound == true){
-                            // edit btn clicked
-                            item.isFound = false
-                            item.isNotFound = false
+                        if (item.isAdded() || item.isNotFound()){
+                            item.prepareForEdit()
                             notifyDataSetChanged()
                         }else {
                             // un found btn clicked
@@ -76,9 +74,7 @@ class OrderPreparationAdapter(var selectProduct: (product:Product, action:Int) -
                         }
                     }
                     foundBtn.setOnClickListener {
-                        if (item.isFound == true || item.isNotFound == true){
-                            // added/not added btn click
-                        }else{
+                        if (!item.isAdded() && !item.isNotFound()){
                             // found btn clicked
                             selectProduct(item, FOUND)
                         }

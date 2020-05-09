@@ -6,8 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class FoundRequest(
     @SerializedName("orderId")
     val orderId: String?,
-    @SerializedName("productID")
-    val productID: String?,
-    @SerializedName("quantity")
-    val quantity: Int?
+    @SerializedName("orderItemId")
+    val productID: Int,
+    @SerializedName("foundCount")
+    val quantity: Int
 )

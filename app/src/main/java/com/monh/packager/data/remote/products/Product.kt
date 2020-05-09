@@ -10,15 +10,15 @@ data class Product(
     @SerializedName("order_item_id")
     val order_item_id:Int,
     @SerializedName("found_count")
-    val foodCount:Int?,
+    var foundCount:Int,
     @SerializedName("total_price")
     val totalPrice: String?,
     @SerializedName("product_id")
-    val id: String?,
+    val id: Int?,
     @SerializedName("unit_price")
     val unitPrice: String?,
     @SerializedName("is_found")
-    val is_found:Int,
+    var isFound:Int,
     @SerializedName("quantity")
     val quantity: String?,
     @SerializedName("name")
@@ -35,14 +35,23 @@ data class Product(
     val categoryId: String?,
     @SerializedName("category_name")
     val categoryName: String?,
-    @SerializedName("is_found1")
-    var isFound: Boolean?,
-    @SerializedName("is_not_found")
-    var isNotFound: Boolean?,
     @SerializedName("display_address")
     val location: String?
 ) : Parcelable{
     fun isLocationDisplayed():Boolean{
         return !location.isNullOrBlank()
     }
+
+    fun isAdded() = isFound == 1 && foundCount > 0
+
+    fun isNotFound() = isFound == 0
+    fun prepareForEdit() {
+        isFound = 1
+        foundCount = 0
+    }
+
+    fun setAsNotFound(){
+        isFound = 0
+    }
+
 }
