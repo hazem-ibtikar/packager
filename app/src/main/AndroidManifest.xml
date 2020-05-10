@@ -42,6 +42,7 @@
             android:name="com.monh.packager.ui.home.HomeActivity"
             android:label="@string/title_activity_home"
             android:screenOrientation="portrait"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <service android:name=".services.MyFirebaseMessagingService">

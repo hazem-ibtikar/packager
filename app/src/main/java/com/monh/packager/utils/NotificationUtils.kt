@@ -33,7 +33,7 @@ class NotificationUtils @Inject constructor(private val mContext: Context) {
                 mContext.getSystemService(
                     NotificationManager::class.java
                 )
-            notificationManager.createNotificationChannel(
+            notificationManager?.createNotificationChannel(
                 NotificationChannel(
                     CHANNEL_ID,
                     channelName, NotificationManager.IMPORTANCE_HIGH
@@ -46,7 +46,7 @@ class NotificationUtils @Inject constructor(private val mContext: Context) {
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setContentText(message)
             mBuilder.setContentIntent(resultPendingIntent)
-            notificationManager.notify(
+            notificationManager?.notify(
                 uniqueNotificationId,
                 mBuilder.build()
             )

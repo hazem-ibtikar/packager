@@ -107,6 +107,9 @@ class FoundOrderFragment : BaseFragment<FoundOrderViewModel>() {
         // hide the un found btn
         unFoundEditBtn.visibility = View.INVISIBLE
 
+        cellHeader.visibility = View.GONE
+        pcs.text = if (args.product.hasUnit()) args.product.unit else getText(R.string.pcs)
+
         activity?.toolbar?.inflateMenu(R.menu.main_tool_bar)
         activity?.toolbar?.setOnMenuItemClickListener {
             if (it.itemId == R.id.barCode){

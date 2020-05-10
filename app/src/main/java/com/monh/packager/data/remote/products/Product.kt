@@ -36,7 +36,9 @@ data class Product(
     @SerializedName("category_name")
     val categoryName: String?,
     @SerializedName("display_address")
-    val location: String?
+    val location: String?,
+    @SerializedName("unit")
+    val unit: String?
 ) : Parcelable{
     fun isLocationDisplayed():Boolean{
         return !location.isNullOrBlank()
@@ -52,6 +54,10 @@ data class Product(
 
     fun setAsNotFound(){
         isFound = 0
+    }
+
+    fun hasUnit():Boolean{
+        return !unit.isNullOrBlank() && unit != "null"
     }
 
 }

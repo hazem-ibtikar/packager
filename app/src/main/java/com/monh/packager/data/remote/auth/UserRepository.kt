@@ -128,7 +128,7 @@ class UserRepository @Inject constructor(
     fun subscribeToSellerTopic() {
         val currentSellerId = sharedPreferencesUtils.userLoginResponse?.packager?.sellerId
         val currentLang = sharedPreferencesUtils.currentLanguage
-        val subscriptionTopic = "topics_${currentLang}_${currentSellerId}"
+        val subscriptionTopic = "${currentLang}_${currentSellerId}"
         FirebaseMessaging.getInstance()
             .subscribeToTopic(subscriptionTopic)
             .addOnCompleteListener {

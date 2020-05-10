@@ -1,6 +1,8 @@
 package com.monh.packager.ui.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.NavOptions
@@ -10,6 +12,7 @@ import androidx.navigation.ui.navigateUp
 import com.bumptech.glide.Glide
 import com.monh.packager.R
 import com.monh.packager.base.BaseActivity
+import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragmentArgs
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home_drawer_nav_view.*
@@ -31,6 +34,21 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         handleOrdersStatistics()
         viewModel.getStatusOnline()
         handleChangeStatus()
+
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        checkIfFirebaseNotification(intent)
+    }
+
+    private fun checkIfFirebaseNotification(intent: Intent?) {
+        intent?.getIntExtra(ORDER_ID, 0).let {
+            if (it != 0 && it != null){
+                val args = OrderDetailsFragmentArgs(it)
+                navigate(R.id.orderDetailsFragment, args.toBundle())
+            }
+        }
     }
 
     private fun handleChangeStatus() {
@@ -85,7 +103,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
     }
 
-    private fun navigate(destinationId:Int){
+    private fun navigate(destinationId:Int, bundle: Bundle? = null){
         drawer_layout.close()
         if (destinationId != currentIndex){
             currentIndex = destinationId
@@ -94,7 +112,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
                 .setLaunchSingleTop(true)
                 .setPopUpTo(R.id.nav_my_orders, false)
             val options = builder.build()
-            navController.navigate(destinationId, null, options)
+            navController.navigate(destinationId, bundle, options)
         }
 
     }
@@ -117,3 +135,5 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
+
+const val ORDER_ID = "OrderId"

@@ -101,7 +101,15 @@
                     android:text="@{product.quantity}"
                     android:textSize="14sp"
                     android:textColor="@color/manatee"
-                    tools:text="20 SAR"/>
+                    tools:text="20"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{product.hasUnit() ? product.unit : @string/pcs}"
+                    android:textSize="14sp"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/manatee"
+                    tools:text="Pcs"/>
             </LinearLayout>
         </LinearLayout>
         <TextView
@@ -118,6 +126,7 @@
             layout="@layout/add_remove"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/locationTV"/>
 
         <LinearLayout
