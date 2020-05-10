@@ -160,4 +160,5 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     // Paging
     implementation 'androidx.paging:paging-runtime:2.1.2'
+    implementation "com.karumi:dexter:5.0.0"
 }

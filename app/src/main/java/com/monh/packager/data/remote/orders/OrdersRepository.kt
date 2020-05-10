@@ -39,4 +39,16 @@ class OrdersRepository @Inject constructor(
             }
     }
 
+    suspend fun markAsPackaged(markAsPackaged: MarkAsPackaged): Result<OrderPackagedResponse>{
+        return safeApiCall { ordersService.markAsPackaged(markAsPackaged) }
+            .let { result ->
+                when (result) {
+                    is Result.Success -> {
+                        Result.Success(result.data.data!!)
+                    }
+                    is Result.Error -> result
+                    else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))
+                }
+            }
+    }
 }

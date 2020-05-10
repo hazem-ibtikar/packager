@@ -14,6 +14,8 @@ class HomeViewModel @Inject constructor(private val userRepository: UserReposito
     val ordersStatisticsLiveData:MutableLiveData<OrdersStatistics> = MutableLiveData()
     val statusOnline:MutableLiveData<Boolean> = MutableLiveData()
     val foundedProduct:MutableLiveData<Event<Product>> = MutableLiveData()
+    val numberOfCartonsLiveData:MutableLiveData<Event<Int>> = MutableLiveData()
+
     fun getUserInfo(){
         userRepository.getUser().let {
             userLiveData.postValue(it)
@@ -46,4 +48,7 @@ class HomeViewModel @Inject constructor(private val userRepository: UserReposito
         foundedProduct.postValue(Event(product))
     }
 
+    fun setNumberOfCartons(numberOfCartons:Int){
+        numberOfCartonsLiveData.postValue(Event(numberOfCartons))
+    }
 }
