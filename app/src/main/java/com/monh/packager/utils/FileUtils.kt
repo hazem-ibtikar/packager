@@ -28,7 +28,7 @@ fun storeToPdfAndOpen(context: Context, base: String?) {
     if (file.exists()) file.delete()
     try {
         val out = FileOutputStream(file)
-        val pdfAsBytes: ByteArray = Base64.decode(base, Base64.NO_WRAP)
+        val pdfAsBytes: ByteArray = Base64.decode(base, Base64.DEFAULT)
         out.write(pdfAsBytes)
         out.flush()
         out.close()

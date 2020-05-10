@@ -35,8 +35,8 @@ class SellerRepository @Inject constructor(
             }
     }
 
-    suspend fun getNotifications():Result<List<Notification>>{
-        return safeApiCall { sellerService.getNotifications() }
+    suspend fun getNotifications(page:Int):Result<List<Notification>>{
+        return safeApiCall { sellerService.getNotifications(page) }
             .let { result ->
                 when (result) {
                     is Result.Success -> {

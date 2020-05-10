@@ -7,6 +7,7 @@ import com.monh.packager.utils.network.Services.EndPoints.CONTACT_US
 import com.monh.packager.utils.network.Services.EndPoints.TERMS_CONDITIONS
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface SellerService {
 
@@ -17,5 +18,5 @@ interface SellerService {
     suspend fun getTermsAndConditions():Response<BaseResponse<TermsAndConditionsResponse>>
 
     @GET(Services.EndPoints.NOTIFICATIONS)
-    suspend fun getNotifications(): Response<BaseResponse<NotificationWrapper>>
+    suspend fun getNotifications(@Query(Services.QueryParams.PAGE) page:Int): Response<BaseResponse<NotificationWrapper>>
 }

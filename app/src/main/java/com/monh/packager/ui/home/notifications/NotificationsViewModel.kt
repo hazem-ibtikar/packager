@@ -23,8 +23,8 @@ class NotificationsViewModel @Inject constructor(
                 page = FIRST_PAGE
                 notificationsLiveData.value = arrayListOf()
             }
-            handleResult(sellerRepository.getNotifications()){
-                page++
+            handleResult(sellerRepository.getNotifications(++page)){
+
                 if (notificationsLiveData.value == null){
                     notificationsLiveData.postValue(it.data.toMutableList())
                 }else{

@@ -15,6 +15,7 @@ import com.monh.packager.data.remote.seller.Notification
 import com.monh.packager.databinding.FragmentGalleryBinding
 import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragmentArgs
 import com.monh.packager.utils.PaginationScrollListener
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.fragment_gallery.*
 import kotlinx.android.synthetic.main.fragment_gallery.swipeToRefreshOrders
 
@@ -39,8 +40,15 @@ class NotificationsFragment : BaseFragment<NotificationsViewModel>() {
         viewModel.getNotifications()
         addSwipeToRefresh()
         addLoadMoreListener()
+        handleToolBar()
     }
 
+    private fun handleToolBar() {
+        activity?.toolbar?.navigationIcon = context?.getDrawable(R.drawable.ic_sidemenu)
+        activity?.toolbar?.setNavigationOnClickListener {
+            activity?.drawer_layout?.open()
+        }
+    }
     private fun addLoadMoreListener() {
         val listLinearLayoutManager = notificationsRecyclerView.layoutManager as LinearLayoutManager
 
@@ -89,8 +97,8 @@ class NotificationsFragment : BaseFragment<NotificationsViewModel>() {
         activity?.toolbar?.title = context?.getString(R.string.notifications)
     }
 
-    fun selectNotification(notification: Notification){
-        val args = OrderDetailsFragmentArgs(339127)
+    private fun selectNotification(notification: Notification){
+        val args = OrderDetailsFragmentArgs(notification.orderId)
         findNavController().navigate(R.id.action_nav_notifications_to_orderDetailsFragment, args.toBundle())
     }
 }
