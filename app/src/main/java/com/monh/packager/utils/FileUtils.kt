@@ -7,17 +7,22 @@ import android.os.Build
 import android.os.Environment
 import android.util.Base64
 import android.util.Log
+import android.widget.Toast
+import com.monh.packager.R
+import com.monh.packager.ui.home.HomeActivity
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
+const val APPLICATION_FOLDER_NAME = "/monh packager/"
+// The path of the media directory relative to the external directory.
+fun getMediaFilePath() = Environment.DIRECTORY_DCIM + APPLICATION_FOLDER_NAME
 
 fun storeToPdfAndOpen(context: Context, base: String?) {
-    val root: String = Environment.getExternalStorageDirectory().toString()
-    Log.d("ResponseEnv", root)
-    val myDir = File("$root/WorkBox")
-    if (!myDir.exists()) {
+
+    val myDir = context.getExternalFilesDir(getMediaFilePath())
+    if (!myDir?.exists()!!) {
         myDir.mkdirs()
     }
     val generator = Random()
@@ -36,11 +41,8 @@ fun storeToPdfAndOpen(context: Context, base: String?) {
         e.printStackTrace()
     }
 
-    val dir = File(Environment.getExternalStorageDirectory(), "WorkBox")
-    val imgFile = File(dir, fname)
-
     // create cashed file
-    createCachedFile(context, fname, imgFile)
+    createCachedFile(context, fname, file)
 
 
     val sendIntent = Intent(Intent.ACTION_VIEW)
@@ -52,7 +54,11 @@ fun storeToPdfAndOpen(context: Context, base: String?) {
     sendIntent.setDataAndType(uri, "application/pdf")
     sendIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
     sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-    context.startActivity(sendIntent)
+    if (sendIntent.resolveActivity(context.packageManager) != null){
+        context.startActivity(sendIntent)
+    } else {
+        Toast.makeText(context, context.getString(R.string.no_pdf_app_installed), Toast.LENGTH_SHORT).show()
+    }
 }
 
 @Throws(IOException::class)

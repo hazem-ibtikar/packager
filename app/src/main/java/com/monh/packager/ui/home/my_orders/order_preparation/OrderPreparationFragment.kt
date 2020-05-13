@@ -1,6 +1,7 @@
 package com.monh.packager.ui.home.my_orders.order_preparation
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,7 @@ import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
 import com.monh.packager.data.remote.products.Product
 import com.monh.packager.databinding.OrderPreparationFragmentBinding
+import com.monh.packager.ui.home.HomeActivity
 import com.monh.packager.ui.home.HomeViewModel
 import com.monh.packager.ui.home.my_orders.found_order.FoundOrderFragmentArgs
 import com.monh.packager.utils.EventObserver
@@ -55,23 +57,38 @@ class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
         handleDoneBtn()
         sendOrderAfterSelectingNumberOfCartons()
         handleOrderSendSuccessfully()
+        handleToolBar()
+    }
+
+    private fun handleToolBar() {
+        activity?.toolbar?.menu?.clear()
     }
 
     private fun handleOrderSendSuccessfully() {
-        viewModel.orderPackagedLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.orderPackagedLiveData.observe(viewLifecycleOwner, EventObserver {
             getPermissionAndSavePdf(it.base64Pdf?:"")
+        })
+
+        viewModel.orderSentSuccessfullyLiveData.observe(viewLifecycleOwner, EventObserver {
+            if (it){
+                startOrdersPage()
+            }
         })
     }
 
+    private fun startOrdersPage(){
+        findNavController().popBackStack(R.id.orderDetailsFragment, true)
+    }
     private fun getPermissionAndSavePdf(base64Pdf:String) {
         Dexter.withActivity(activity)
             .withPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
             .withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
                     if (report?.areAllPermissionsGranted()!!){
+                        startOrdersPage()
                         storeToPdfAndOpen(requireContext(), base64Pdf)
                     } else{
-                        Toast.makeText(activity, "we need to download pdf to be able to print it", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, getString(R.string.permissions_rejection), Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onPermissionRationaleShouldBeShown(
@@ -90,7 +107,18 @@ class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
 
     private fun handleDoneBtn() {
         doneBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_orderPreparationFragment_to_cartonsFragment)
+            // check if there is products that user did not mark as founded or unfounded
+            if (args.products.find { !it.isHandledByPackager() } == null){
+                // check if there is founded products
+                if (args.products.find { it.isAdded()  } != null){
+                    findNavController().navigate(R.id.action_orderPreparationFragment_to_cartonsFragment)
+                } else{
+                    // all products are un founded
+                    viewModel.markOrderAsPackaged(args.orderId, 0)
+                }
+            } else {
+                showErrorMsg(R.string.please_handle_all_products)
+            }
         }
     }
 

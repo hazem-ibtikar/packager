@@ -59,5 +59,7 @@ data class Product(
     fun hasUnit():Boolean{
         return !unit.isNullOrBlank() && unit != "null"
     }
-
+    fun isHandledByPackager():Boolean{
+        return isAdded() || isNotFound()
+    }
 }

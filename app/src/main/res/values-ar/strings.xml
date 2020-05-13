@@ -87,4 +87,7 @@
     <string name="login_failed">فشل تسجيل الدخول</string>
     <string name="no_orders">لايوجد طلبات متاحة</string>
     <string name="no_notifications">لا يوجد تنبيهات</string>
+    <string name="permissions_rejection">we need to download pdf to be able to print it</string>
+    <string name="no_pdf_app_installed">there is no pdf viewer app installed, please install an app to be able to view the pdf</string>
+    <string name="please_handle_all_products">Please handle all products</string>
 </resources>

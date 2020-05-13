@@ -93,4 +93,7 @@
     <string name="login_failed">login failed</string>
     <string name="no_orders">There is no orders now</string>
     <string name="no_notifications">There is no notifications now</string>
+    <string name="permissions_rejection">we need to download pdf to be able to print it</string>
+    <string name="no_pdf_app_installed">there is no pdf viewer app installed, please install an app to be able to view the pdf</string>
+    <string name="please_handle_all_products">Please handle all products</string>
 </resources>

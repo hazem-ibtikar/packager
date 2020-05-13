@@ -8,6 +8,7 @@ import com.monh.packager.data.remote.orders.OrdersRepository
 import com.monh.packager.data.remote.products.Product
 import com.monh.packager.data.remote.products.ProductsRepository
 import com.monh.packager.data.remote.products.UnFoundRequest
+import com.monh.packager.utils.Event
 import javax.inject.Inject
 
 class OrderPreparationViewModel @Inject constructor(
@@ -16,7 +17,8 @@ class OrderPreparationViewModel @Inject constructor(
 ) : BaseViewModel() {
     val orderProductsLiveData : MutableLiveData<List<Product>> = MutableLiveData()
 
-    val orderPackagedLiveData:MutableLiveData<OrderPackagedResponse> = MutableLiveData()
+    val orderPackagedLiveData:MutableLiveData<Event<OrderPackagedResponse>> = MutableLiveData()
+    val orderSentSuccessfullyLiveData:MutableLiveData<Event<Boolean>> = MutableLiveData()
     fun addList(products: Array<Product>) {
         products.toList().apply {
             orderProductsLiveData.postValue(this.sortedBy { it.categoryId })
@@ -50,7 +52,11 @@ class OrderPreparationViewModel @Inject constructor(
     fun markOrderAsPackaged(orderId:Int, cartons:Int){
         wrapBlockingOperation {
             handleResult(ordersRepository.markAsPackaged(MarkAsPackaged(orderId = orderId, cartons = cartons))){
-                orderPackagedLiveData.postValue(it.data)
+                if (cartons>0){
+                    orderPackagedLiveData.postValue(Event(it.data))
+                }else{
+                    orderSentSuccessfullyLiveData.postValue(Event(true))
+                }
             }
         }
     }

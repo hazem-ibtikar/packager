@@ -66,6 +66,7 @@ class OrdersFragment : BaseFragment<OrdersViewModel>() {
 
     private fun handleToolBar() {
         activity?.toolbar?.navigationIcon = context?.getDrawable(R.drawable.ic_sidemenu)
+        activity?.toolbar?.menu?.clear()
         activity?.toolbar?.setNavigationOnClickListener {
             activity?.drawer_layout?.open()
         }
