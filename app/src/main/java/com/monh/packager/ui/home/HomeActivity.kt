@@ -105,15 +105,16 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
     private fun navigate(destinationId:Int, bundle: Bundle? = null){
         drawer_layout.close()
-        if (destinationId != currentIndex){
+        /*if (destinationId != currentIndex){
             currentIndex = destinationId
-            val navController = findNavController(R.id.nav_host_fragment)
-            val builder = NavOptions.Builder()
-                .setLaunchSingleTop(true)
-                .setPopUpTo(R.id.nav_my_orders, false)
-            val options = builder.build()
-            navController.navigate(destinationId, bundle, options)
-        }
+
+        }*/
+        val navController = findNavController(R.id.nav_host_fragment)
+        val builder = NavOptions.Builder()
+            .setLaunchSingleTop(true)
+            .setPopUpTo(R.id.nav_my_orders, false)
+        val options = builder.build()
+        navController.navigate(destinationId, bundle, options)
 
     }
     private fun handleToolBar() {

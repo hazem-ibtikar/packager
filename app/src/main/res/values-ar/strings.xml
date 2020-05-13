@@ -24,7 +24,7 @@
     <string name="order_price">%.2f ريال سعودي</string>
     <string name="monthly_orders">الطلبات الشهرية</string>
     <string name="daily_orders">الطلبات اليومية</string>
-    <string name="my_order">أوردراتي</string>
+    <string name="my_order">طلباتي</string>
     <string name="notifications">التنبيهات</string>
     <string name="settings">الاعدادات</string>
     <string name="status_online">الحالة</string>
