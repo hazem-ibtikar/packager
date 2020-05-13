@@ -44,10 +44,10 @@
 
             <TextView
                 android:id="@+id/editProfileHeader"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="17dp"
+                android:paddingTop="17dp"
                 android:text="@string/edit_profile"
                 android:textColor="@color/dimGray"
                 android:textSize="@dimen/font_size_small"
@@ -79,10 +79,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/editProfileHeader"/>
             <TextView
                 android:id="@+id/changePasswordHeader"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="17dp"
+                android:paddingTop="17dp"
                 android:text="@string/change_password"
                 android:textColor="@color/dimGray"
                 android:textSize="@dimen/font_size_small"
@@ -143,10 +143,10 @@
 
             <TextView
                 android:id="@+id/termsAndConditionsHeader"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="17dp"
+                android:paddingTop="17dp"
                 android:text="@string/termsAndConditions"
                 android:textColor="@color/dimGray"
                 android:textSize="@dimen/font_size_small"
@@ -178,10 +178,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/termsAndConditionsHeader"/>
             <TextView
                 android:id="@+id/aboutMonhHeader"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="17dp"
+                android:paddingTop="17dp"
                 android:text="@string/about"
                 android:textColor="@color/dimGray"
                 android:textSize="@dimen/font_size_small"
@@ -213,10 +213,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/aboutMonhHeader"/>
             <TextView
                 android:id="@+id/contactUsHeader"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="17dp"
+                android:paddingTop="17dp"
                 android:text="@string/contact_us"
                 android:textColor="@color/dimGray"
                 android:textSize="@dimen/font_size_small"
