@@ -18,6 +18,7 @@ class SettingsViewModel @Inject constructor(private val userRepository: UserRepo
     fun logOut(uuid:String){
         wrapBlockingOperation {
             handleResult(userRepository.logOut(uuid)){
+                removeUserData()
                 loggedOutSuccessfully.postValue(true)
             }
         }

@@ -65,11 +65,10 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
 
     private fun showLogOutDialog() {
         val alertDialog = AlertDialog.Builder(requireContext()).create()
-        alertDialog.setTitle(getString(R.string.reset_password))
+        alertDialog.setTitle(getString(R.string.log_out))
         alertDialog.setMessage(getString(R.string.log_out_msg)) // Specifying a listener allows you to take an action before dismissing the dialog.
         alertDialog.setButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE, getString(R.string.log_out_yes)){ dialog, _ ->
             alertDialog.dismiss()
-            viewModel.removeUserData()
             Settings.Secure.getString(activity?.contentResolver, Settings.Secure.ANDROID_ID).let {
                 viewModel.logOut(it)
             }
@@ -106,6 +105,6 @@ class SettingsFragment : BaseFragment<SettingsViewModel>() {
     }
 
     private fun setUpFragmentTitle() {
-        activity?.toolbar?.title = context?.getString(R.string.seetings)
+        activity?.toolbar?.title = context?.getString(R.string.settings)
     }
 }

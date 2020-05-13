@@ -30,7 +30,7 @@
     <string name="daily_orders">Daily orders</string>
     <string name="my_order">My order</string>
     <string name="notifications">Notifications</string>
-    <string name="seetings">Seetings</string>
+    <string name="settings">setting</string>
     <string name="status_online">Status online</string>
     <string name="my_orders">My orders</string>
     <string name="menu_my_orders">My orders</string>
@@ -67,7 +67,7 @@
     <string name="quantity">Quantity</string>
     <string name="notFound">Not Found</string>
     <string name="pcs">Pcs</string>
-    <string name="qr_un_valid">bar code not match the product bar code</string>
+    <string name="qr_un_valid">Barcode not match the product Barcode</string>
     <string name="no_more_items">You have removed all items</string>
     <string name="all_items_added">You have added all items</string>
     <string name="add_product_first">please add product first</string>
