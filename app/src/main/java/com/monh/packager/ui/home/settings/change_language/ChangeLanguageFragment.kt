@@ -34,8 +34,8 @@ class ChangeLanguageFragment : BaseBottomSheetDialogFragment<ChangeLanguageViewM
         submit.setOnClickListener {
             if (viewModel.currentLang.isNotEmpty()){
                 viewModel.changeLanguage()
-                activity?.startActivity(Intent(requireActivity(), HomeActivity::class.java))
-                activity?.finish()
+                activity?.recreate()
+                dismiss()
             }
         }
     }
