@@ -54,6 +54,16 @@ class ContactUsFragment : BaseFragment<ContactUsViewModel>() {
                 startActivity(intent)
             }
         }
+
+        addressIcon.setOnClickListener {
+            val intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://www.google.com/maps/@?api=1&map_action=map&center = ${viewModel.contactUsLiveData.value?.contacts?.latitude}, ${viewModel.contactUsLiveData.value?.contacts?.longitude}")
+            )
+            if (intent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(intent)
+            }
+        }
     }
 
     private fun callPermission(){
