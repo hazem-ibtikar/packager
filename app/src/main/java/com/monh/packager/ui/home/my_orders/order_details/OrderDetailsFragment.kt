@@ -39,6 +39,11 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
         viewModel.getOrderProducts(args.orderId)
         handleStartNewOrder()
         handleOrderDetails()
+        hideStartOrderIfClosed()
+    }
+
+    private fun hideStartOrderIfClosed() {
+        startPrepareBtn.visibility = if (args.isClosed) View.GONE else View.VISIBLE
     }
 
     private fun handleOrderDetails() {

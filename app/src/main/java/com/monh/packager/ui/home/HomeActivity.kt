@@ -45,7 +45,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     private fun checkIfFirebaseNotification(intent: Intent?) {
         intent?.getIntExtra(ORDER_ID, 0).let {
             if (it != 0 && it != null){
-                val args = OrderDetailsFragmentArgs(it)
+                val args = OrderDetailsFragmentArgs(it, false)
                 navigate(R.id.orderDetailsFragment, args.toBundle())
             }
         }

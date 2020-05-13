@@ -75,6 +75,9 @@
         <argument
             android:name="orderId"
             app:argType="integer" />
+        <argument
+            android:name="isClosed"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/orderPreparationFragment"
