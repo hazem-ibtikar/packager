@@ -44,7 +44,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             SharedPreferencesUtils(applicationContext)
         notificationUtils.showNotificationMessage(
             resources.getString(R.string.app_name),
-            remoteMessage.notification?.body?:remoteMessage.data["body"],
+            remoteMessage.notification?.body?:remoteMessage.data["message"],
             resultIntent
         )
     }

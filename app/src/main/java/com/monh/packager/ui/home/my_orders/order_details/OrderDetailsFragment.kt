@@ -43,7 +43,7 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
     }
 
     private fun hideStartOrderIfClosed() {
-        startPrepareBtn.visibility = if (args.isClosed) View.GONE else View.VISIBLE
+        startPrepareBtn.visibility = if (args.isClosed ) View.GONE else View.VISIBLE
     }
 
     private fun handleOrderDetails() {
@@ -56,6 +56,9 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
                 location_text.text = it.orderLocation
                 numberOfItems.text = String.format(getString(R.string.order_quantity), it.numberOfItems)
                 price.text = String.format(getString(R.string.order_price), it.amount)
+                if (it.isClosed == true){
+                    startPrepareBtn.visibility = View.GONE
+                }
             }
         })
     }

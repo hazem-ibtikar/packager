@@ -212,7 +212,7 @@
         app:layout_constraintStart_toEndOf="@+id/status_online"
         app:layout_constraintTop_toTopOf="@+id/status_online" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/packagerStatus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

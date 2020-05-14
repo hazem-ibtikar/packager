@@ -25,6 +25,8 @@ data class Order(
     val orderDate: String?,
     @SerializedName("status_id")
     val statusId: String?,
+    @SerializedName("isClosed")
+    val isClosed:Boolean? = false,
     @SerializedName("items")
     var products:List<Product>? = null
 ) {
