@@ -28,10 +28,10 @@
     <string name="order_price">%.2f SAR</string>
     <string name="monthly_orders">Monthly orders</string>
     <string name="daily_orders">Daily orders</string>
-    <string name="my_order">My order</string>
+    <string name="my_order">My orders</string>
     <string name="notifications">Notifications</string>
-    <string name="settings">setting</string>
-    <string name="status_online">Status online</string>
+    <string name="settings">Settings</string>
+    <string name="status_online">Status (Online)</string>
     <string name="my_orders">My orders</string>
     <string name="menu_my_orders">My orders</string>
     <string name="menu_notifications">Notifications</string>

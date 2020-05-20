@@ -25,9 +25,9 @@
     <string name="monthly_orders">الطلبات الشهرية</string>
     <string name="daily_orders">الطلبات اليومية</string>
     <string name="my_order">طلباتي</string>
-    <string name="notifications">التنبيهات</string>
+    <string name="notifications">الاشعارات</string>
     <string name="settings">الاعدادات</string>
-    <string name="status_online">الحالة</string>
+    <string name="status_online">الحالة (متصل)</string>
     <string name="my_orders">طلباتي</string>
     <string name="menu_my_orders">طلباتي</string>
     <string name="menu_notifications">الاعدادات</string>
