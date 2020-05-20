@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
+import com.monh.packager.base.IS_UNAUTHORIZED
 import com.monh.packager.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.login_fragment.*
 
@@ -25,7 +26,9 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        checkIfLoggedInUser()
+        if (activity?.intent?.getBooleanExtra(IS_UNAUTHORIZED, false) == false){
+            checkIfLoggedInUser()
+        }
         handleLoginResponse()
         handleLoginRequest()
         handleForgotPassword()

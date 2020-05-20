@@ -37,13 +37,8 @@ open class BaseActivity<ViewModel : BaseViewModel> : AppCompatActivity() , HasAn
         loadingHandler = LoadingHandler.getInstance(this)
         initLoading()
         initError()
-        handleLogOut()
     }
-    private fun handleLogOut() {
-        viewModel.logOutLiveData.observe(this, EventObserver{
-            startActivity(Intent(this, LoginActivity::class.java))
-        })
-    }
+
     @Suppress("UNCHECKED_CAST")
     private fun viewModelClass(): Class<ViewModel> {
         // dirty hack to get generic type https://stackoverflow.com/a/1901275/719212

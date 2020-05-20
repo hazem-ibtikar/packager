@@ -41,13 +41,19 @@ open class BaseFragment<ViewModel : BaseViewModel> : Fragment() {
     // called when un authorized
     private fun handleLogOut() {
         viewModel.logOutLiveData.observe(viewLifecycleOwner, EventObserver{
-            logout()
+            if (it){
+                logout()
+            }
         })
     }
 
     open fun logout() {
-        activity?.startActivity(Intent(requireActivity(), LoginActivity::class.java))
+        var intent = Intent(context, LoginActivity::class.java)
+        intent.putExtra(IS_UNAUTHORIZED, true)
+        activity?.startActivity(intent)
+        activity?.finish()
     }
+
 
     open fun getLifeCycleOwner(): ViewModelStoreOwner {
         return this
@@ -102,3 +108,4 @@ open class BaseFragment<ViewModel : BaseViewModel> : Fragment() {
         super.onAttach(context)
     }
 }
+const val IS_UNAUTHORIZED = "is un authorized"
