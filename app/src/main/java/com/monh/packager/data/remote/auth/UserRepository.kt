@@ -6,6 +6,7 @@ import com.monh.packager.utils.InformativeResponse
 import com.monh.packager.utils.network.ApplicationException
 import com.monh.packager.utils.network.ErrorType
 import com.monh.packager.utils.network.Result
+import com.monh.packager.utils.network.Services
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -40,7 +41,7 @@ class UserRepository @Inject constructor(
     }
 
     suspend fun changeStatus(isChecked: Boolean):Result<InformativeResponse>{
-        return safeApiCall { userService.updatePackagerStatus(UpdateStatusRequest(isChecked)) }
+        return safeApiCall(tag = Services.EndPoints.CHANGE_STATUS) { userService.updatePackagerStatus(UpdateStatusRequest(isChecked)) }
             .let { result ->
                 when (result) {
                     is Result.Success -> {
@@ -141,6 +142,10 @@ class UserRepository @Inject constructor(
 
     fun removeUserData() {
         sharedPreferencesUtils.userLoginResponse = null
+        unSubscribeNotifications()
+    }
+
+    fun unSubscribeNotifications() {
         val currentTopic = sharedPreferencesUtils.currentSubscriptionTopic
         FirebaseMessaging.getInstance().unsubscribeFromTopic(currentTopic?:"")
     }

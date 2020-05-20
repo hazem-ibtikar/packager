@@ -13,6 +13,10 @@ import com.bumptech.glide.Glide
 import com.monh.packager.R
 import com.monh.packager.base.BaseActivity
 import com.monh.packager.ui.home.my_orders.order_details.OrderDetailsFragmentArgs
+import com.monh.packager.utils.EventObserver
+import com.monh.packager.utils.MessageUtils
+import com.monh.packager.utils.network.Result
+import com.monh.packager.utils.network.Services.EndPoints.CHANGE_STATUS
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home_drawer_nav_view.*
@@ -21,7 +25,6 @@ import kotlinx.android.synthetic.main.home_drawer_nav_view.*
 class HomeActivity : BaseActivity<HomeViewModel>() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private var currentIndex : Int = R.id.nav_my_orders
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +37,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         handleOrdersStatistics()
         viewModel.getStatusOnline()
         handleChangeStatus()
-
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -55,9 +57,14 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         viewModel.statusOnline.observe(this, Observer {
             packagerStatus.isChecked = it
         })
+
         packagerStatus.setOnCheckedChangeListener { _, isChecked ->
             viewModel.changeStatus(isChecked)
         }
+
+        viewModel.userMessage.observe(this, EventObserver{
+            MessageUtils.showSuccessMessage(this, getString(it))
+        })
     }
 
     private fun handleOrdersStatistics() {
@@ -105,10 +112,6 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
     private fun navigate(destinationId:Int, bundle: Bundle? = null){
         drawer_layout.close()
-        /*if (destinationId != currentIndex){
-            currentIndex = destinationId
-
-        }*/
         val navController = findNavController(R.id.nav_host_fragment)
         val builder = NavOptions.Builder()
             .setLaunchSingleTop(true)
@@ -131,9 +134,20 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             super.onBackPressed()
         }
     }
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun showError(error: Result.Error) {
+        super.showError(error)
+        when(error.exception.tag){
+            CHANGE_STATUS -> {
+                // error in change status
+                packagerStatus.isChecked = !packagerStatus.isChecked
+            }
+        }
     }
 }
 

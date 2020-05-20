@@ -49,7 +49,6 @@ open class BaseViewModel: ViewModel() {
     fun handelError(throwable: Throwable) {
         if (throwable is ApplicationException) {
             error.postValue(Event(Result.Error(throwable)))
-
             when (throwable.type) {
                 ErrorType.Network.Unauthorized -> {
                     logOutLiveData.postValue(Event(true))

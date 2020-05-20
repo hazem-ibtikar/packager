@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class SettingsViewModel @Inject constructor(private val userRepository: UserRepository) : BaseViewModel() {
     val loggedOutSuccessfully:MutableLiveData<Boolean> = MutableLiveData()
-    fun removeUserData() {
+    private fun removeUserData() {
         userRepository.removeUserData()
     }
 

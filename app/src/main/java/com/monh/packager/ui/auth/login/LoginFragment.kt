@@ -26,6 +26,7 @@ class LoginFragment : BaseFragment<LoginViewModel>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        // handle invalid tokens
         if (activity?.intent?.getBooleanExtra(IS_UNAUTHORIZED, false) == false){
             checkIfLoggedInUser()
         }

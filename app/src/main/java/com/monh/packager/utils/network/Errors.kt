@@ -4,7 +4,8 @@ class ApplicationException(
     val type: ErrorType,
     val errorMessage: String? = null,
     val errorMessageRes: Int? = null,
-    val throwable: Throwable? = null
+    val throwable: Throwable? = null,
+    val tag:String = ""
 ) : RuntimeException()
 
 sealed class ErrorType {

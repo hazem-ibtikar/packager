@@ -32,7 +32,7 @@ open class BaseRepository() {
     )
 
     val unexpectedError = Result.Error(ApplicationException(type = ErrorType.Network.Unexpected))
-    suspend fun <T : Any> safeApiCall(call: suspend () -> Response<T>): Result<T> {
+    suspend fun <T : Any> safeApiCall(tag:String = "", call: suspend () -> Response<T>): Result<T> {
         return withContext(Dispatchers.IO) {
             return@withContext try {
                 // check internet connection
@@ -42,7 +42,7 @@ open class BaseRepository() {
                 val response = call()
 
                 // check response and convert to result
-                return@withContext handleResult(response)
+                return@withContext handleResult(response, tag)
 
             } catch (error: Throwable) {
                 Timber.e(error)
@@ -59,25 +59,28 @@ open class BaseRepository() {
             )
         )
     }
-    private fun <T : Any> handleResult(response: Response<T>): Result<T> {
+    private fun <T : Any> handleResult(response: Response<T>, tag:String = ""): Result<T> {
         return when (response.code()) {
             in 1..399 -> Result.Success(response.body()!!)
             401 -> Result.Error(
                 ApplicationException(
                     type = ErrorType.Network.Unauthorized,
-                    errorMessage = getErrorMessage(response)
+                    errorMessage = getErrorMessage(response),
+                    tag = tag
                 )
             )
             404 -> Result.Error(
                 ApplicationException(
                     type = ErrorType.Network.ResourceNotFound,
-                    errorMessage = getErrorMessage(response)
+                    errorMessage = getErrorMessage(response),
+                    tag = tag
                 )
             )
             else -> Result.Error(
                 ApplicationException(
                     type = ErrorType.Network.Unexpected,
-                    errorMessage = getErrorMessage(response)
+                    errorMessage = getErrorMessage(response),
+                    tag = tag
                 )
             )
         }

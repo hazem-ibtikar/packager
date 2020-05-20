@@ -1,6 +1,7 @@
 package com.monh.packager.ui.home
 
 import androidx.lifecycle.MutableLiveData
+import com.monh.packager.R
 import com.monh.packager.base.BaseViewModel
 import com.monh.packager.data.remote.auth.LoginResponse
 import com.monh.packager.data.remote.auth.OrdersStatistics
@@ -15,7 +16,7 @@ class HomeViewModel @Inject constructor(private val userRepository: UserReposito
     val statusOnline:MutableLiveData<Boolean> = MutableLiveData()
     val foundedProduct:MutableLiveData<Event<Product>> = MutableLiveData()
     val numberOfCartonsLiveData:MutableLiveData<Event<Int>> = MutableLiveData()
-
+    val userMessage:MutableLiveData<Event<Int>> = MutableLiveData()
     fun getUserInfo(){
         userRepository.getUser().let {
             userLiveData.postValue(it)
@@ -39,6 +40,12 @@ class HomeViewModel @Inject constructor(private val userRepository: UserReposito
     fun changeStatus(isChecked: Boolean) {
         wrapBlockingOperation {
             handleResult(userRepository.changeStatus(isChecked)){
+                if (!isChecked){
+                    userRepository.unSubscribeNotifications()
+                    userMessage.postValue(Event(R.string.status_off_message))
+                } else{
+                    userRepository.subscribeToSellerTopic()
+                }
                 userRepository.saveNewPackagerStatus(isChecked)
             }
         }
