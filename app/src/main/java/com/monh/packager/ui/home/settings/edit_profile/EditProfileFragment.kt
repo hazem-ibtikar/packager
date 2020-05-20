@@ -60,7 +60,10 @@ class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode){
             PICKER_REQUEST_CODE -> {
-                Glide.with(this).load(data?.extras?.getStringArray(GligarPicker.IMAGES_RESULT)?.get(0)).into(profile_image)
+                val selectedImagePath = data?.extras?.getStringArray(GligarPicker.IMAGES_RESULT)?.get(0)
+                if (selectedImagePath?.isNotEmpty() == true){
+                    Glide.with(this).load(selectedImagePath).into(profile_image)
+                }
             }
         }
     }
