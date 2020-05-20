@@ -92,4 +92,5 @@
     <string name="please_handle_all_products">Please handle all products</string>
     <string name="nedd_call_permission">Monh need call permission to call the seller</string>
     <string name="unauthorized_log_out_msg">session expired, you need to log in again</string>
+    <string name="empty_validation">فضلا املأ الحقول الاجبارية اولا</string>
 </resources>
