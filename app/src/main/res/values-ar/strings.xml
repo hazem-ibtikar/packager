@@ -46,7 +46,7 @@
     <string name="english_full_name">الاسم الكامل باللفة الانجليزية</string>
     <string name="email">البريد الالكتروني</string>
     <string name="save">حفظ</string>
-    <string name="password">رقم التعريف</string>
+    <string name="password">كلمة المرور</string>
     <string name="done">تم</string>
     <string name="edit">تعديل</string>
     <string name="found">موجود</string>
