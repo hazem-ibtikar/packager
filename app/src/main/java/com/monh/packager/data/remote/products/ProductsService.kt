@@ -1,10 +1,8 @@
 package com.monh.packager.data.remote.products
 
-import com.ahmoneam.basecleanarchitecture.base.data.model.BaseResponse
-import com.monh.packager.data.remote.orders.Order
+import com.monh.packager.utils.network.BaseResponse
 import com.monh.packager.data.remote.orders.OrderWrapper
 import com.monh.packager.utils.InformativeResponse
-import com.monh.packager.utils.network.BaseListResponse
 import com.monh.packager.utils.network.Services.EndPoints.MARK_ORDER_FOUND
 import com.monh.packager.utils.network.Services.EndPoints.MARK_ORDER_UN_FOUND
 import com.monh.packager.utils.network.Services.EndPoints.ORDER_PRODUCTS

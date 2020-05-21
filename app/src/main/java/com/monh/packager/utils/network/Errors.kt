@@ -1,11 +1,15 @@
 package com.monh.packager.utils.network
 
+import com.google.gson.JsonObject
+
+
 class ApplicationException(
     val type: ErrorType,
     val errorMessage: String? = null,
     val errorMessageRes: Int? = null,
     val throwable: Throwable? = null,
-    val tag:String = ""
+    val tag:String = "",
+    val extra: JsonObject? = null
 ) : RuntimeException()
 
 sealed class ErrorType {

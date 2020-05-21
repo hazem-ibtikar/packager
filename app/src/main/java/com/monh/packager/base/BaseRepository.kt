@@ -1,19 +1,24 @@
 package com.monh.packager.base
 
-import com.ahmoneam.basecleanarchitecture.base.data.model.BaseResponse
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
+import com.google.gson.reflect.TypeToken
 import com.monh.packager.R
 import com.monh.packager.data.locale.SharedPreferencesUtils
 import com.monh.packager.utils.ConnectivityUtils
 import com.monh.packager.utils.network.ApplicationException
+import com.monh.packager.utils.network.BaseResponse
 import com.monh.packager.utils.network.ErrorType
 import com.monh.packager.utils.network.Result
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.orhanobut.logger.Logger.json
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import retrofit2.Response
 import timber.log.Timber
 import javax.inject.Inject
+
 
 open class BaseRepository() {
 
@@ -66,25 +71,40 @@ open class BaseRepository() {
                 ApplicationException(
                     type = ErrorType.Network.Unauthorized,
                     errorMessage = getErrorMessage(response),
-                    tag = tag
+                    tag = tag/*,
+                    extra = getErrorExtra(response)*/
                 )
             )
             404 -> Result.Error(
                 ApplicationException(
                     type = ErrorType.Network.ResourceNotFound,
                     errorMessage = getErrorMessage(response),
-                    tag = tag
+                    tag = tag/*,
+                    extra = getErrorExtra(response)*/
                 )
             )
             else -> Result.Error(
                 ApplicationException(
+                    /*extra = getErrorExtra(response),*/
                     type = ErrorType.Network.Unexpected,
                     errorMessage = getErrorMessage(response),
                     tag = tag
+
                 )
             )
         }
     }
+
+    private fun <T> getErrorExtra(response: Response<T>): JsonObject? {
+        //Create json object from string
+        return try {
+            val jsonObj = JsonParser().parse(response.errorBody()?.string()).asJsonObject
+            jsonObj["error"].asJsonObject["extra"].asJsonObject
+        } catch (e: Exception){
+            null
+        }
+    }
+
     private fun <T> getErrorMessage(response: Response<T>): String? {
         return gSon.fromJson<BaseResponse<*>>(
             response.errorBody()?.string(),

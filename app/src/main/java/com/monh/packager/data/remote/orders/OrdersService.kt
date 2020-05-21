@@ -1,6 +1,6 @@
 package com.monh.packager.data.remote.orders
 
-import com.ahmoneam.basecleanarchitecture.base.data.model.BaseResponse
+import com.monh.packager.utils.network.BaseResponse
 import com.monh.packager.data.remote.products.StartOrderRequest
 import com.monh.packager.data.remote.products.StartOrderResponse
 import com.monh.packager.utils.network.BaseListResponse

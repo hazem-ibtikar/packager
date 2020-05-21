@@ -1,6 +1,6 @@
 package com.monh.packager.data.remote.auth
 
-import com.ahmoneam.basecleanarchitecture.base.data.model.BaseResponse
+import com.monh.packager.utils.network.BaseResponse
 import com.monh.packager.utils.InformativeResponse
 import com.monh.packager.utils.network.Services.EndPoints.CHANGE_PASSWORD
 import com.monh.packager.utils.network.Services.EndPoints.CHANGE_STATUS

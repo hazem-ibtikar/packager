@@ -1,6 +1,5 @@
-package com.ahmoneam.basecleanarchitecture.base.data.model
+package com.monh.packager.utils.network
 
-import com.monh.packager.utils.network.ResponseError
 import com.google.gson.annotations.SerializedName
 
 data class BaseResponse<T>(
