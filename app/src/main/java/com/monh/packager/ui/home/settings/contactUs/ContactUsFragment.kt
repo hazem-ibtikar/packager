@@ -18,6 +18,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
+import com.monh.packager.utils.network.Result
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.contact_us_fragment.*
 
@@ -56,12 +57,15 @@ class ContactUsFragment : BaseFragment<ContactUsViewModel>() {
         }
 
         addressIcon.setOnClickListener {
-            val intent = Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://www.google.com/maps/@?api=1&map_action=map&center = ${viewModel.contactUsLiveData.value?.contacts?.latitude}, ${viewModel.contactUsLiveData.value?.contacts?.longitude}")
-            )
-            if (intent.resolveActivity(requireActivity().packageManager) != null) {
-                startActivity(intent)
+            // Creates an Intent that will load a map of San Francisco
+
+            // Creates an Intent that will load a map of San Francisco
+            val gmmIntentUri = Uri.parse("geo:${viewModel.contactUsLiveData.value?.contacts?.latitude?.toFloat()},${viewModel.contactUsLiveData.value?.contacts?.longitude?.toFloat()}")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            
+            if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(mapIntent)
             }
         }
     }
@@ -113,4 +117,12 @@ class ContactUsFragment : BaseFragment<ContactUsViewModel>() {
         activity?.toolbar?.title = context?.getString(R.string.contact_us)
     }
 
+    override fun showError(error: Result.Error) {
+        showNoContactsLayout()
+    }
+
+    private fun showNoContactsLayout() {
+        noContactsLayout.visibility = View.VISIBLE
+        contactsGroup.visibility = View.GONE
+    }
 }

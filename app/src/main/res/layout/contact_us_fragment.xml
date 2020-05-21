@@ -22,11 +22,11 @@
         android:layout_marginStart="10dp"
         android:textColor="@color/davygrey"
         android:textSize="@dimen/font_size_small"
-        android:text="alsahafah the golden tradecenter , office 106 riyadh , kingdomof saudi arabia"
         app:layout_constraintBottom_toBottomOf="@+id/addressIcon"
         app:layout_constraintEnd_toStartOf="@+id/endGuideline"
         app:layout_constraintStart_toEndOf="@+id/addressIcon"
-        app:layout_constraintTop_toTopOf="@+id/addressIcon" />
+        app:layout_constraintTop_toTopOf="@+id/addressIcon"
+        tools:text="alsahafah the golden tradecenter , office 106 riyadh , kingdomof saudi arabia" />
 
     <ImageView
         android:id="@+id/phoneIcon"
@@ -42,35 +42,35 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="+966118289092"
         android:textColor="@color/davygrey"
         android:textSize="@dimen/font_size_small"
         app:layout_constraintBottom_toBottomOf="@+id/phoneIcon"
         app:layout_constraintEnd_toStartOf="@+id/endGuideline"
         app:layout_constraintStart_toEndOf="@+id/phoneIcon"
-        app:layout_constraintTop_toTopOf="@+id/phoneIcon" />
+        app:layout_constraintTop_toTopOf="@+id/phoneIcon"
+        tools:text="+966118289092" />
 
     <ImageView
         android:id="@+id/mailIcon"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:src="@drawable/ic_email"
-        app:layout_constraintTop_toBottomOf="@+id/barrier2"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toEndOf="@+id/startGuideline"/>
+        android:src="@drawable/ic_email"
+        app:layout_constraintStart_toEndOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/barrier2" />
 
     <TextView
         android:id="@+id/mail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="+info@Monh.com"
         android:textColor="@color/davygrey"
         android:textSize="@dimen/font_size_small"
         app:layout_constraintBottom_toBottomOf="@+id/mailIcon"
         app:layout_constraintEnd_toStartOf="@+id/endGuideline"
         app:layout_constraintStart_toEndOf="@+id/mailIcon"
-        app:layout_constraintTop_toTopOf="@+id/mailIcon"  />
+        app:layout_constraintTop_toTopOf="@+id/mailIcon"
+        tools:text="+info@Monh.com" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/startGuideline"
@@ -102,4 +102,17 @@
         tools:layout_editor_absoluteY="731dp" />
 
 
+    <TextView
+        android:id="@+id/noContactsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/no_contacts_msg"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/contactsGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

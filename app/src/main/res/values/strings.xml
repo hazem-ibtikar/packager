@@ -101,4 +101,5 @@
     <string name="empty_validation">Please fill the mandatory fields first</string>
     <string name="status_off_message">Change your status to online will allow you to receive new requests and increase your profits.</string>
     <string name="view">View</string>
+    <string name="no_contacts_msg">No contacts are found</string>
 </resources>

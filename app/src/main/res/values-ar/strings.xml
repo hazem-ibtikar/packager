@@ -95,4 +95,5 @@
     <string name="empty_validation">فضلا املأ الحقول الاجبارية اولا</string>
     <string name="status_off_message">تغيير حالتك الى متاح يمكنك من استقبال الطلبات وبالتالي زيادة الارباح الخاصة بك</string>
     <string name="view">فتح</string>
+    <string name="no_contacts_msg">لايوجد معلومات متاحة</string>
 </resources>
