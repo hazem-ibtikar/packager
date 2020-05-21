@@ -75,7 +75,7 @@
     <string name="send">ارسال</string>
     <string name="reset_password">تعديل كلمة السر</string>
     <string name="main_error_try_again">اعد المحاولة</string>
-    <string name="log_out_msg">هل انت متأكد تريد الخروج</string>
+    <string name="log_out_msg">هل حقا تريد تسجيل الخروج؟</string>
     <string name="log_out_yes">نعم</string>
     <string name="log_out_no">ليس الأن</string>
     <string name="choose_language">أختر لغة</string>
@@ -94,4 +94,5 @@
     <string name="unauthorized_log_out_msg">session expired, you need to log in again</string>
     <string name="empty_validation">فضلا املأ الحقول الاجبارية اولا</string>
     <string name="status_off_message">تغيير حالتك الى متاح يمكنك من استقبال الطلبات وبالتالي زيادة الارباح الخاصة بك</string>
+    <string name="view">فتح</string>
 </resources>

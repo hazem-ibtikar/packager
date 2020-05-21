@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
 import com.monh.packager.databinding.OrderDetailsFragmentBinding
@@ -18,6 +18,8 @@ import com.monh.packager.utils.network.Result
 import com.monh.packager.utils.network.Services
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.order_details_fragment.*
+import timber.log.Timber
+
 
 class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
 
@@ -39,7 +41,7 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
         super.onActivityCreated(savedInstanceState)
         setUpFragmentTitle()
         handleToolBar()
-        viewModel.getOrderProducts(args.orderId)
+        viewModel.getOrderProducts(if (viewModel.selectedOrderId == 0)args.orderId else viewModel.selectedOrderId)
         handleStartNewOrder()
         handleOrderDetails()
         hideStartOrderIfClosed()
@@ -68,7 +70,7 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
 
     private fun handleStartNewOrder() {
         startPrepareBtn.setOnClickListener {
-            viewModel.startNewOrder(args.orderId)
+            viewModel.startNewOrder()
         }
         viewModel.startOrderSuccessfully.observe(viewLifecycleOwner, EventObserver {
             if (it){
@@ -92,11 +94,22 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
     }
 
     override fun showError(error: Result.Error) {
-        super.showError(error)
         when(error.exception.tag){
             Services.EndPoints.START_ORDER -> {
-                Toast.makeText(requireContext(), error.exception.extra?.get("order_id").toString(), Toast.LENGTH_SHORT).show()
+                try {
+                    val orderId = error.exception.extra?.get("order_id").toString().toInt()
+                    val snackBar = Snackbar
+                        .make(detailsContainerLayOut, error.exception.errorMessage.toString(), Snackbar.LENGTH_LONG)
+                        .setAction(R.string.view){
+                            viewModel.getOrderProducts(orderId)
+                        }
+                    snackBar.show()
+                }catch (e:Exception){
+                    super.showError(error)
+                    Timber.e(e)
+                }
             }
+            else -> super.showError(error)
         }
     }
 }

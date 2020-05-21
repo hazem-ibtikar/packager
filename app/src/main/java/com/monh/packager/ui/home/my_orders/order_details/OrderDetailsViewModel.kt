@@ -14,11 +14,13 @@ class OrderDetailsViewModel @Inject constructor(
     private val ordersRepository: OrdersRepository
 ): BaseViewModel() {
 
+    var selectedOrderId = 0
     val orderProductsLiveData : MutableLiveData<List<Product>> = MutableLiveData()
     val orderLiveData:MutableLiveData<Order> = MutableLiveData()
     val startOrderSuccessfully:MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     fun getOrderProducts(orderId:Int){
+        selectedOrderId = orderId
         wrapBlockingOperation {
             handleResult(productsRepository.getOrderProducts(orderId)){
                 orderProductsLiveData.postValue(it.data.products)
@@ -27,9 +29,9 @@ class OrderDetailsViewModel @Inject constructor(
         }
     }
 
-    fun startNewOrder(orderId:Int){
+    fun startNewOrder(){
         wrapBlockingOperation {
-            handleResult(ordersRepository.startNewOrder(orderId)){
+            handleResult(ordersRepository.startNewOrder(selectedOrderId)){
                 startOrderSuccessfully.postValue(Event(true))
             }
         }
