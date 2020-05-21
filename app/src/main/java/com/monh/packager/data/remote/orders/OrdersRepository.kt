@@ -6,6 +6,7 @@ import com.monh.packager.data.remote.products.StartOrderResponse
 import com.monh.packager.utils.network.ApplicationException
 import com.monh.packager.utils.network.ErrorType
 import com.monh.packager.utils.network.Result
+import com.monh.packager.utils.network.Services
 import javax.inject.Inject
 
 class OrdersRepository @Inject constructor(
@@ -27,7 +28,7 @@ class OrdersRepository @Inject constructor(
 
 
     suspend fun startNewOrder(orderId:Int):Result<StartOrderResponse>{
-        return safeApiCall { ordersService.startNewOrder(StartOrderRequest(orderId)) }
+        return safeApiCall(tag = Services.EndPoints.START_ORDER) { ordersService.startNewOrder(StartOrderRequest(orderId)) }
             .let { result ->
                 when (result) {
                     is Result.Success -> {

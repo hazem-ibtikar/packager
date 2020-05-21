@@ -1,7 +1,6 @@
 package com.monh.packager.base
 
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
 import com.monh.packager.R
@@ -11,10 +10,8 @@ import com.monh.packager.utils.network.ApplicationException
 import com.monh.packager.utils.network.BaseResponse
 import com.monh.packager.utils.network.ErrorType
 import com.monh.packager.utils.network.Result
-import com.orhanobut.logger.Logger.json
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
 import retrofit2.Response
 import timber.log.Timber
 import javax.inject.Inject
@@ -84,22 +81,33 @@ open class BaseRepository() {
                 )
             )
             else -> Result.Error(
-                ApplicationException(
-                    /*extra = getErrorExtra(response),*/
-                    type = ErrorType.Network.Unexpected,
-                    errorMessage = getErrorMessage(response),
-                    tag = tag
-
-                )
+                getApplicationException(response, tag)
             )
         }
     }
 
-    private fun <T> getErrorExtra(response: Response<T>): JsonObject? {
+    private fun <T> getApplicationException(response: Response<T>, tag:String):ApplicationException{
+        val errorObject =  try {
+            val jsonObj = JsonParser().parse(response.errorBody()?.string()).asJsonObject
+            jsonObj["error"]
+        } catch (e: Exception){
+            null
+        }
+        //.asJsonObject["extra"].asJsonObject["order_id"].toString()
+        return ApplicationException(
+            extra = errorObject?.asJsonObject?.get("extra")?.asJsonObject,
+            type = ErrorType.Network.Unexpected,
+            errorMessage = errorObject?.asJsonObject?.get("message")?.toString()?.replace('"',' ', true),
+            tag = tag
+
+        )
+    }
+
+    private fun <T> getErrorExtra(response: Response<T>): String? {
         //Create json object from string
         return try {
             val jsonObj = JsonParser().parse(response.errorBody()?.string()).asJsonObject
-            jsonObj["error"].asJsonObject["extra"].asJsonObject
+            jsonObj["error"].asJsonObject["extra"].asJsonObject["order_id"].toString()
         } catch (e: Exception){
             null
         }

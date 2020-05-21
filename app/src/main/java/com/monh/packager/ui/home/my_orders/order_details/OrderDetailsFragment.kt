@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,8 @@ import com.monh.packager.base.BaseFragment
 import com.monh.packager.databinding.OrderDetailsFragmentBinding
 import com.monh.packager.ui.home.my_orders.order_preparation.OrderPreparationFragmentArgs
 import com.monh.packager.utils.EventObserver
+import com.monh.packager.utils.network.Result
+import com.monh.packager.utils.network.Services
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.order_details_fragment.*
 
@@ -88,4 +91,12 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
         activity?.toolbar?.title = ""
     }
 
+    override fun showError(error: Result.Error) {
+        super.showError(error)
+        when(error.exception.tag){
+            Services.EndPoints.START_ORDER -> {
+                Toast.makeText(requireContext(), error.exception.extra?.get("order_id").toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }
