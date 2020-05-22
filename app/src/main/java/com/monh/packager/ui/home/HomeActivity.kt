@@ -37,6 +37,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         handleOrdersStatistics()
         viewModel.getStatusOnline()
         handleChangeStatus()
+        checkIfFirebaseNotification(intent)
     }
 
     override fun onNewIntent(intent: Intent?) {

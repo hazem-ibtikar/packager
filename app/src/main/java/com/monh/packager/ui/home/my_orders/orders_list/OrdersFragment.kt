@@ -48,9 +48,9 @@ class OrdersFragment : BaseFragment<OrdersViewModel>() {
         super.onActivityCreated(savedInstanceState)
         arguments?.getInt(ORDER_TYPE).also {
             when(it){
-                ORDER_URGENT -> viewModel.getOrders(URGENT)
-                ORDER_OPEN -> viewModel.getOrders(OPEN)
-                else -> viewModel.getOrders(CLOSED)
+                ORDER_URGENT -> viewModel.getOrders(URGENT, isReset = true)
+                ORDER_OPEN -> viewModel.getOrders(OPEN, isReset = true)
+                else -> viewModel.getOrders(CLOSED, isReset = true)
             }
         }
         addLoadMoreListener()

@@ -35,13 +35,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         if (remoteMessage == null) return
-        val message: Map<*, *> = remoteMessage.data
         val resultIntent = Intent(applicationContext, HomeActivity::class.java)
         resultIntent.putExtra(ORDER_ID, remoteMessage.data["orderId"]?.toInt())
         resultIntent.action = Intent.ACTION_MAIN;
         resultIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        val sharedPreferencesUtils =
-            SharedPreferencesUtils(applicationContext)
         notificationUtils.showNotificationMessage(
             resources.getString(R.string.app_name),
             remoteMessage.notification?.body?:remoteMessage.data["message"],

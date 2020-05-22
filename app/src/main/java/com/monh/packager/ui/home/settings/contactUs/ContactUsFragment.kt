@@ -63,7 +63,7 @@ class ContactUsFragment : BaseFragment<ContactUsViewModel>() {
             val gmmIntentUri = Uri.parse("geo:${viewModel.contactUsLiveData.value?.contacts?.latitude?.toFloat()},${viewModel.contactUsLiveData.value?.contacts?.longitude?.toFloat()}")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
-            
+
             if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
                 startActivity(mapIntent)
             }
