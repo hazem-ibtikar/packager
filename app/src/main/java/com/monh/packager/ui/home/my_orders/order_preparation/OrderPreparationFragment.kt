@@ -77,6 +77,7 @@ class OrderPreparationFragment : BaseFragment<OrderPreparationViewModel>() {
     }
 
     private fun startOrdersPage(){
+        homeViewModel.getOrdersStatistics()
         findNavController().popBackStack(R.id.orderDetailsFragment, true)
     }
     private fun getPermissionAndSavePdf(base64Pdf:String) {

@@ -61,6 +61,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
 
         packagerStatus.setOnCheckedChangeListener { _, isChecked ->
             viewModel.changeStatus(isChecked)
+            status_online_header.text = if (isChecked) getString(R.string.status_online) else getString(R.string.status_offline)
         }
 
         viewModel.userMessage.observe(this, EventObserver{
@@ -150,6 +151,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
             }
         }
     }
+
 }
 
 const val ORDER_ID = "OrderId"

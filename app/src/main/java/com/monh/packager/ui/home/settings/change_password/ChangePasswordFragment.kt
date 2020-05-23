@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
+import com.monh.packager.utils.network.Result
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.change_password_fragment.*
 
@@ -83,5 +84,9 @@ class ChangePasswordFragment : BaseFragment<ChangePasswordViewModel>() {
 
     private fun setUpFragmentTitle() {
         activity?.toolbar?.title = context?.getString(R.string.change_password)
+    }
+
+    override fun logout() {
+
     }
 }

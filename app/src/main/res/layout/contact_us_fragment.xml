@@ -114,6 +114,7 @@
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/contactsGroup"
+        app:constraint_referenced_ids="addressIcon, mailIcon, phoneIcon, address, mail, phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>
