@@ -19,6 +19,9 @@ fun Date.format(pattern: String, locale: Locale = Locale.ENGLISH): String? {
 
 fun String.toDateFormatted(oldPattern: String, newPattern: String): String {
     val sdf = SimpleDateFormat(oldPattern, Locale.ENGLISH)
+    sdf.timeZone = TimeZone.getTimeZone("UTC")
     val date = sdf.parse(this)
-    return SimpleDateFormat(newPattern, Locale.getDefault()).format(date)
+    val localizedDateFormat = SimpleDateFormat(newPattern, Locale.getDefault())
+    localizedDateFormat.timeZone = TimeZone.getDefault()
+    return localizedDateFormat.format(date)
 }

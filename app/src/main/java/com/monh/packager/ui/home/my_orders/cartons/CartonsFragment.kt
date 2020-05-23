@@ -46,7 +46,9 @@ class CartonsFragment : BaseBottomSheetDialogFragment<OrderPreparationViewModel>
 
     private fun handleAddRemoveQuantity() {
         addItem.setOnClickListener {
-            quantity.text = (++numberOfCartons).toString()
+            if (numberOfCartons < 100){
+                quantity.text = (++numberOfCartons).toString()
+            }
         }
 
         removeItem.setOnClickListener {
