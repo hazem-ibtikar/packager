@@ -46,21 +46,24 @@
         android:id="@+id/countryCode"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:text="+966"
+        tools:text="+966"
+        android:visibility="gone"
         android:textColor="@color/darkjunglegreen"
         android:maxLines="1"
         app:layout_constraintStart_toStartOf="@+id/startGuideline"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
+        android:id="@+id/phoneET"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="548372923"
+        android:layout_marginStart="0dp"
+        tools:text="548372923"
+        android:inputType="phone"
         android:textColor="@color/darkjunglegreen"
         android:maxLines="1"
-        app:layout_constraintBottom_toBottomOf="@+id/countryCode"
-        app:layout_constraintStart_toEndOf="@+id/countryCode" />
+        app:layout_constraintStart_toStartOf="@+id/startGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/arabicFullNameHeader"
@@ -69,39 +72,19 @@
         android:layout_marginTop="20dp"
         android:text="@string/arabic_full_number"
         app:layout_constraintStart_toStartOf="@+id/startGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/countryCode" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneET" />
 
     <EditText
-        android:id="@+id/arabic_name_edit_text"
+        android:id="@+id/nameET"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="محمد عبداللة"
+        tools:text="محمد عبداللة"
         android:maxLines="1"
+        android:textDirection="locale"
         android:textColor="@color/darkjunglegreen"
-        android:textAlignment="textEnd"
         app:layout_constraintEnd_toStartOf="@+id/endGuideline"
         app:layout_constraintStart_toStartOf="@+id/startGuideline"
         app:layout_constraintTop_toBottomOf="@+id/arabicFullNameHeader" />
-
-    <TextView
-        android:id="@+id/englishFullNameHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/english_full_name"
-        app:layout_constraintStart_toStartOf="@+id/startGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/arabic_name_edit_text" />
-
-    <EditText
-        android:id="@+id/english_name_edit_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Mohamed Abdallah"
-        android:maxLines="1"
-        android:textColor="@color/darkjunglegreen"
-        app:layout_constraintEnd_toStartOf="@+id/endGuideline"
-        app:layout_constraintStart_toStartOf="@+id/startGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/englishFullNameHeader" />
 
     <TextView
         android:id="@+id/emailHeader"
@@ -110,14 +93,16 @@
         android:layout_marginTop="20dp"
         android:text="@string/email"
         app:layout_constraintStart_toStartOf="@+id/startGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/english_name_edit_text" />
+        app:layout_constraintTop_toBottomOf="@+id/nameET" />
 
-    <EditText
-        android:id="@+id/email_edit_text"
+    <TextView
+        android:id="@+id/emailET"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Mohamed Abdallah@haseelapp.com"
+        tools:text="Mohamed Abdallah@haseelapp.com"
         android:maxLines="1"
+        android:inputType="none"
+        android:textDirection="ltr"
         android:textColor="@color/darkjunglegreen"
         app:layout_constraintEnd_toStartOf="@+id/endGuideline"
         app:layout_constraintStart_toStartOf="@+id/startGuideline"

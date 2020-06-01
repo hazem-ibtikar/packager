@@ -8,6 +8,8 @@ object Services {
         const val CONTACT_US          = "packager/contactUs"
         const val USER_INFO           = "packager/orders/stats"
         const val CHANGE_PASSWORD     = "packager/changePassword"
+        const val UPDATE_PACKAGER     = "packager/update"
+        const val UPLOAD_IMAGE        = "packager/uploadImg"
         const val TERMS_CONDITIONS    = "packager/terms"
         const val USER_TOKEN          = "packager/device"
         const val ORDERS              = "packager/orders"

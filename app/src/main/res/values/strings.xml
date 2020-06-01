@@ -46,7 +46,7 @@
     <string name="contact_us">Contact Us</string>
     <string name="language">Language</string>
     <string name="phone_number">Phone Number</string>
-    <string name="arabic_full_number">Arabic Full Name</string>
+    <string name="arabic_full_number">Full Name</string>
     <string name="english_full_name">English Full Name</string>
     <string name="email">Email</string>
     <string name="save">Save</string>
@@ -90,7 +90,7 @@
     <string name="main_error_try_again">Try again</string>
     <string name="password_repasword_match_validation">Password and rePassword must match</string>
     <string name="password_changed_successfully">Password has changed successfully</string>
-    <string name="login_failed">login failed</string>
+    <string name="login_failed">Email or password is not correct</string>
     <string name="no_orders">There is no orders now</string>
     <string name="no_notifications">There is no notifications now</string>
     <string name="permissions_rejection">we need to download pdf to be able to print it</string>
@@ -102,5 +102,6 @@
     <string name="status_off_message">Change your status to online will allow you to receive new requests and increase your profits.</string>
     <string name="view">View</string>
     <string name="no_contacts_msg">No contacts are found</string>
-    <string name="status_offline">status (Offline)</string>
+    <string name="status_offline">Status (Offline)</string>
+    <string name="phone_validation">please enter valid saudi arabia number</string>
 </resources>

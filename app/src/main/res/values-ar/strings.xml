@@ -42,7 +42,7 @@
     <string name="contact_us">الاتصال بنا</string>
     <string name="language">اللغة</string>
     <string name="phone_number">رقم الهاتف</string>
-    <string name="arabic_full_number">الاسم الكامل باللغة العربية</string>
+    <string name="arabic_full_number">الاسم الكامل</string>
     <string name="english_full_name">الاسم الكامل باللفة الانجليزية</string>
     <string name="email">البريد الالكتروني</string>
     <string name="save">حفظ</string>
@@ -84,7 +84,7 @@
     <string name="repeat_password">تأكيد رقم السر الجديد</string>
     <string name="password_repasword_match_validation">الرقم السري لا يشبه تأكيد الرقم السري</string>
     <string name="password_changed_successfully">تم تغيير كلمة السر بنجاح</string>
-    <string name="login_failed">فشل تسجيل الدخول</string>
+    <string name="login_failed">البريد الاكتروني او كلمة المرور غير صحيحة</string>
     <string name="no_orders">لايوجد طلبات متاحة</string>
     <string name="no_notifications">لا يوجد تنبيهات</string>
     <string name="permissions_rejection">we need to download pdf to be able to print it</string>
@@ -96,5 +96,6 @@
     <string name="status_off_message">تغيير حالتك الى متاح يمكنك من استقبال الطلبات وبالتالي زيادة الارباح الخاصة بك</string>
     <string name="view">فتح</string>
     <string name="no_contacts_msg">لايوجد معلومات متاحة</string>
-    <string name="status_offline">status(offline)</string>
+    <string name="status_offline">[الحالة - غير متصل]</string>
+    <string name="phone_validation">من فضلك قم بادخال رقم سعودي صحيح</string>
 </resources>

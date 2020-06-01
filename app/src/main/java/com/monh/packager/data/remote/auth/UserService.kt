@@ -7,9 +7,12 @@ import com.monh.packager.utils.network.Services.EndPoints.CHANGE_STATUS
 import com.monh.packager.utils.network.Services.EndPoints.LOG_IN
 import com.monh.packager.utils.network.Services.EndPoints.LOG_OUT
 import com.monh.packager.utils.network.Services.EndPoints.RESET_PASSWORD
+import com.monh.packager.utils.network.Services.EndPoints.UPDATE_PACKAGER
+import com.monh.packager.utils.network.Services.EndPoints.UPLOAD_IMAGE
 import com.monh.packager.utils.network.Services.EndPoints.USER_INFO
 import com.monh.packager.utils.network.Services.EndPoints.USER_TOKEN
 import com.monh.packager.utils.network.Services.Headers.UUID
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -34,4 +37,11 @@ interface UserService {
 
     @POST(CHANGE_PASSWORD)
     suspend fun changePassword(@Body changePasswordRequest: ChangePasswordRequest):Response<BaseResponse<InformativeResponse>>
+
+    @PUT(UPDATE_PACKAGER)
+    suspend fun updatePackager(@Body packager: Packager):Response<BaseResponse<InformativeResponse>>
+
+    @Multipart
+    @POST(UPLOAD_IMAGE)
+    suspend fun uploadImage(@Part image: MultipartBody.Part):Response<BaseResponse<UploadImageResponse>>
 }

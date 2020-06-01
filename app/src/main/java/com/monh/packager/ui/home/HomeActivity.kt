@@ -31,13 +31,17 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
         setContentView(R.layout.activity_home)
         handleToolBar()
         setUpDrawerIconsWithNavigation()
-        viewModel.getUserInfo()
+        getUserData()
         handleUserInfo()
         viewModel.getOrdersStatistics()
         handleOrdersStatistics()
         viewModel.getStatusOnline()
         handleChangeStatus()
         checkIfFirebaseNotification(intent)
+    }
+
+    fun getUserData() {
+        viewModel.getUserInfo()
     }
 
     override fun onNewIntent(intent: Intent?) {

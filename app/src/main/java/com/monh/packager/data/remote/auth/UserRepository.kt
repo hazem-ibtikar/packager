@@ -7,6 +7,8 @@ import com.monh.packager.utils.network.ApplicationException
 import com.monh.packager.utils.network.ErrorType
 import com.monh.packager.utils.network.Result
 import com.monh.packager.utils.network.Services
+import okhttp3.MultipartBody
+import retrofit2.http.Multipart
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -105,6 +107,31 @@ class UserRepository @Inject constructor(
             }
     }
 
+    suspend fun uploadImage(image: MultipartBody.Part):Result<UploadImageResponse>{
+        return safeApiCall { userService.uploadImage(image) }
+            .let { result ->
+                when (result) {
+                    is Result.Success -> {
+                        Result.Success(result.data.data!!)
+                    }
+                    is Result.Error -> result
+                    else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))
+                }
+            }
+    }
+
+    suspend fun updateProfile(packager: Packager):Result<InformativeResponse>{
+        return safeApiCall { userService.updatePackager(packager) }
+            .let { result ->
+                when (result) {
+                    is Result.Success -> {
+                        Result.Success(result.data.data!!)
+                    }
+                    is Result.Error -> result
+                    else -> Result.Error(ApplicationException(type = ErrorType.Unexpected))
+                }
+            }
+    }
     fun isUserLoggedIn():Boolean{
         return sharedPreferencesUtils.userLoginResponse != null
     }
@@ -117,6 +144,11 @@ class UserRepository @Inject constructor(
         sharedPreferencesUtils.userLoginResponse = user
     }
 
+    fun updateUser(newPackager:Packager){
+        val oldUser = sharedPreferencesUtils.userLoginResponse
+        oldUser?.packager = newPackager
+        sharedPreferencesUtils.userLoginResponse = oldUser
+    }
     fun getStatusOnline():Boolean{
         return sharedPreferencesUtils.statusOnline
     }

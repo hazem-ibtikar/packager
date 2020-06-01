@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
+import com.monh.packager.ui.home.HomeActivity
+import com.monh.packager.utils.EventObserver
 import com.opensooq.supernova.gligar.GligarPicker
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.edit_profile_fragment.*
@@ -32,6 +34,42 @@ class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
         setUpFragmentTitle()
         handleToolBar()
         handleImageSelection()
+        handleSaveProfile()
+        initUiWithUserData()
+    }
+
+    private fun initUiWithUserData() {
+        viewModel.getUserData()
+        viewModel.userLiveDate.observe(viewLifecycleOwner, Observer {
+            setUserImage(it.imageUrl?:"")
+            phoneET.setText(it.phone)
+            nameET.setText(it.name)
+            emailET.text = it.email
+        })
+    }
+
+    private fun handleSaveProfile() {
+        save.setOnClickListener {
+            if (phoneET.text.toString().isBlank()){
+                showErrorMsg(R.string.empty_validation)
+                return@setOnClickListener
+            }
+            if (!phoneET.text.toString().matches(Regex("^(009665|9665|\\+9665|05|5)([503649187])([0-9]{7})\$"))){
+                showErrorMsg(R.string.phone_validation)
+                return@setOnClickListener
+            }
+            if (nameET.text.toString().isBlank()){
+                showErrorMsg(R.string.empty_validation)
+                return@setOnClickListener
+            }
+            viewModel.editProfile(nameET.text.toString(), phoneET.text.toString())
+        }
+        viewModel.updatedSuccessfully.observe(viewLifecycleOwner, EventObserver{
+            if (it){
+                (activity as HomeActivity).getUserData()
+                activity?.onBackPressed()
+            }
+        })
     }
 
     private fun handleImageSelection() {
@@ -41,6 +79,7 @@ class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
                 .withFragment(this)
                 .limit(1)
                 .disableCamera(true)
+                .cameraDirect(false)
                 .show()
         }
     }
@@ -61,11 +100,16 @@ class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
         when(requestCode){
             PICKER_REQUEST_CODE -> {
                 val selectedImagePath = data?.extras?.getStringArray(GligarPicker.IMAGES_RESULT)?.get(0)
+                viewModel.selectedImagePath = selectedImagePath?:""
                 if (selectedImagePath?.isNotEmpty() == true){
-                    Glide.with(this).load(selectedImagePath).into(profile_image)
+                    setUserImage(selectedImagePath)
                 }
             }
         }
+    }
+
+    private fun setUserImage(imagePath:String){
+        Glide.with(this).load(imagePath).into(profile_image)
     }
 }
 const val PICKER_REQUEST_CODE = 123

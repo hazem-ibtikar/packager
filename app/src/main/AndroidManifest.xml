@@ -55,7 +55,9 @@
             android:name=".utils.CachedFileProvider"
             android:authorities="com.monh.packager.provider"
             android:grantUriPermissions="true"
-            android:exported="false" />
+            android:exported="false">
+        </provider>
+
     </application>
 
 </manifest>

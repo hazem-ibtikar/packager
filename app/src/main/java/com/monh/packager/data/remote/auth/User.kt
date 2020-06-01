@@ -9,7 +9,7 @@ data class LoginResponse(
     @SerializedName("token")
     val token: String?,
     @SerializedName("packager")
-    val packager: Packager?
+    var packager: Packager?
 )
 data class Packager(
     @SerializedName("id")
@@ -17,13 +17,13 @@ data class Packager(
     @SerializedName("seller_id")
     val sellerId: Int,
     @SerializedName("name")
-    val name: String?,
+    var name: String?,
     @SerializedName("email")
     val email: String?,
     @SerializedName("phone")
-    val phone: String?,
+    var phone: String?,
     @SerializedName("image_url")
-    val imageUrl: String?,
+    var imageUrl: String?,
     @SerializedName("password")
     val password: String?,
     @SerializedName("status")
