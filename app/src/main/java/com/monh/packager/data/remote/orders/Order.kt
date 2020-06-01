@@ -23,8 +23,8 @@ data class Order(
     val statusName: String?,
     @SerializedName("deliveryTime")
     val orderDate: String?,
-    @SerializedName("status_id")
-    val statusId: String?,
+    @SerializedName("statusCode")
+    val statusId: Int?,
     @SerializedName("isClosed")
     val isClosed:Boolean? = false,
     @SerializedName("items")
@@ -38,7 +38,7 @@ data class Order(
     }
 
     fun getTextColor():Int{
-        return when(statusName){
+        return when(statusId){
             PACKAGING -> R.color.mikadoyellow
             else -> R.color.mikadoyellow
         }
@@ -48,8 +48,16 @@ data class Order(
         return orderDate?.toDateFormatted(oldPattern = YEAR_MONTH_DAY_T_TIME, newPattern = DAY_MONTH_YEAR)?:""
     }
 }
-
-const val PENDING    = "pending"
-const val PACKAGING  = "Packaging"
-const val PACKAGED   = "packaged"
-const val UNASSIGNED = "unassigned"
+const val ASSIGNED      = 0
+const val PACKAGING     = 1
+const val SUCCESSFUL    = 2
+const val FAILED        = 3
+const val IN_PROGRESS   = 4
+const val PARTIAL       = 5
+const val PENDING       = 6
+const val ACCEPTED      = 7
+const val DECLINE       = 8
+const val CANCEL        = 9
+const val DELETED       = 10
+const val IGNORED       = 11
+const val SEEN_BY_AGENT = 12

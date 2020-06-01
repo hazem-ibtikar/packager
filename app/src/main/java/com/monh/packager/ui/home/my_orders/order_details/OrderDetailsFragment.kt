@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
+import com.monh.packager.data.remote.orders.*
 import com.monh.packager.databinding.OrderDetailsFragmentBinding
 import com.monh.packager.ui.home.my_orders.order_preparation.OrderPreparationFragmentArgs
 import com.monh.packager.utils.EventObserver
@@ -61,7 +62,7 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
                 location_text.text = it.orderLocation
                 numberOfItems.text = String.format(getString(R.string.order_quantity), it.numberOfItems)
                 price.text = String.format(getString(R.string.order_price), it.amount)
-                if (it.isClosed == true){
+                if (it.statusId == FAILED || it.statusId == DECLINE || it.statusId == CANCEL || it.statusId == DELETED|| it.statusId == IGNORED || it.statusId == SUCCESSFUL || it.statusId == IN_PROGRESS){
                     startPrepareBtn.visibility = View.GONE
                 }
             }
