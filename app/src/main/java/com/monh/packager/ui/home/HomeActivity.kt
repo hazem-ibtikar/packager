@@ -61,6 +61,7 @@ class HomeActivity : BaseActivity<HomeViewModel>() {
     private fun handleChangeStatus() {
         viewModel.statusOnline.observe(this, Observer {
             packagerStatus.isChecked = it
+            status_online_header.text = if (it) getString(R.string.status_online) else getString(R.string.status_offline)
         })
 
         packagerStatus.setOnCheckedChangeListener { _, isChecked ->
