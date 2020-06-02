@@ -41,8 +41,8 @@
     <string name="about">عن مونة</string>
     <string name="contact_us">الاتصال بنا</string>
     <string name="language">اللغة</string>
-    <string name="phone_number">رقم الهاتف</string>
-    <string name="arabic_full_number">الاسم الكامل</string>
+    <string name="phone_number">رقم الهاتف <font color='#FF0000'>*</font></string>
+    <string name="arabic_full_number">الاسم الكامل <font color='#FF0000'>*</font></string>
     <string name="english_full_name">الاسم الكامل باللفة الانجليزية</string>
     <string name="email">البريد الالكتروني</string>
     <string name="save">حفظ</string>
@@ -79,9 +79,9 @@
     <string name="log_out_yes">نعم</string>
     <string name="log_out_no">ليس الأن</string>
     <string name="choose_language">أختر لغة</string>
-    <string name="old_password">رقم السر القديم</string>
-    <string name="new_password">رقم السر الجديد</string>
-    <string name="repeat_password">تأكيد رقم السر الجديد</string>
+    <string name="old_password">رقم السر القديم <font color='#FF0000'>*</font></string>
+    <string name="new_password">رقم السر الجديد <font color='#FF0000'>*</font></string>
+    <string name="repeat_password">تأكيد رقم السر الجديد <font color='#FF0000'>*</font></string>
     <string name="password_repasword_match_validation">الرقم السري لا يشبه تأكيد الرقم السري</string>
     <string name="password_changed_successfully">تم تغيير كلمة السر بنجاح</string>
     <string name="login_failed">البريد الاكتروني او كلمة المرور غير صحيحة</string>

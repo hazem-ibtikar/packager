@@ -45,8 +45,8 @@
     <string name="about">About Monh</string>
     <string name="contact_us">Contact Us</string>
     <string name="language">Language</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="arabic_full_number">Full Name</string>
+    <string name="phone_number">Phone Number <font color='#FF0000'>*</font></string>
+    <string name="arabic_full_number">Full Name <font color='#FF0000'>*</font></string>
     <string name="english_full_name">English Full Name</string>
     <string name="email">Email</string>
     <string name="save">Save</string>
@@ -84,9 +84,9 @@
     <string name="choose_language">Choose Language</string>
     <string name="english" translatable="false">English</string>
     <string name="arabic" translatable="false">عربي</string>
-    <string name="old_password">Old Password</string>
-    <string name="new_password">New Password</string>
-    <string name="repeat_password">Repeat New Password</string>
+    <string name="old_password">Old Password <font color='#FF0000'>*</font></string>
+    <string name="new_password">New Password <font color='#FF0000'>*</font></string>
+    <string name="repeat_password">Repeat New Password <font color='#FF0000'>*</font></string>
     <string name="main_error_try_again">Try again</string>
     <string name="password_repasword_match_validation">Password and rePassword must match</string>
     <string name="password_changed_successfully">Password has changed successfully</string>
