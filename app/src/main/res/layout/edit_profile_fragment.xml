@@ -79,6 +79,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="محمد عبداللة"
+        android:inputType="textPersonName"
+        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ي و ه ن م ل ك ق ف غ ع ظ ط  ئ  ء ض ص ش س ز ر ذ د خ ح ج ث ت ب ة ْ ؤ ا"
         android:maxLines="1"
         android:textDirection="locale"
         android:textColor="@color/darkjunglegreen"
