@@ -49,5 +49,6 @@ class MyOrdersContainerFragment : BaseFragment<MyOrdersContainerViewModel>() {
                 else -> context?.getString(R.string.closed)
             }
         }.attach()
+
     }
 }
