@@ -15,6 +15,7 @@ import com.monh.packager.utils.EventObserver
 import com.opensooq.supernova.gligar.GligarPicker
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.edit_profile_fragment.*
+import java.io.File
 
 class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
 
@@ -100,9 +101,13 @@ class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
         when(requestCode){
             PICKER_REQUEST_CODE -> {
                 val selectedImagePath = data?.extras?.getStringArray(GligarPicker.IMAGES_RESULT)?.get(0)
-                viewModel.selectedImagePath = selectedImagePath?:""
                 if (selectedImagePath?.isNotEmpty() == true){
-                    setUserImage(selectedImagePath)
+                    if ((File(selectedImagePath).length()/1024) > MAX_IMAGE_SIZE){
+                        showErrorMsg(R.string.image_size_validation)
+                    }else {
+                        viewModel.selectedImagePath = selectedImagePath
+                        setUserImage(selectedImagePath)
+                    }
                 }
             }
         }
@@ -113,3 +118,4 @@ class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
     }
 }
 const val PICKER_REQUEST_CODE = 123
+const val MAX_IMAGE_SIZE = 2048

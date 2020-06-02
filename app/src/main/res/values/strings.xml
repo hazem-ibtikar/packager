@@ -104,4 +104,5 @@
     <string name="no_contacts_msg">No contacts are found</string>
     <string name="status_offline">Status (Offline)</string>
     <string name="phone_validation">please enter valid saudi arabia number</string>
+    <string name="image_size_validation">Max size of image is 2 MB</string>
 </resources>
