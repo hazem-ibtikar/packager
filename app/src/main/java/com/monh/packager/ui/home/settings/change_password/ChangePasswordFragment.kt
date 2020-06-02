@@ -55,19 +55,23 @@ class ChangePasswordFragment : BaseFragment<ChangePasswordViewModel>() {
 
     private fun handleSaveBtn() {
         saveBtn.setOnClickListener {
+            var isValid = true
             if (oldPassword.text.toString().isBlank()){
                 oldPassword.error = context?.getString(R.string.password_empty_validation)
-                return@setOnClickListener
+                isValid = false
             }
             if (newPassword.text.toString().isBlank()){
                 newPassword.error = context?.getString(R.string.password_empty_validation)
-                return@setOnClickListener
+                isValid = false
             }
             if (rePassword.text.toString().isBlank()){
                 rePassword.error = context?.getString(R.string.password_empty_validation)
-                return@setOnClickListener
+                isValid = false
             } else if (newPassword.text.toString() != rePassword.text.toString()){
                 rePassword.error = context?.getString(R.string.password_repasword_match_validation)
+                isValid = false
+            }
+            if (!isValid){
                 return@setOnClickListener
             }
             viewModel.changePassword(oldPassword.text.toString(), newPassword.text.toString())
