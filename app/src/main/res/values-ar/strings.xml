@@ -64,7 +64,7 @@
     <string name="notFound">غير موجود</string>
     <string name="pcs">قطعة</string>
     <string name="qr_un_valid">البار كود لا يتوافق مع البار كود الخاص بالمنتج</string>
-    <string name="no_more_items">لقد أذلت كل المنتجات</string>
+    <string name="no_more_items">لقد أزلت كل المنتجات</string>
     <string name="all_items_added">لقد أضفت كل المنتجات</string>
     <string name="add_product_first">برجاء اضافة منتج أولا</string>
     <string name="enter_number_of_cartons">برجاء ادخال عدد الكراتين</string>
