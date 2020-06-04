@@ -12,10 +12,12 @@ import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
 import com.monh.packager.ui.home.HomeActivity
 import com.monh.packager.utils.EventObserver
+import com.monh.packager.utils.network.Result
 import com.opensooq.supernova.gligar.GligarPicker
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.edit_profile_fragment.*
 import java.io.File
+import java.net.SocketTimeoutException
 
 class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
 
@@ -115,6 +117,14 @@ class EditProfileFragment : BaseFragment<EditProfileViewModel>() {
 
     private fun setUserImage(imagePath:String){
         Glide.with(this).load(imagePath).into(profile_image)
+    }
+
+    override fun showError(error: Result.Error) {
+        if (error.exception.throwable is SocketTimeoutException){
+            showErrorMsg(R.string.upload_image_failed)
+        }else{
+            super.showError(error)
+        }
     }
 }
 const val PICKER_REQUEST_CODE = 123

@@ -41,9 +41,9 @@ class NetworkModule {
         else logging.level = HttpLoggingInterceptor.Level.NONE
 
         val okHttpClientBuilder = OkHttpClient.Builder()
-            .readTimeout(20, TimeUnit.SECONDS)
-            .writeTimeout(20, TimeUnit.SECONDS)
-            .connectTimeout(20, TimeUnit.SECONDS)
+            .readTimeout(MAX_TIME_OUT, TimeUnit.SECONDS)
+            .writeTimeout(MAX_TIME_OUT, TimeUnit.SECONDS)
+            .connectTimeout(MAX_TIME_OUT, TimeUnit.SECONDS)
             .addInterceptor(logging)
             .addInterceptor(headerInterceptor)
 
@@ -77,3 +77,4 @@ class NetworkModule {
     fun provideProductsService(retrofit: Retrofit): ProductsService = retrofit.create(ProductsService::class.java)
 
 }
+const val MAX_TIME_OUT = 30L

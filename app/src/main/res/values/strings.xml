@@ -105,4 +105,5 @@
     <string name="status_offline">Status (Offline)</string>
     <string name="phone_validation">please enter valid saudi arabia number</string>
     <string name="image_size_validation">Max size of image is 2 MB</string>
+    <string name="upload_image_failed">Failed to upload the image</string>
 </resources>
