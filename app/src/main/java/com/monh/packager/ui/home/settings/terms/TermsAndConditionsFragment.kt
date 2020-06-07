@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
 import com.monh.packager.utils.network.Result
