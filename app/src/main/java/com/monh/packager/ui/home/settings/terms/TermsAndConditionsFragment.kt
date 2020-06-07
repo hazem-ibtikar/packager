@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 
 import com.monh.packager.R
 import com.monh.packager.base.BaseFragment
+import com.monh.packager.utils.network.Result
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.terms_and_conditions_fragment.*
 
@@ -50,6 +51,15 @@ class TermsAndConditionsFragment : BaseFragment<TermsAndConditionsViewModel>() {
                 termsWebView.loadData(it.terms?.templateData, "text/html", "UTF-8")
             }
         })
+    }
+
+    override fun showError(error: Result.Error) {
+        showNoContactsLayout()
+    }
+
+    private fun showNoContactsLayout() {
+        noContactsLayout.visibility = View.VISIBLE
+        termsWebView.visibility = View.GONE
     }
 
 }

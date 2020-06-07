@@ -100,4 +100,5 @@
     <string name="phone_validation">من فضلك قم بادخال رقم سعودي صحيح</string>
     <string name="image_size_validation">أقصي حجم للصورة ٢ ميجا</string>
     <string name="upload_image_failed">فشل تحميل الصورة</string>
+    <string name="no_terms_msg">لا يوجد شروط وأحكام</string>
 </resources>
