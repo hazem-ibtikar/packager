@@ -12,23 +12,26 @@ class OrdersViewModel@Inject constructor(private val ordersRepository: OrdersRep
     var isLastPage:MutableLiveData<Boolean> = MutableLiveData<Boolean>().default(true)
     var isLoading = false
     var page = FIRST_PAGE
-
+    var blockRefreshing = false
     fun getOrders(type:String, isReset:Boolean = false){
-        wrapBlockingOperation(showLoading = page == FIRST_PAGE) {
-            if (isReset){
-                page = FIRST_PAGE
-                ordersLiveData.value = arrayListOf()
-            }
-            handleResult(ordersRepository.getOrders(type, ++page)){
-                if (ordersLiveData.value == null){
-                    ordersLiveData.postValue(it.data.toMutableList())
-                }else{
-                    val oldOrders = ordersLiveData.value
-                    oldOrders?.addAll(it.data)
-                    ordersLiveData.postValue(oldOrders)
+        if(!blockRefreshing){
+            wrapBlockingOperation(showLoading = page == FIRST_PAGE) {
+                if (isReset){
+                    page = FIRST_PAGE
+                    ordersLiveData.value = arrayListOf()
                 }
-                isLoading = false
-                isLastPage.value = it.data.isEmpty()
+                handleResult(ordersRepository.getOrders(type, ++page)){
+                    blockRefreshing = false
+                    if (ordersLiveData.value == null){
+                        ordersLiveData.postValue(it.data.toMutableList())
+                    }else{
+                        val oldOrders = ordersLiveData.value
+                        oldOrders?.addAll(it.data)
+                        ordersLiveData.postValue(oldOrders)
+                    }
+                    isLoading = false
+                    isLastPage.value = it.data.isEmpty()
+                }
             }
         }
     }

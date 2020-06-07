@@ -17,23 +17,27 @@ class NotificationsViewModel @Inject constructor(
     var isLastPage: MutableLiveData<Boolean> = MutableLiveData<Boolean>().default(true)
     var isLoading = false
     var page = FIRST_PAGE
+    var blockRefreshing = false
     fun getNotifications(isReset:Boolean = false){
-        wrapBlockingOperation (showLoading = page == FIRST_PAGE){
-            if (isReset){
-                page = FIRST_PAGE
-                notificationsLiveData.value = arrayListOf()
-            }
-            handleResult(sellerRepository.getNotifications(++page)){
-
-                if (notificationsLiveData.value == null){
-                    notificationsLiveData.postValue(it.data.toMutableList())
-                }else{
-                    val oldNotifications = notificationsLiveData.value
-                    oldNotifications?.addAll(it.data)
-                    notificationsLiveData.postValue(oldNotifications)
+        if (!blockRefreshing){
+            blockRefreshing = true
+            wrapBlockingOperation (showLoading = page == FIRST_PAGE){
+                if (isReset){
+                    page = FIRST_PAGE
+                    notificationsLiveData.value = arrayListOf()
                 }
-                isLoading = false
-                isLastPage.value = it.data.isEmpty()
+                handleResult(sellerRepository.getNotifications(++page)){
+                    blockRefreshing = false
+                    if (notificationsLiveData.value == null){
+                        notificationsLiveData.postValue(it.data.toMutableList())
+                    }else{
+                        val oldNotifications = notificationsLiveData.value
+                        oldNotifications?.addAll(it.data)
+                        notificationsLiveData.postValue(oldNotifications)
+                    }
+                    isLoading = false
+                    isLastPage.value = it.data.isEmpty()
+                }
             }
         }
     }
