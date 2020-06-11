@@ -12,8 +12,8 @@ class OrdersPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)  {
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
-            0 -> OrdersFragment.newInstance(ORDER_URGENT)
-            1 -> OrdersFragment.newInstance(ORDER_OPEN)
+            0 -> OrdersFragment.newInstance(ORDER_OPEN)
+            1 -> OrdersFragment.newInstance(ORDER_URGENT)
             2 -> OrdersFragment.newInstance(ORDER_CLOSED)
             else -> Fragment()
         }

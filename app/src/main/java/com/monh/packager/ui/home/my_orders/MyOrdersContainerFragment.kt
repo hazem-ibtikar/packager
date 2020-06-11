@@ -39,13 +39,12 @@ class MyOrdersContainerFragment : BaseFragment<MyOrdersContainerViewModel>() {
             clipChildren = true
             adapter = ordersPagerAdapter
             setPageTransformer(MarginPageTransformer(100))
-            // select the open tab by default
-            currentItem = 1
+
         }
         TabLayoutMediator(ordersTabLayOut, ordersViewPager){ tab, position ->
             tab.text = when (position){
-                0 -> context?.getString(R.string.urgent)
-                1 -> context?.getString(R.string.open)
+                0 -> context?.getString(R.string.open)
+                1 -> context?.getString(R.string.urgent)
                 else -> context?.getString(R.string.closed)
             }
         }.attach()
