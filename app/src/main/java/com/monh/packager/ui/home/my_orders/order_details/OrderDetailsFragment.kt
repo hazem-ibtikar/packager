@@ -59,6 +59,10 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
                 chip2.text = it.statusName
                 chip2.setTextColor(requireContext().getColor(it.getTextColor()))
                 orderDate.text = String.format(getString(R.string.order_date_time), it.getOrderDateFormatted(), it.orderTime)
+                if (it.orderTime.isNullOrEmpty()){
+                    orderDate.visibility  = View.INVISIBLE
+                    clock_icon.visibility = View.INVISIBLE
+                }
                 location_text.text = it.orderLocation
                 numberOfItems.text = String.format(getString(R.string.order_quantity), it.numberOfItems)
                 price.text = String.format(getString(R.string.order_price), it.amount)

@@ -179,6 +179,7 @@
             <TextView
                 android:id="@+id/aboutMonhHeader"
                 android:layout_width="0dp"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:paddingTop="17dp"
@@ -196,6 +197,7 @@
                 android:layout_width="8dp"
                 android:layout_height="13dp"
                 android:layout_marginEnd="20dp"
+                android:visibility="gone"
                 android:src="@drawable/ic_arrow_right"
                 app:layout_constraintBottom_toBottomOf="@+id/aboutMonhHeader"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -204,6 +206,7 @@
                 app:layout_constraintTop_toTopOf="@+id/aboutMonhHeader" />
             <View
                 android:id="@+id/sep3"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginStart="20dp"

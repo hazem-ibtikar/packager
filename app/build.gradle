@@ -16,17 +16,20 @@ android {
         applicationId "com.monh.packager"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 1
+        versionCode 4
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     signingConfigs {
         release {
-            storeFile file('E:\\android\\projects\\Packager\\packager')
+            storeFile file("packager")
             storePassword "123456"
             keyAlias "packager"
             keyPassword "123456"
+            // Optional, specify signing versions used
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
     buildTypes {
@@ -35,9 +38,10 @@ android {
         }
         release {
             debuggable false
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     flavorDimensions 'server'
@@ -49,7 +53,12 @@ android {
 
         staging {
             dimension = 'server'
-            buildConfigField 'String', 'SERVER_URL', '"https://monh-api-staging.ibtikar.sa"'
+            buildConfigField 'String', 'SERVER_URL', '"https://monh-api-staging.ibtikar.sa/"'
+        }
+
+        preLife {
+            dimension = 'server'
+            buildConfigField 'String', 'SERVER_URL', '"https://stage-api.monhapp.com"'
         }
 
         live {
