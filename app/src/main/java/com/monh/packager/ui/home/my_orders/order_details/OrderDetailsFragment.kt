@@ -79,7 +79,7 @@ class OrderDetailsFragment : BaseFragment<OrderDetailsViewModel>() {
         }
         viewModel.startOrderSuccessfully.observe(viewLifecycleOwner, EventObserver {
             if (it){
-                val preparationArgs = OrderPreparationFragmentArgs(orderId = args.orderId, products = viewModel.orderProductsLiveData.value?.toTypedArray()?: arrayOf())
+                val preparationArgs = OrderPreparationFragmentArgs(orderId = viewModel.selectedOrderId, products = viewModel.orderProductsLiveData.value?.toTypedArray()?: arrayOf())
                 // navigate to order preparation
                 findNavController().navigate(R.id.action_orderDetailsFragment_to_orderPreparationFragment, preparationArgs.toBundle())
             }
